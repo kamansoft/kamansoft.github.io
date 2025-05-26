@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -14,8 +13,8 @@ const Navigation = () => {
         const heroHeight = heroSection.offsetHeight;
         const scrollPosition = window.scrollY;
         
-        // Check if hero section is fully scrolled past
-        setIsScrolled(scrollPosition > heroHeight);
+        // Check if 70% of hero section is scrolled past
+        setIsScrolled(scrollPosition > heroHeight * 0.7);
       }
     };
 
