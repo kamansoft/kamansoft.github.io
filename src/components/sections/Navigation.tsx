@@ -1,10 +1,27 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('home');
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight;
+        const scrollPosition = window.scrollY;
+        const halfHeroHeight = heroHeight / 2;
+        
+        setIsScrolled(scrollPosition > halfHeroHeight);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -15,8 +32,10 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-black/10 backdrop-blur-md z-50 border-b border-white/5">
-      <div className="container mx-auto px-4 py-4">
+    <nav className={`fixed top-0 left-0 right-0 bg-black/10 backdrop-blur-md z-50 border-b border-white/5 transition-all duration-300 ${
+      isScrolled ? 'py-2' : 'py-4'
+    }`}>
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo with white background only behind the image */}
           <div className="flex items-center space-x-3">
@@ -24,10 +43,12 @@ const Navigation = () => {
               <img 
                 src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
                 alt="Kamansoft Logo" 
-                className="h-8 w-8"
+                className={`transition-all duration-300 ${isScrolled ? 'h-6 w-6' : 'h-8 w-8'}`}
               />
             </div>
-            <span className="text-xl font-bold text-white">
+            <span className={`font-bold text-white transition-all duration-300 ${
+              isScrolled ? 'text-lg' : 'text-xl'
+            }`}>
               Kamansoft
             </span>
           </div>
