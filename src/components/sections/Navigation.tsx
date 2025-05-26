@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -47,11 +48,18 @@ const Navigation = () => {
                 className={`transition-all duration-300 ${isScrolled ? 'h-6 w-6' : 'h-8 w-8'}`}
               />
             </div>
-            <span className={`font-bold transition-all duration-300 ${
-              isScrolled ? 'text-lg text-white' : 'text-xl text-white'
-            }`}>
-              Kamansoft
-            </span>
+            <div className="flex flex-col">
+              <span className={`font-bold transition-all duration-300 ${
+                isScrolled ? 'text-lg text-white' : 'text-xl text-white'
+              }`}>
+                Kamansoft
+              </span>
+              <span className={`text-xs transition-all duration-300 ${
+                isScrolled ? 'text-gray-300' : 'text-white/80'
+              }`}>
+                Code Beyond Limits
+              </span>
+            </div>
           </div>
 
           {/* Desktop Menu */}
