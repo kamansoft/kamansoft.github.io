@@ -14,7 +14,7 @@ import {
 const Services = () => {
   const services = [
     {
-      icon: <Code className="h-12 w-12 text-blue-600" />,
+      icon: <Code className="h-12 w-12" style={{ color: 'hsl(210, 84%, 45%)' }} />,
       title: "Web Development",
       description: "Custom web applications built with modern frameworks like React, Vue, and Angular for optimal performance and user experience."
     },

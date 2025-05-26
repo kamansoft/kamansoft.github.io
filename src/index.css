@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 210 84% 45%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -49,6 +50,11 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Brand colors matching the logo */
+    --brand-blue: 210 84% 45%;
+    --brand-blue-light: 210 84% 55%;
+    --brand-blue-dark: 210 84% 35%;
   }
 
   .dark {
@@ -97,5 +103,19 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .brand-blue {
+    color: hsl(var(--brand-blue));
+  }
+  
+  .bg-brand-blue {
+    background-color: hsl(var(--brand-blue));
+  }
+  
+  .border-brand-blue {
+    border-color: hsl(var(--brand-blue));
   }
 }

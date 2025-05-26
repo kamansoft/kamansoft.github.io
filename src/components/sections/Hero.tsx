@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { Code, Smartphone, Globe, Zap } from "lucide-react";
+import { Code, Smartphone, Globe, Zap, ArrowRight, Play } from "lucide-react";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -11,82 +11,112 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-          {/* Left Content */}
-          <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Transform Your Ideas Into 
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}Digital Reality
+    <section 
+      id="home" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: `linear-gradient(rgba(33, 101, 162, 0.85), rgba(33, 101, 162, 0.85)), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&h=1080&fit=crop')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-pulse"></div>
+        <div className="absolute top-1/3 right-1/4 w-1 h-1 bg-white/30 rounded-full animate-ping delay-700"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-white/25 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 right-1/3 w-2 h-2 bg-white/20 rounded-full animate-ping delay-500"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center max-w-5xl mx-auto">
+          {/* Main Content */}
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom duration-1000">
+            <div className="space-y-6">
+              <h1 className="text-6xl lg:text-7xl font-bold text-white leading-tight">
+                Transform Ideas Into
+                <span className="block bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
+                  Digital Reality
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
                 At Kamansoft, we craft cutting-edge software solutions that drive innovation and accelerate your business growth. From web applications to mobile apps, we bring your vision to life.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
                 onClick={scrollToContact}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg"
+                className="text-lg px-8 py-4 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                style={{ backgroundColor: 'hsl(210, 84%, 45%)' }}
               >
                 Start Your Project
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg"
+                className="text-lg px-8 py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm bg-white/10 shadow-xl transform hover:scale-105 transition-all duration-300"
               >
+                <Play className="mr-2 h-5 w-5" />
                 View Our Work
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">100+</div>
-                <div className="text-gray-600">Projects Delivered</div>
+            {/* Tech Stack Icons */}
+            <div className="grid grid-cols-4 gap-8 pt-16 max-w-md mx-auto">
+              <div className="flex flex-col items-center group">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Code className="h-8 w-8 text-white" />
+                </div>
+                <span className="text-white/80 text-sm mt-2">Web Dev</span>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">50+</div>
-                <div className="text-gray-600">Happy Clients</div>
+              <div className="flex flex-col items-center group">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Smartphone className="h-8 w-8 text-white" />
+                </div>
+                <span className="text-white/80 text-sm mt-2">Mobile</span>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600">5+</div>
-                <div className="text-gray-600">Years Experience</div>
+              <div className="flex flex-col items-center group">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Globe className="h-8 w-8 text-white" />
+                </div>
+                <span className="text-white/80 text-sm mt-2">Cloud</span>
+              </div>
+              <div className="flex flex-col items-center group">
+                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Zap className="h-8 w-8 text-white" />
+                </div>
+                <span className="text-white/80 text-sm mt-2">AI/ML</span>
               </div>
             </div>
-          </div>
 
-          {/* Right Content */}
-          <div className="relative animate-in fade-in slide-in-from-right duration-1000 delay-200">
-            <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop" 
-                alt="Software Development"
-                className="rounded-2xl shadow-2xl"
-              />
-              
-              {/* Floating Cards */}
-              <div className="absolute -top-6 -left-6 bg-white rounded-xl shadow-lg p-4 animate-bounce">
-                <Code className="h-8 w-8 text-blue-600" />
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 pt-16 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold text-white">100+</div>
+                <div className="text-white/80 text-lg">Projects Delivered</div>
               </div>
-              <div className="absolute -top-6 -right-6 bg-white rounded-xl shadow-lg p-4 animate-bounce delay-100">
-                <Smartphone className="h-8 w-8 text-purple-600" />
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold text-white">50+</div>
+                <div className="text-white/80 text-lg">Happy Clients</div>
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 animate-bounce delay-200">
-                <Globe className="h-8 w-8 text-green-600" />
-              </div>
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 animate-bounce delay-300">
-                <Zap className="h-8 w-8 text-yellow-600" />
+              <div className="text-center">
+                <div className="text-4xl lg:text-5xl font-bold text-white">5+</div>
+                <div className="text-white/80 text-lg">Years Experience</div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>

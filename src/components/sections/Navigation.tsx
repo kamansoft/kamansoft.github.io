@@ -19,8 +19,15 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="text-2xl font-bold text-blue-600">
-            Kamansoft
+          <div className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
+              alt="Kamansoft Logo" 
+              className="h-10 w-10"
+            />
+            <span className="text-2xl font-bold" style={{ color: 'hsl(210, 84%, 45%)' }}>
+              Kamansoft
+            </span>
           </div>
 
           {/* Desktop Menu */}
@@ -57,7 +64,8 @@ const Navigation = () => {
             </button>
             <Button 
               onClick={() => scrollToSection('contact')}
-              className="bg-blue-600 hover:bg-blue-700"
+              style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
+              className="hover:opacity-90"
             >
               Contact Us
             </Button>
@@ -108,7 +116,8 @@ const Navigation = () => {
               </button>
               <Button 
                 onClick={() => scrollToSection('contact')}
-                className="bg-blue-600 hover:bg-blue-700 w-full"
+                style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
+                className="hover:opacity-90 w-full"
               >
                 Contact Us
               </Button>
