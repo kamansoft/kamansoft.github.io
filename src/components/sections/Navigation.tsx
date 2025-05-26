@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -41,7 +40,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo with white background only behind the image */}
           <div className="flex items-center space-x-3">
-            <div className="bg-white rounded-lg p-0.5">
+            <div className="bg-white rounded-md p-0.5">
               <img 
                 src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
                 alt="Kamansoft Logo" 
