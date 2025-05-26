@@ -15,17 +15,17 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-black/20 backdrop-blur-md z-50 border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 bg-black/10 backdrop-blur-md z-50 border-b border-white/5">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
+          {/* Logo with white background */}
+          <div className="flex items-center space-x-3 bg-white rounded-lg px-3 py-2">
             <img 
               src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
               alt="Kamansoft Logo" 
-              className="h-10 w-10"
+              className="h-8 w-8"
             />
-            <span className="text-2xl font-bold text-white">
+            <span className="text-xl font-bold text-gray-800">
               Kamansoft
             </span>
           </div>
