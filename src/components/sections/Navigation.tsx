@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [currentSection, setCurrentSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,24 +13,9 @@ const Navigation = () => {
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight;
         const scrollPosition = window.scrollY;
-        const halfHeroHeight = heroHeight / 2;
         
-        setIsScrolled(scrollPosition > halfHeroHeight);
-      }
-
-      // Detect current section
-      const sections = ['home', 'services', 'about', 'portfolio', 'team', 'contact'];
-      const navbarHeight = 80; // Account for navbar height
-      
-      for (const sectionId of sections) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= navbarHeight && rect.bottom > navbarHeight) {
-            setCurrentSection(sectionId);
-            break;
-          }
-        }
+        // Check if hero section is fully scrolled past
+        setIsScrolled(scrollPosition > heroHeight);
       }
     };
 
@@ -47,14 +31,11 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
-  // Determine if current section has dark background
-  const isDarkSection = currentSection === 'home' || currentSection === 'portfolio';
-  const textColor = isDarkSection ? 'text-white' : 'text-gray-900';
-  const textColorHover = isDarkSection ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-gray-900';
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 bg-black/10 backdrop-blur-md z-50 border-b border-white/5 transition-all duration-300 ${
-      isScrolled ? 'py-2' : 'py-4'
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-gray-900/90 backdrop-blur-md border-gray-700/50 py-2' 
+        : 'bg-black/10 backdrop-blur-md border-white/5 py-4'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -68,8 +49,8 @@ const Navigation = () => {
               />
             </div>
             <span className={`font-bold transition-all duration-300 ${
-              isScrolled ? 'text-lg' : 'text-xl'
-            } ${textColor}`}>
+              isScrolled ? 'text-lg text-white' : 'text-xl text-white'
+            }`}>
               Kamansoft
             </span>
           </div>
@@ -78,31 +59,41 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('home')}
-              className={`transition-colors ${textColorHover}`}
+              className={`transition-colors ${
+                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+              }`}
             >
               Home
             </button>
             <button 
               onClick={() => scrollToSection('services')}
-              className={`transition-colors ${textColorHover}`}
+              className={`transition-colors ${
+                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+              }`}
             >
               Services
             </button>
             <button 
               onClick={() => scrollToSection('about')}
-              className={`transition-colors ${textColorHover}`}
+              className={`transition-colors ${
+                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+              }`}
             >
               About
             </button>
             <button 
               onClick={() => scrollToSection('portfolio')}
-              className={`transition-colors ${textColorHover}`}
+              className={`transition-colors ${
+                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+              }`}
             >
               Portfolio
             </button>
             <button 
               onClick={() => scrollToSection('team')}
-              className={`transition-colors ${textColorHover}`}
+              className={`transition-colors ${
+                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+              }`}
             >
               Team
             </button>
@@ -118,7 +109,7 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden p-2 ${textColor}`}
+            className="md:hidden p-2 text-white"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -126,35 +117,49 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 py-4 bg-black/30 backdrop-blur-sm rounded-lg border border-white/10">
+          <div className={`md:hidden mt-4 py-4 rounded-lg border transition-all duration-300 ${
+            isScrolled 
+              ? 'bg-gray-800/95 backdrop-blur-sm border-gray-600/50' 
+              : 'bg-black/30 backdrop-blur-sm border-white/10'
+          }`}>
             <div className="flex flex-col space-y-4 px-4">
               <button 
                 onClick={() => scrollToSection('home')}
-                className={`transition-colors text-left ${textColorHover}`}
+                className={`transition-colors text-left ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection('services')}
-                className={`transition-colors text-left ${textColorHover}`}
+                className={`transition-colors text-left ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
               >
                 Services
               </button>
               <button 
                 onClick={() => scrollToSection('about')}
-                className={`transition-colors text-left ${textColorHover}`}
+                className={`transition-colors text-left ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection('portfolio')}
-                className={`transition-colors text-left ${textColorHover}`}
+                className={`transition-colors text-left ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
               >
                 Portfolio
               </button>
               <button 
                 onClick={() => scrollToSection('team')}
-                className={`transition-colors text-left ${textColorHover}`}
+                className={`transition-colors text-left ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
               >
                 Team
               </button>
