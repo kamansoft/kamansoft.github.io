@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -11,6 +10,7 @@ const Process = () => {
   const [activeTab, setActiveTab] = useState("conceptualizing");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isNavigationTriggered, setIsNavigationTriggered] = useState(false);
+  const [isFlashing, setIsFlashing] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const conceptualizingContentRef = useRef<HTMLDivElement>(null);
 
@@ -59,13 +59,21 @@ const Process = () => {
             block: 'start'
           });
           
-          // Switch to development tab after longer transition effect
+          // Switch to development tab after shorter transition effect
           setTimeout(() => {
+            // Trigger flash effect for automatic transition
+            setIsFlashing(true);
             setActiveTab("development");
+            
+            // Remove flash effect after animation
+            setTimeout(() => {
+              setIsFlashing(false);
+            }, 100);
+            
             setTimeout(() => {
               setIsTransitioning(false);
-            }, 1200);
-          }, 2000);
+            }, 600);
+          }, 1000);
         }
       }
     };
@@ -74,11 +82,22 @@ const Process = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeTab, isNavigationTriggered]);
 
+  const handleTabChange = (value: string) => {
+    // Trigger flash effect
+    setIsFlashing(true);
+    setActiveTab(value);
+    
+    // Remove flash effect after animation
+    setTimeout(() => {
+      setIsFlashing(false);
+    }, 100);
+  };
+
   return (
     <section 
       ref={sectionRef} 
       id="process" 
-      className={`py-20 relative overflow-hidden transition-all duration-2000 ${
+      className={`py-20 relative overflow-hidden transition-all duration-1000 ${
         activeTab === "conceptualizing" 
           ? "bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-muted/50" 
           : "bg-gradient-to-br from-green-50/50 via-blue-50/30 to-muted/50"
@@ -97,24 +116,47 @@ const Process = () => {
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
           <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30">
-            <TabsTrigger value="conceptualizing" className="relative overflow-hidden">
+            <TabsTrigger 
+              value="conceptualizing" 
+              className={`relative overflow-hidden transition-all duration-300 ${
+                activeTab === "conceptualizing" 
+                  ? `bg-blue-100 text-blue-900 shadow-md ${
+                      isFlashing ? 'bg-white text-blue-600 shadow-xl shadow-white/80 brightness-150' : ''
+                    }` 
+                  : 'opacity-70'
+              }`}
+            >
               <span className="relative z-10">Conceptualizing</span>
               {activeTab === "conceptualizing" && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 animate-pulse"></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 ${
+                  isFlashing ? 'bg-white/90' : ''
+                }`}></div>
               )}
             </TabsTrigger>
-            <TabsTrigger value="development" className="relative overflow-hidden">
+            
+            <TabsTrigger 
+              value="development" 
+              className={`relative overflow-hidden transition-all duration-300 ${
+                activeTab === "development" 
+                  ? `bg-green-100 text-green-900 shadow-md ${
+                      isFlashing ? 'bg-white text-green-600 shadow-xl shadow-white/80 brightness-150' : ''
+                    }` 
+                  : 'opacity-70'
+              }`}
+            >
               <span className="relative z-10">Development</span>
               {activeTab === "development" && (
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 animate-pulse"></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 ${
+                  isFlashing ? 'bg-white/90' : ''
+                }`}></div>
               )}
             </TabsTrigger>
           </TabsList>
           
           <TabsContent value="conceptualizing" className="mt-8">
-            <div ref={conceptualizingContentRef} className={`transition-all duration-1000 ${
+            <div ref={conceptualizingContentRef} className={`transition-all duration-500 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
             }`}>
               <div className="text-center mb-8">
@@ -138,7 +180,7 @@ const Process = () => {
           </TabsContent>
           
           <TabsContent value="development" className="mt-8">
-            <div className={`transition-all duration-1000 ${
+            <div className={`transition-all duration-500 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
             }`}>
               <div className="text-center mb-8">
