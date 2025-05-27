@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -11,6 +10,7 @@ const Process = () => {
   const [activeTab, setActiveTab] = useState("conceptualizing");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isNavigationTriggered, setIsNavigationTriggered] = useState(false);
+  const [isFlashing, setIsFlashing] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const conceptualizingContentRef = useRef<HTMLDivElement>(null);
 
@@ -74,6 +74,17 @@ const Process = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [activeTab, isNavigationTriggered]);
 
+  const handleTabChange = (value: string) => {
+    // Trigger flash effect
+    setIsFlashing(true);
+    setActiveTab(value);
+    
+    // Remove flash effect after animation
+    setTimeout(() => {
+      setIsFlashing(false);
+    }, 300);
+  };
+
   return (
     <section 
       ref={sectionRef} 
@@ -97,18 +108,28 @@ const Process = () => {
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30">
-            <TabsTrigger value="conceptualizing" className="relative overflow-hidden">
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+          <TabsList className={`grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30 transition-all duration-300 ${
+            isFlashing ? 'animate-pulse shadow-lg shadow-primary/30 ring-2 ring-primary/50' : ''
+          }`}>
+            <TabsTrigger value="conceptualizing" className={`relative overflow-hidden transition-all duration-300 ${
+              isFlashing && activeTab === "conceptualizing" ? 'shadow-md shadow-blue-500/50' : ''
+            }`}>
               <span className="relative z-10">Conceptualizing</span>
               {activeTab === "conceptualizing" && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 animate-pulse"></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 ${
+                  isFlashing ? 'animate-pulse' : 'animate-pulse'
+                }`}></div>
               )}
             </TabsTrigger>
-            <TabsTrigger value="development" className="relative overflow-hidden">
+            <TabsTrigger value="development" className={`relative overflow-hidden transition-all duration-300 ${
+              isFlashing && activeTab === "development" ? 'shadow-md shadow-green-500/50' : ''
+            }`}>
               <span className="relative z-10">Development</span>
               {activeTab === "development" && (
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 animate-pulse"></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 ${
+                  isFlashing ? 'animate-pulse' : 'animate-pulse'
+                }`}></div>
               )}
             </TabsTrigger>
           </TabsList>
@@ -116,7 +137,7 @@ const Process = () => {
           <TabsContent value="conceptualizing" className="mt-8">
             <div ref={conceptualizingContentRef} className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            }`}>
+            } ${isFlashing ? "animate-pulse" : ""}`}>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-semibold text-foreground mb-2">
                   From Idea to MVP Definition
@@ -140,7 +161,7 @@ const Process = () => {
           <TabsContent value="development" className="mt-8">
             <div className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            }`}>
+            } ${isFlashing ? "animate-pulse" : ""}`}>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-semibold text-foreground mb-2">
                   Agile Development Process
