@@ -1,11 +1,27 @@
 
 import { RefreshCw } from "lucide-react";
+import { useEffect } from "react";
 
 interface ProcessTransitionProps {
   isTransitioning: boolean;
 }
 
 const ProcessTransition = ({ isTransitioning }: ProcessTransitionProps) => {
+  useEffect(() => {
+    if (isTransitioning) {
+      // Disable scrolling
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to ensure scrolling is re-enabled
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isTransitioning]);
+
   if (!isTransitioning) return null;
 
   return (
