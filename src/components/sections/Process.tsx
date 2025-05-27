@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Lightbulb, Code, Presentation, Settings, GitBranch, TestTube, Rocket, RefreshCw } from "lucide-react";
@@ -34,20 +33,20 @@ const Process = () => {
     },
     {
       id: 4,
-      title: "POC Demo & MCV Definition",
+      title: "POC Demo & MVP Definition",
       description: "Present proof of concept and define minimum viable product",
-      details: "Showcase the POC demo and collaboratively define the Minimum Viable Core (MVC) features",
+      details: "Showcase the POC demo and collaboratively define the Minimum Viable Product (MVP) features",
       icon: <Presentation className="h-8 w-8" />,
       duration: "2-3 days",
       color: "text-orange-600"
     },
     {
       id: 5,
-      title: "MVC Estimation & Refinement",
+      title: "MVP Estimation & Refinement",
       description: "Detailed development estimation and solution refinement",
       details: "Provide accurate development estimates and refine the solution based on feedback and requirements",
       icon: <Settings className="h-8 w-8" />,
-      duration: "3-5 days",
+      duration: "3 days",
       color: "text-red-600"
     }
   ];
@@ -172,13 +171,13 @@ const Process = () => {
           <TabsContent value="conceptualizing" className="mt-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-semibold text-foreground mb-2">
-                From Idea to MVC
+                From Idea to MVP
               </h3>
               <p className="text-muted-foreground">
                 Understanding your vision and creating a solid foundation for development
               </p>
             </div>
-            {renderTimeline(conceptSteps, "Total Timeline: 4-7 weeks from concept to development start")}
+            {renderTimeline(conceptSteps, "Total Timeline: 4-6 weeks from concept to development start")}
           </TabsContent>
           
           <TabsContent value="development" className="mt-8">
