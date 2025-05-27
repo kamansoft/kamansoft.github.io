@@ -128,7 +128,7 @@ const Footer = () => {
         <Separator className="my-8 bg-gray-700 dark:bg-gray-600" />
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 dark:text-gray-500 text-sm">
+          <p className="text-gray-400 dark:text-gray-500 text-sm leading-relaxed">
             © {currentYear} Kamansoft. All rights reserved. | Enterprise Software Development & Automation Solutions
           </p>
           <div className="flex space-x-6 text-sm">
