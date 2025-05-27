@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -38,13 +39,17 @@ const Navigation = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo with white background only behind the image */}
+          {/* Logo with white background same size as the logo */}
           <div className="flex items-center space-x-3">
-            <div className="bg-white rounded-md p-0.5">
+            <div className={`bg-white rounded-md p-1 transition-all duration-300 ${
+              isScrolled ? 'w-8 h-8' : 'w-10 h-10'
+            } flex items-center justify-center`}>
               <img 
                 src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
                 alt="Kamansoft Logo" 
-                className={`transition-all duration-300 ${isScrolled ? 'h-6 w-6' : 'h-8 w-8'}`}
+                className={`transition-all duration-300 object-contain ${
+                  isScrolled ? 'h-6 w-6' : 'h-8 w-8'
+                }`}
               />
             </div>
             <div className="flex flex-col">
@@ -102,6 +107,14 @@ const Navigation = () => {
               }`}
             >
               Team
+            </button>
+            <button 
+              onClick={() => scrollToSection('blog')}
+              className={`transition-colors ${
+                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+              }`}
+            >
+              Blog
             </button>
             <Button 
               onClick={() => scrollToSection('contact')}
@@ -168,6 +181,14 @@ const Navigation = () => {
                 }`}
               >
                 Team
+              </button>
+              <button 
+                onClick={() => scrollToSection('blog')}
+                className={`transition-colors text-left ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
+              >
+                Blog
               </button>
               <Button 
                 onClick={() => scrollToSection('contact')}
