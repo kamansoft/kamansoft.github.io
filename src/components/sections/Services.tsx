@@ -8,50 +8,52 @@ import {
   Cloud, 
   Shield,
   Palette,
-  BarChart3
+  BarChart3,
+  Workflow,
+  Cog
 } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
       icon: <Code className="h-12 w-12" style={{ color: 'hsl(210, 84%, 45%)' }} />,
-      title: "Web Development",
-      description: "Custom web applications built with modern frameworks like React, Vue, and Angular for optimal performance and user experience."
-    },
-    {
-      icon: <Smartphone className="h-12 w-12 text-purple-600" />,
-      title: "Mobile Development", 
-      description: "Native and cross-platform mobile apps for iOS and Android using React Native, Flutter, and native technologies."
+      title: "Custom Software Development",
+      description: "Enterprise-grade web and desktop applications built with modern technologies. Scalable solutions tailored to your business requirements with clean, maintainable code."
     },
     {
       icon: <Database className="h-12 w-12 text-green-600" />,
-      title: "Backend Development",
-      description: "Robust server-side solutions with Node.js, Python, PHP, and .NET to power your applications with secure APIs."
+      title: "ETL & Data Processing",
+      description: "Extract, Transform, Load solutions for seamless data integration. Automated data pipelines, real-time processing, and enterprise data warehouse solutions."
+    },
+    {
+      icon: <Workflow className="h-12 w-12 text-purple-600" />,
+      title: "Business Process Automation", 
+      description: "Streamline operations with intelligent automation. Workflow optimization, RPA implementation, and custom automation tools to reduce manual tasks and increase efficiency."
+    },
+    {
+      icon: <Smartphone className="h-12 w-12 text-indigo-600" />,
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications for iOS and Android. User-friendly interfaces with robust backend integration and offline capabilities."
     },
     {
       icon: <Cloud className="h-12 w-12 text-orange-600" />,
-      title: "Cloud Solutions",
-      description: "Scalable cloud infrastructure and deployment on AWS, Azure, and Google Cloud Platform for maximum reliability."
+      title: "Cloud Migration & DevOps",
+      description: "Seamless cloud migration strategies and CI/CD pipeline implementation. AWS, Azure, and GCP expertise with containerization and microservices architecture."
     },
     {
-      icon: <Palette className="h-12 w-12 text-pink-600" />,
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive user interfaces and experiences that engage users and drive conversions."
+      icon: <BarChart3 className="h-12 w-12 text-teal-600" />,
+      title: "Business Intelligence & Analytics",
+      description: "Transform raw data into actionable insights. Custom dashboards, reporting systems, and predictive analytics to drive data-driven decision making."
     },
     {
       icon: <Shield className="h-12 w-12 text-red-600" />,
-      title: "Cybersecurity",
-      description: "Comprehensive security audits, penetration testing, and implementation of security best practices."
+      title: "Enterprise Security Solutions",
+      description: "Comprehensive cybersecurity services including security audits, penetration testing, and compliance implementation to protect your digital assets."
     },
     {
-      icon: <BarChart3 className="h-12 w-12 text-indigo-600" />,
-      title: "Data Analytics",
-      description: "Business intelligence solutions and data visualization to help you make informed decisions."
-    },
-    {
-      icon: <Globe className="h-12 w-12 text-teal-600" />,
-      title: "Digital Transformation",
-      description: "Complete digital transformation strategies to modernize your business processes and workflows."
+      icon: <Cog className="h-12 w-12 text-gray-600" />,
+      title: "System Integration",
+      description: "Connect disparate systems and applications. API development, legacy system modernization, and third-party integrations for unified business operations."
     }
   ];
 
@@ -60,10 +62,11 @@ const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Services
+            Enterprise Software Development & Automation Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We offer a comprehensive range of software development services to help your business thrive in the digital age.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Transform your business with our comprehensive software development, ETL data processing, and automation solutions. 
+            We help enterprises modernize operations, streamline workflows, and unlock the power of their data.
           </p>
         </div>
 

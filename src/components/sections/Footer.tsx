@@ -21,19 +21,19 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-blue-400">Kamansoft</h3>
             <p className="text-gray-300 leading-relaxed">
-              Transforming ideas into digital reality with cutting-edge software solutions. Your trusted partner in digital innovation.
+              Leading software development company specializing in custom applications, ETL data processing, and business automation. Transform your enterprise with scalable, secure solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://www.linkedin.com/company/kamansoft" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
+              <a href="https://twitter.com/kamansoft" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Twitter">
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -41,77 +41,81 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Quick Links</h4>
+            <h4 className="text-lg font-semibold">Solutions</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-gray-300 hover:text-white transition-colors">
-                  Home
+                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                  Custom Software Development
                 </a>
               </li>
               <li>
                 <a href="#services" className="text-gray-300 hover:text-white transition-colors">
-                  Services
+                  ETL & Data Processing
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-gray-300 hover:text-white transition-colors">
-                  About
+                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                  Business Automation
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                  Cloud Migration
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-gray-300 hover:text-white transition-colors">
+                  System Integration
                 </a>
               </li>
               <li>
                 <a href="#portfolio" className="text-gray-300 hover:text-white transition-colors">
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a href="#team" className="text-gray-300 hover:text-white transition-colors">
-                  Team
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact
+                  Case Studies
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Industries */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Services</h4>
+            <h4 className="text-lg font-semibold">Industries</h4>
             <ul className="space-y-2">
               <li>
-                <span className="text-gray-300">Web Development</span>
+                <span className="text-gray-300">Healthcare & Life Sciences</span>
               </li>
               <li>
-                <span className="text-gray-300">Mobile Development</span>
+                <span className="text-gray-300">Financial Services</span>
               </li>
               <li>
-                <span className="text-gray-300">Cloud Solutions</span>
+                <span className="text-gray-300">Manufacturing</span>
               </li>
               <li>
-                <span className="text-gray-300">UI/UX Design</span>
+                <span className="text-gray-300">Retail & E-commerce</span>
               </li>
               <li>
-                <span className="text-gray-300">Cybersecurity</span>
+                <span className="text-gray-300">Supply Chain & Logistics</span>
               </li>
               <li>
-                <span className="text-gray-300">Data Analytics</span>
+                <span className="text-gray-300">Government & Public Sector</span>
               </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Contact Info</h4>
+            <h4 className="text-lg font-semibold">Get In Touch</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">hello@kamansoft.com</span>
+                <a href="mailto:hello@kamansoft.com" className="text-gray-300 hover:text-white transition-colors">
+                  hello@kamansoft.com
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <a href="tel:+15551234567" className="text-gray-300 hover:text-white transition-colors">
+                  +1 (555) 123-4567
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-blue-400" />
@@ -125,7 +129,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-gray-400 text-sm">
-            © {currentYear} Kamansoft. All rights reserved.
+            © {currentYear} Kamansoft. All rights reserved. | Enterprise Software Development & Automation Solutions
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-white transition-colors">

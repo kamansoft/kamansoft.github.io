@@ -5,28 +5,28 @@ import { CheckCircle, Users, Award, Target } from "lucide-react";
 const About = () => {
   const features = [
     "Agile Development Methodology",
-    "24/7 Technical Support",
-    "Quality Assurance Testing",
+    "Enterprise-Grade Security Standards",
     "Scalable Architecture Design",
-    "Cross-Platform Compatibility",
-    "Security-First Approach"
+    "24/7 Technical Support & Maintenance",
+    "Data Migration & ETL Expertise",
+    "Business Process Automation"
   ];
 
   const values = [
     {
       icon: <Users className="h-8 w-8 text-blue-600" />,
-      title: "Client-Focused",
-      description: "We prioritize our clients' success and work closely with them throughout the development process."
+      title: "Enterprise-Focused",
+      description: "We understand enterprise challenges and deliver solutions that scale with your business growth and operational demands."
     },
     {
       icon: <Award className="h-8 w-8 text-purple-600" />,
-      title: "Excellence",
-      description: "We maintain the highest standards in code quality, design, and project delivery."
+      title: "Technical Excellence",
+      description: "Our team maintains the highest standards in software architecture, code quality, and industry best practices for mission-critical applications."
     },
     {
       icon: <Target className="h-8 w-8 text-green-600" />,
-      title: "Innovation",
-      description: "We stay at the forefront of technology to deliver cutting-edge solutions."
+      title: "Results-Driven Innovation",
+      description: "We leverage cutting-edge technologies and proven methodologies to deliver measurable business outcomes and competitive advantages."
     }
   ];
 
@@ -38,13 +38,13 @@ const About = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                About Kamansoft
+                Your Trusted Partner in Digital Transformation
               </h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Founded with a passion for technology and innovation, Kamansoft has been at the forefront of software development for over 5 years. We specialize in creating custom software solutions that help businesses streamline their operations and achieve their goals.
+                Kamansoft is a leading software development company specializing in enterprise applications, ETL data processing, and business automation solutions. With over 5 years of proven experience, we help organizations modernize their operations and unlock the full potential of their data.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Our team of experienced developers, designers, and project managers work collaboratively to deliver high-quality software that exceeds expectations and drives business growth.
+                Our expert team of developers, data engineers, and automation specialists work closely with businesses to deliver custom solutions that drive efficiency, reduce costs, and accelerate growth. From legacy system modernization to cloud migration and intelligent automation, we provide end-to-end technology services that transform how you do business.
               </p>
             </div>
 
@@ -62,7 +62,7 @@ const About = () => {
           <div className="space-y-8">
             <img 
               src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop" 
-              alt="Team working"
+              alt="Software development team working on enterprise solutions"
               className="rounded-2xl shadow-xl"
             />
 

@@ -6,46 +6,46 @@ import { ExternalLink, Github } from "lucide-react";
 const Portfolio = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A fully-featured e-commerce solution with payment integration, inventory management, and analytics dashboard.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      category: "Web Application"
+      title: "Enterprise Data Warehouse & ETL Pipeline",
+      description: "Complete data warehouse solution with automated ETL processes, handling 10TB+ daily data processing for a Fortune 500 retail company.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      technologies: ["Apache Spark", "AWS Redshift", "Python", "Airflow"],
+      category: "ETL & Data Processing"
+    },
+    {
+      title: "Manufacturing Process Automation Suite",
+      description: "Comprehensive automation platform that reduced manual processes by 85% and improved production efficiency for industrial manufacturing.",
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
+      technologies: ["Python", "RPA", "IoT Integration", "PostgreSQL"],
+      category: "Business Automation"
     },
     {
       title: "Healthcare Management System",
-      description: "Comprehensive healthcare platform for patient management, appointment scheduling, and medical records.",
+      description: "HIPAA-compliant healthcare platform with patient management, appointment scheduling, and integrated billing automation.",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop",
-      technologies: ["Vue.js", "Python", "PostgreSQL", "AWS"],
+      technologies: ["React", "Node.js", "FHIR API", "AWS"],
       category: "Enterprise Software"
     },
     {
-      title: "Mobile Banking App",
-      description: "Secure mobile banking application with biometric authentication and real-time transaction processing.",
+      title: "Financial Services Data Integration",
+      description: "Real-time data integration platform connecting multiple banking systems with automated compliance reporting and risk analysis.",
       image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-      technologies: ["React Native", "Node.js", "MySQL", "Firebase"],
-      category: "Mobile Application"
+      technologies: ["Apache Kafka", "Spring Boot", "Oracle", "Kubernetes"],
+      category: "ETL & Integration"
     },
     {
-      title: "AI-Powered Analytics Dashboard",
-      description: "Business intelligence platform with machine learning capabilities for predictive analytics.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      technologies: ["Angular", "Python", "TensorFlow", "Docker"],
-      category: "Data Analytics"
+      title: "Supply Chain Optimization Platform",
+      description: "AI-powered supply chain management system with predictive analytics, inventory automation, and vendor integration.",
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
+      technologies: ["Python", "TensorFlow", "MongoDB", "Docker"],
+      category: "Enterprise Software"
     },
     {
-      title: "Real Estate Platform",
-      description: "Modern real estate marketplace with virtual tours, property management, and CRM integration.",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
-      technologies: ["Next.js", "Express", "MongoDB", "Cloudinary"],
-      category: "Web Platform"
-    },
-    {
-      title: "Learning Management System",
-      description: "Educational platform with video streaming, progress tracking, and interactive assessments.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
-      technologies: ["React", "Laravel", "MySQL", "Redis"],
-      category: "Education Technology"
+      title: "Document Processing Automation",
+      description: "Intelligent document processing system using OCR and machine learning to automate invoice processing and data extraction.",
+      image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop",
+      technologies: ["Python", "Tesseract OCR", "Azure AI", "Redis"],
+      category: "Business Automation"
     }
   ];
 
@@ -54,10 +54,12 @@ const Portfolio = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Portfolio
+            Proven Success Stories
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore some of our recent projects that showcase our expertise in delivering innovative software solutions across various industries.
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Discover how we've helped enterprises transform their operations through custom software development, 
+            ETL data processing, and intelligent automation solutions. Each project showcases our commitment to 
+            delivering measurable business results.
           </p>
         </div>
 
@@ -97,11 +99,11 @@ const Portfolio = () => {
                 <div className="flex space-x-4 pt-4">
                   <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors">
                     <ExternalLink className="h-4 w-4" />
-                    <span className="text-sm">Live Demo</span>
+                    <span className="text-sm">Case Study</span>
                   </button>
                   <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
                     <Github className="h-4 w-4" />
-                    <span className="text-sm">Source Code</span>
+                    <span className="text-sm">Learn More</span>
                   </button>
                 </div>
               </CardContent>
