@@ -13,7 +13,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-0"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.85)), url('/lovable-uploads/01b19036-6e1d-4eff-b683-41e93b9b1b99.png')`,
         backgroundSize: 'cover',
@@ -32,24 +32,24 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-5xl mx-auto">
           {/* Main Content */}
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom duration-1000">
-            <div className="space-y-6">
-              <h1 className="text-6xl lg:text-7xl font-bold text-white leading-tight">
+          <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom duration-1000">
+            <div className="space-y-4 md:space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                 Transform Ideas Into
                 <span className="block bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
                   Digital Reality
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto px-4">
                 At Kamansoft, we craft cutting-edge software solutions that drive innovation and accelerate your business growth. From web applications to mobile apps, we bring your vision to life.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
               <Button 
                 size="lg" 
                 onClick={scrollToContact}
-                className="text-lg px-8 py-4 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="text-lg px-6 md:px-8 py-3 md:py-4 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
                 style={{ backgroundColor: 'hsl(210, 84%, 45%)' }}
               >
                 Start Your Project
@@ -59,7 +59,7 @@ const Hero = () => {
                 variant="outline" 
                 size="lg"
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-lg px-8 py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm bg-white/10 shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="text-lg px-6 md:px-8 py-3 md:py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm bg-white/10 shadow-xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
               >
                 <Play className="mr-2 h-5 w-5" />
                 View Our Work
@@ -67,30 +67,30 @@ const Hero = () => {
             </div>
 
             {/* Tech Stack Icons */}
-            <div className="grid grid-cols-4 gap-8 pt-16 max-w-md mx-auto">
+            <div className="grid grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-16 max-w-md mx-auto px-4">
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Code className="h-8 w-8 text-white" />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Code className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 </div>
-                <span className="text-white/80 text-sm mt-2">Web Dev</span>
+                <span className="text-white/80 text-xs md:text-sm mt-2">Web Dev</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Smartphone className="h-8 w-8 text-white" />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Smartphone className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 </div>
-                <span className="text-white/80 text-sm mt-2">Mobile</span>
+                <span className="text-white/80 text-xs md:text-sm mt-2">Mobile</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Globe className="h-8 w-8 text-white" />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Globe className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 </div>
-                <span className="text-white/80 text-sm mt-2">Cloud</span>
+                <span className="text-white/80 text-xs md:text-sm mt-2">Cloud</span>
               </div>
               <div className="flex flex-col items-center group">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Zap className="h-8 w-8 text-white" />
+                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                  <Zap className="h-6 w-6 md:h-8 md:w-8 text-white" />
                 </div>
-                <span className="text-white/80 text-sm mt-2">AI/ML</span>
+                <span className="text-white/80 text-xs md:text-sm mt-2">AI/ML</span>
               </div>
             </div>
           </div>
