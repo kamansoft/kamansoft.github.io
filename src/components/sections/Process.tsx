@@ -82,7 +82,7 @@ const Process = () => {
     // Remove flash effect after animation
     setTimeout(() => {
       setIsFlashing(false);
-    }, 300);
+    }, 600);
   };
 
   return (
@@ -109,26 +109,39 @@ const Process = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className={`grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30 transition-all duration-300 ${
-            isFlashing ? 'animate-pulse shadow-lg shadow-primary/30 ring-2 ring-primary/50' : ''
-          }`}>
-            <TabsTrigger value="conceptualizing" className={`relative overflow-hidden transition-all duration-300 ${
-              isFlashing && activeTab === "conceptualizing" ? 'shadow-md shadow-blue-500/50' : ''
-            }`}>
+          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30">
+            <TabsTrigger 
+              value="conceptualizing" 
+              className={`relative overflow-hidden transition-all duration-500 ${
+                activeTab === "conceptualizing" 
+                  ? 'bg-blue-100 text-blue-900 shadow-md' 
+                  : isFlashing && activeTab === "development" 
+                    ? 'opacity-30 bg-gray-100' 
+                    : 'opacity-70'
+              }`}
+            >
               <span className="relative z-10">Conceptualizing</span>
               {activeTab === "conceptualizing" && (
-                <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 ${
-                  isFlashing ? 'animate-pulse' : 'animate-pulse'
-                }`}></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20"></div>
               )}
             </TabsTrigger>
-            <TabsTrigger value="development" className={`relative overflow-hidden transition-all duration-300 ${
-              isFlashing && activeTab === "development" ? 'shadow-md shadow-green-500/50' : ''
-            }`}>
+            
+            <TabsTrigger 
+              value="development" 
+              className={`relative overflow-hidden transition-all duration-500 ${
+                activeTab === "development" 
+                  ? `bg-green-100 text-green-900 shadow-md ${
+                      isFlashing ? 'animate-pulse shadow-lg shadow-green-500/50 ring-2 ring-green-400/70 bg-green-200' : ''
+                    }` 
+                  : isFlashing && activeTab === "conceptualizing" 
+                    ? 'opacity-30 bg-gray-100' 
+                    : 'opacity-70'
+              }`}
+            >
               <span className="relative z-10">Development</span>
               {activeTab === "development" && (
                 <div className={`absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 ${
-                  isFlashing ? 'animate-pulse' : 'animate-pulse'
+                  isFlashing ? 'animate-pulse bg-green-400/40' : ''
                 }`}></div>
               )}
             </TabsTrigger>
@@ -137,7 +150,7 @@ const Process = () => {
           <TabsContent value="conceptualizing" className="mt-8">
             <div ref={conceptualizingContentRef} className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            } ${isFlashing ? "animate-pulse" : ""}`}>
+            }`}>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-semibold text-foreground mb-2">
                   From Idea to MVP Definition
@@ -161,7 +174,7 @@ const Process = () => {
           <TabsContent value="development" className="mt-8">
             <div className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            } ${isFlashing ? "animate-pulse" : ""}`}>
+            } ${isFlashing ? "animate-fade-in" : ""}`}>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-semibold text-foreground mb-2">
                   Agile Development Process
