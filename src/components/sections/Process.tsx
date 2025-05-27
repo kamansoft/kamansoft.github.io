@@ -82,7 +82,7 @@ const Process = () => {
     // Remove flash effect after animation
     setTimeout(() => {
       setIsFlashing(false);
-    }, 600);
+    }, 200);
   };
 
   return (
@@ -112,36 +112,36 @@ const Process = () => {
           <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30">
             <TabsTrigger 
               value="conceptualizing" 
-              className={`relative overflow-hidden transition-all duration-500 ${
+              className={`relative overflow-hidden transition-all duration-300 ${
                 activeTab === "conceptualizing" 
-                  ? 'bg-blue-100 text-blue-900 shadow-md' 
-                  : isFlashing && activeTab === "development" 
-                    ? 'opacity-30 bg-gray-100' 
-                    : 'opacity-70'
+                  ? `bg-blue-100 text-blue-900 shadow-md ${
+                      isFlashing ? 'bg-white text-blue-600 shadow-xl shadow-white/80 brightness-150' : ''
+                    }` 
+                  : 'opacity-70'
               }`}
             >
               <span className="relative z-10">Conceptualizing</span>
               {activeTab === "conceptualizing" && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20"></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 ${
+                  isFlashing ? 'bg-white/90' : ''
+                }`}></div>
               )}
             </TabsTrigger>
             
             <TabsTrigger 
               value="development" 
-              className={`relative overflow-hidden transition-all duration-500 ${
+              className={`relative overflow-hidden transition-all duration-300 ${
                 activeTab === "development" 
                   ? `bg-green-100 text-green-900 shadow-md ${
-                      isFlashing ? 'animate-pulse shadow-lg shadow-green-500/50 ring-2 ring-green-400/70 bg-green-200' : ''
+                      isFlashing ? 'bg-white text-green-600 shadow-xl shadow-white/80 brightness-150' : ''
                     }` 
-                  : isFlashing && activeTab === "conceptualizing" 
-                    ? 'opacity-30 bg-gray-100' 
-                    : 'opacity-70'
+                  : 'opacity-70'
               }`}
             >
               <span className="relative z-10">Development</span>
               {activeTab === "development" && (
                 <div className={`absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 ${
-                  isFlashing ? 'animate-pulse bg-green-400/40' : ''
+                  isFlashing ? 'bg-white/90' : ''
                 }`}></div>
               )}
             </TabsTrigger>
@@ -174,7 +174,7 @@ const Process = () => {
           <TabsContent value="development" className="mt-8">
             <div className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            } ${isFlashing ? "animate-fade-in" : ""}`}>
+            }`}>
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-semibold text-foreground mb-2">
                   Agile Development Process
