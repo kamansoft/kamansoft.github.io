@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Lightbulb, Code, Presentation, Settings, GitBranch, TestTube, Rocket, RefreshCw, ArrowDown } from "lucide-react";
@@ -26,16 +25,19 @@ const Process = () => {
           // Start transition effect
           setIsTransitioning(true);
           
-          // Scroll back to the top of the section
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Scroll back to the top of the section more slowly
+          section.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start'
+          });
           
-          // Switch to development tab after transition effect
+          // Switch to development tab after longer transition effect
           setTimeout(() => {
             setActiveTab("development");
             setTimeout(() => {
               setIsTransitioning(false);
-            }, 800);
-          }, 1000);
+            }, 1200);
+          }, 2000);
         }
       }
     };
@@ -195,7 +197,7 @@ const Process = () => {
     <section 
       ref={sectionRef} 
       id="process" 
-      className={`py-20 relative overflow-hidden transition-all duration-1000 ${
+      className={`py-20 relative overflow-hidden transition-all duration-2000 ${
         activeTab === "conceptualizing" 
           ? "bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-muted/50" 
           : "bg-gradient-to-br from-green-50/50 via-blue-50/30 to-muted/50"
@@ -204,7 +206,7 @@ const Process = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Conceptualizing Background */}
-        <div className={`absolute inset-0 transition-all duration-1000 ${
+        <div className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
           activeTab === "conceptualizing" ? "opacity-100 scale-100" : "opacity-0 scale-110"
         }`}>
           <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200/20 rounded-full blur-xl animate-pulse"></div>
@@ -213,7 +215,7 @@ const Process = () => {
         </div>
         
         {/* Development Background */}
-        <div className={`absolute inset-0 transition-all duration-1000 ${
+        <div className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
           activeTab === "development" ? "opacity-100 scale-100" : "opacity-0 scale-90"
         }`}>
           <div className="absolute top-32 right-16 w-36 h-36 bg-green-200/20 rounded-full blur-xl animate-pulse"></div>
@@ -227,7 +229,7 @@ const Process = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 animate-pulse z-10 pointer-events-none">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <RefreshCw className="h-16 w-16 text-primary mx-auto mb-4 animate-spin" />
+              <RefreshCw className="h-16 w-16 text-primary mx-auto mb-4 animate-spin" style={{animationDuration: '2s'}} />
               <p className="text-lg font-semibold text-primary animate-fade-in">
                 Transitioning to Development Phase...
               </p>
@@ -263,7 +265,7 @@ const Process = () => {
           </TabsList>
           
           <TabsContent value="conceptualizing" className="mt-8">
-            <div ref={conceptualizingContentRef} className={`transition-all duration-500 ${
+            <div ref={conceptualizingContentRef} className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
             }`}>
               <div className="text-center mb-8">
@@ -284,7 +286,7 @@ const Process = () => {
           </TabsContent>
           
           <TabsContent value="development" className="mt-8">
-            <div className={`transition-all duration-500 ${
+            <div className={`transition-all duration-1000 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
             }`}>
               <div className="text-center mb-8">
