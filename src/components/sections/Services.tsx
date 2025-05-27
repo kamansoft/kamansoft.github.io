@@ -58,13 +58,13 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Enterprise Software Development & Automation Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
             Transform your business with our comprehensive software development, ETL data processing, and automation solutions. 
             We help enterprises modernize operations, streamline workflows, and unlock the power of their data.
           </p>
@@ -74,18 +74,18 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={index} 
-              className="h-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 bg-white border-0 shadow-md"
+              className="h-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 bg-card border-border shadow-md"
             >
               <CardHeader className="text-center pb-4">
                 <div className="flex justify-center mb-4">
                   {service.icon}
                 </div>
-                <CardTitle className="text-xl font-semibold text-gray-900">
+                <CardTitle className="text-xl font-semibold text-foreground">
                   {service.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-gray-600 text-center">
+                <CardDescription className="text-muted-foreground text-center">
                   {service.description}
                 </CardDescription>
               </CardContent>

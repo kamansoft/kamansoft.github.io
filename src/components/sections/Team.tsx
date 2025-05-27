@@ -80,37 +80,37 @@ const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-20 bg-white">
+    <section id="team" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Meet Our Team
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Our talented team of developers, designers, and strategists are passionate about creating exceptional software solutions.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member, index) => (
-            <Card key={index} className="text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-0 shadow-lg">
+            <Card key={index} className="text-center hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-card border-border shadow-lg">
               <CardContent className="p-8 space-y-4">
                 <div className="relative inline-block">
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-100"
+                    className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-border"
                   />
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                  <h3 className="text-xl font-semibold text-foreground mb-1">
                     {member.name}
                   </h3>
                   <p className="text-blue-600 font-medium mb-3">
                     {member.role}
                   </p>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     {member.bio}
                   </p>
                 </div>
@@ -124,13 +124,13 @@ const Team = () => {
                 </div>
                 
                 <div className="flex justify-center space-x-4">
-                  <a href={member.social.linkedin} className="text-gray-400 hover:text-blue-600 transition-colors">
+                  <a href={member.social.linkedin} className="text-muted-foreground hover:text-blue-600 transition-colors">
                     <Linkedin className="h-5 w-5" />
                   </a>
-                  <a href={member.social.twitter} className="text-gray-400 hover:text-blue-400 transition-colors">
+                  <a href={member.social.twitter} className="text-muted-foreground hover:text-blue-400 transition-colors">
                     <Twitter className="h-5 w-5" />
                   </a>
-                  <a href={member.social.github} className="text-gray-400 hover:text-gray-800 transition-colors">
+                  <a href={member.social.github} className="text-muted-foreground hover:text-foreground transition-colors">
                     <Github className="h-5 w-5" />
                   </a>
                 </div>
