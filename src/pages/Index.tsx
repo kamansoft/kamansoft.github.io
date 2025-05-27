@@ -2,6 +2,7 @@
 import Hero from "@/components/sections/Hero";
 import Navigation from "@/components/sections/Navigation";
 import Services from "@/components/sections/Services";
+import Process from "@/components/sections/Process";
 import About from "@/components/sections/About";
 import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
@@ -11,10 +12,11 @@ import Footer from "@/components/sections/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen bg-background text-foreground transition-colors">
       <Navigation />
       <Hero />
       <Services />
+      <Process />
       <Blog />
       <About />
       <Portfolio />
