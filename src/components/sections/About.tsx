@@ -14,17 +14,17 @@ const About = () => {
 
   const values = [
     {
-      icon: <Users className="h-6 w-6 text-blue-600" />,
+      icon: <Users className="h-6 w-6 text-primary" />,
       title: "Enterprise-Focused",
       description: "We understand enterprise challenges and deliver solutions that scale with your business."
     },
     {
-      icon: <Award className="h-6 w-6 text-purple-600" />,
+      icon: <Award className="h-6 w-6 text-primary" />,
       title: "Technical Excellence", 
       description: "Our team maintains the highest standards in software architecture and code quality."
     },
     {
-      icon: <Target className="h-6 w-6 text-green-600" />,
+      icon: <Target className="h-6 w-6 text-primary" />,
       title: "Results-Driven",
       description: "We leverage cutting-edge technologies to deliver measurable business outcomes."
     }
@@ -53,7 +53,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-3">
-                  <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
                   <span className="text-foreground text-sm">{feature}</span>
                 </div>
               ))}

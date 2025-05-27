@@ -16,42 +16,42 @@ import {
 const Services = () => {
   const services = [
     {
-      icon: <Code className="h-12 w-12" style={{ color: 'hsl(210, 84%, 45%)' }} />,
+      icon: <Code className="h-12 w-12 text-primary" />,
       title: "Custom Software Development",
       description: "Enterprise-grade web and desktop applications built with modern technologies. Scalable solutions tailored to your business requirements with clean, maintainable code."
     },
     {
-      icon: <Database className="h-12 w-12 text-green-600" />,
+      icon: <Database className="h-12 w-12 text-primary" />,
       title: "ETL & Data Processing",
       description: "Extract, Transform, Load solutions for seamless data integration. Automated data pipelines, real-time processing, and enterprise data warehouse solutions."
     },
     {
-      icon: <Workflow className="h-12 w-12 text-purple-600" />,
+      icon: <Workflow className="h-12 w-12 text-primary" />,
       title: "Business Process Automation", 
       description: "Streamline operations with intelligent automation. Workflow optimization, RPA implementation, and custom automation tools to reduce manual tasks and increase efficiency."
     },
     {
-      icon: <Smartphone className="h-12 w-12 text-indigo-600" />,
+      icon: <Smartphone className="h-12 w-12 text-primary" />,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android. User-friendly interfaces with robust backend integration and offline capabilities."
     },
     {
-      icon: <Cloud className="h-12 w-12 text-orange-600" />,
+      icon: <Cloud className="h-12 w-12 text-primary" />,
       title: "Cloud Migration & DevOps",
       description: "Seamless cloud migration strategies and CI/CD pipeline implementation. AWS, Azure, and GCP expertise with containerization and microservices architecture."
     },
     {
-      icon: <BarChart3 className="h-12 w-12 text-teal-600" />,
+      icon: <BarChart3 className="h-12 w-12 text-primary" />,
       title: "Business Intelligence & Analytics",
       description: "Transform raw data into actionable insights. Custom dashboards, reporting systems, and predictive analytics to drive data-driven decision making."
     },
     {
-      icon: <Shield className="h-12 w-12 text-red-600" />,
+      icon: <Shield className="h-12 w-12 text-primary" />,
       title: "Enterprise Security Solutions",
       description: "Comprehensive cybersecurity services including security audits, penetration testing, and compliance implementation to protect your digital assets."
     },
     {
-      icon: <Cog className="h-12 w-12 text-gray-600" />,
+      icon: <Cog className="h-12 w-12 text-primary" />,
       title: "System Integration",
       description: "Connect disparate systems and applications. API development, legacy system modernization, and third-party integrations for unified business operations."
     }

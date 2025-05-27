@@ -59,12 +59,12 @@ const Blog = () => {
             <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 bg-card border-border">
               <CardHeader className="pb-4">
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
+                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
                     {post.category}
                   </span>
                   <span>{post.readTime}</span>
                 </div>
-                <CardTitle className="text-xl font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
+                <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
               </CardHeader>
@@ -87,7 +87,7 @@ const Blog = () => {
                   <Button 
                     variant="ghost" 
                     size="sm"
-                    className="text-blue-600 hover:text-blue-700 p-0 h-auto group-hover:translate-x-1 transition-transform"
+                    className="text-primary hover:text-primary/80 p-0 h-auto group-hover:translate-x-1 transition-transform"
                   >
                     <ArrowRight className="h-4 w-4" />
                   </Button>
@@ -101,7 +101,7 @@ const Blog = () => {
           <Button 
             variant="outline" 
             size="lg"
-            className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
           >
             View All Articles
             <ArrowRight className="ml-2 h-5 w-5" />
