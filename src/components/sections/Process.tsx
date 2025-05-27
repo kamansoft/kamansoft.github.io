@@ -10,12 +10,36 @@ import { conceptSteps, agileSteps } from "./process/ProcessSteps";
 const Process = () => {
   const [activeTab, setActiveTab] = useState("conceptualizing");
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isNavigationTriggered, setIsNavigationTriggered] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const conceptualizingContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Listen for navigation clicks to prevent automatic transition
+    const handleNavigationClick = () => {
+      setIsNavigationTriggered(true);
+      // Reset the flag after a short delay
+      setTimeout(() => {
+        setIsNavigationTriggered(false);
+      }, 1000);
+    };
+
+    // Add event listeners to all navigation buttons
+    const navButtons = document.querySelectorAll('nav button, nav a');
+    navButtons.forEach(button => {
+      button.addEventListener('click', handleNavigationClick);
+    });
+
+    return () => {
+      navButtons.forEach(button => {
+        button.removeEventListener('click', handleNavigationClick);
+      });
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current || !conceptualizingContentRef.current) return;
+      if (!sectionRef.current || !conceptualizingContentRef.current || isNavigationTriggered) return;
       
       const section = sectionRef.current;
       const conceptContent = conceptualizingContentRef.current;
@@ -48,7 +72,7 @@ const Process = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeTab]);
+  }, [activeTab, isNavigationTriggered]);
 
   return (
     <section 
