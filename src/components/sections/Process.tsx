@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, Lightbulb, Code, Presentation, Settings } from "lucide-react";
 
@@ -28,7 +27,7 @@ const Process = () => {
       description: "Build proof of concept and visual mockups",
       details: "Develop working prototypes and detailed mockups to validate the solution approach",
       icon: <Code className="h-8 w-8" />,
-      duration: "15-30 days",
+      duration: "15 days",
       color: "text-green-600"
     },
     {
