@@ -93,22 +93,6 @@ const Hero = () => {
                 <span className="text-white/80 text-sm mt-2">AI/ML</span>
               </div>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-16 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold text-white">100+</div>
-                <div className="text-white/80 text-lg">Projects Delivered</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold text-white">50+</div>
-                <div className="text-white/80 text-lg">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl lg:text-5xl font-bold text-white">5+</div>
-                <div className="text-white/80 text-lg">Years Experience</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
