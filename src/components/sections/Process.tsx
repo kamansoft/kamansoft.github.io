@@ -1,3 +1,4 @@
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -61,7 +62,15 @@ const Process = () => {
           
           // Switch to development tab after longer transition effect
           setTimeout(() => {
+            // Trigger flash effect for automatic transition
+            setIsFlashing(true);
             setActiveTab("development");
+            
+            // Remove flash effect after animation
+            setTimeout(() => {
+              setIsFlashing(false);
+            }, 200);
+            
             setTimeout(() => {
               setIsTransitioning(false);
             }, 1200);
