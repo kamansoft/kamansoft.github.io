@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -60,7 +59,7 @@ const Process = () => {
             block: 'start'
           });
           
-          // Switch to development tab after longer transition effect
+          // Switch to development tab after shorter transition effect
           setTimeout(() => {
             // Trigger flash effect for automatic transition
             setIsFlashing(true);
@@ -69,12 +68,12 @@ const Process = () => {
             // Remove flash effect after animation
             setTimeout(() => {
               setIsFlashing(false);
-            }, 200);
+            }, 100);
             
             setTimeout(() => {
               setIsTransitioning(false);
-            }, 1200);
-          }, 2000);
+            }, 600);
+          }, 1000);
         }
       }
     };
@@ -91,14 +90,14 @@ const Process = () => {
     // Remove flash effect after animation
     setTimeout(() => {
       setIsFlashing(false);
-    }, 200);
+    }, 100);
   };
 
   return (
     <section 
       ref={sectionRef} 
       id="process" 
-      className={`py-20 relative overflow-hidden transition-all duration-2000 ${
+      className={`py-20 relative overflow-hidden transition-all duration-1000 ${
         activeTab === "conceptualizing" 
           ? "bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-muted/50" 
           : "bg-gradient-to-br from-green-50/50 via-blue-50/30 to-muted/50"
@@ -157,7 +156,7 @@ const Process = () => {
           </TabsList>
           
           <TabsContent value="conceptualizing" className="mt-8">
-            <div ref={conceptualizingContentRef} className={`transition-all duration-1000 ${
+            <div ref={conceptualizingContentRef} className={`transition-all duration-500 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
             }`}>
               <div className="text-center mb-8">
@@ -181,7 +180,7 @@ const Process = () => {
           </TabsContent>
           
           <TabsContent value="development" className="mt-8">
-            <div className={`transition-all duration-1000 ${
+            <div className={`transition-all duration-500 ${
               isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
             }`}>
               <div className="text-center mb-8">
