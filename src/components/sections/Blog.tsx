@@ -43,38 +43,38 @@ const Blog = () => {
   };
 
   return (
-    <section id="blog" className="py-20 bg-gray-50">
+    <section id="blog" className="py-20 bg-secondary dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Latest Insights
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Stay updated with the latest trends in software development, data engineering, and automation
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {blogPosts.map((post) => (
-            <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 bg-white border-0">
+            <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 bg-card border-border">
               <CardHeader className="pb-4">
-                <div className="flex items-center gap-4 text-sm text-gray-500 mb-3">
-                  <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-medium">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                  <span className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full text-xs font-medium">
                     {post.category}
                   </span>
                   <span>{post.readTime}</span>
                 </div>
-                <CardTitle className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <CardTitle className="text-xl font-bold text-foreground group-hover:text-blue-600 transition-colors line-clamp-2">
                   {post.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <CardDescription className="text-gray-600 mb-6 line-clamp-3">
+                <CardDescription className="text-muted-foreground mb-6 line-clamp-3">
                   {post.description}
                 </CardDescription>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4 text-sm text-gray-500">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
                       <span>{formatDate(post.date)}</span>

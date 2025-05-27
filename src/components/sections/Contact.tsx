@@ -43,22 +43,22 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-secondary dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Get In Touch
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to start your next project? Contact us today and let's discuss how we can help bring your ideas to life.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <Card className="bg-white shadow-xl border-0">
+          <Card className="bg-card shadow-xl border-border">
             <CardHeader>
-              <CardTitle className="text-2xl text-gray-900">
+              <CardTitle className="text-2xl text-foreground">
                 Send us a message
               </CardTitle>
             </CardHeader>
@@ -122,18 +122,18 @@ const Contact = () => {
 
             <div className="grid gap-6">
               {contactInfo.map((info, index) => (
-                <Card key={index} className="bg-white shadow-md border-0">
+                <Card key={index} className="bg-card shadow-md border-border">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
                         {info.icon}
                       </div>
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                        <h4 className="text-lg font-semibold text-foreground mb-2">
                           {info.title}
                         </h4>
                         {info.details.map((detail, detailIndex) => (
-                          <p key={detailIndex} className="text-gray-600">
+                          <p key={detailIndex} className="text-muted-foreground">
                             {detail}
                           </p>
                         ))}

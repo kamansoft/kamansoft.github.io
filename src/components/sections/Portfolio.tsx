@@ -50,13 +50,13 @@ const Portfolio = () => {
   ];
 
   return (
-    <section id="portfolio" className="py-20 bg-gray-50">
+    <section id="portfolio" className="py-20 bg-secondary dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-foreground mb-4">
             Proven Success Stories
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
             Discover how we've helped enterprises transform their operations through custom software development, 
             ETL data processing, and intelligent automation solutions. Each project showcases our commitment to 
             delivering measurable business results.
@@ -65,7 +65,7 @@ const Portfolio = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-0 shadow-lg">
+            <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-card border-border shadow-lg">
               <div className="relative overflow-hidden">
                 <img 
                   src={project.image} 
@@ -73,18 +73,18 @@ const Portfolio = () => {
                   className="w-full h-48 object-cover transition-transform duration-300 hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
-                  <Badge variant="secondary" className="bg-white/90 text-gray-800">
+                  <Badge variant="secondary" className="bg-background/90 text-foreground">
                     {project.category}
                   </Badge>
                 </div>
               </div>
               
               <CardContent className="p-6 space-y-4">
-                <h3 className="text-xl font-semibold text-gray-900">
+                <h3 className="text-xl font-semibold text-foreground">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {project.description}
                 </p>
                 
@@ -101,7 +101,7 @@ const Portfolio = () => {
                     <ExternalLink className="h-4 w-4" />
                     <span className="text-sm">Case Study</span>
                   </button>
-                  <button className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors">
+                  <button className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors">
                     <Github className="h-4 w-4" />
                     <span className="text-sm">Learn More</span>
                   </button>
