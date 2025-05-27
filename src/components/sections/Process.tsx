@@ -1,9 +1,40 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Users, Lightbulb, Code, Presentation, Settings, GitBranch, TestTube, Rocket, RefreshCw, ArrowDown } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const Process = () => {
+  const [activeTab, setActiveTab] = useState("conceptualizing");
+  const sectionRef = useRef<HTMLElement>(null);
+  const conceptualizingContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !conceptualizingContentRef.current) return;
+      
+      const section = sectionRef.current;
+      const conceptContent = conceptualizingContentRef.current;
+      const sectionRect = section.getBoundingClientRect();
+      const contentRect = conceptContent.getBoundingClientRect();
+      
+      // Check if we're in the process section and on conceptualizing tab
+      if (activeTab === "conceptualizing" && sectionRect.top <= 100) {
+        // Check if we've scrolled to the end of conceptualizing content
+        if (contentRect.bottom <= window.innerHeight * 0.8) {
+          // Scroll back to the top of the section
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Switch to development tab after a brief delay
+          setTimeout(() => {
+            setActiveTab("development");
+          }, 800);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [activeTab]);
+
   const conceptSteps = [
     {
       id: 1,
@@ -152,7 +183,7 @@ const Process = () => {
   );
 
   return (
-    <section id="process" className="py-20 bg-muted/50">
+    <section ref={sectionRef} id="process" className="py-20 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
@@ -163,27 +194,29 @@ const Process = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="conceptualizing" className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8">
             <TabsTrigger value="conceptualizing">Conceptualizing</TabsTrigger>
             <TabsTrigger value="development">Development</TabsTrigger>
           </TabsList>
           
           <TabsContent value="conceptualizing" className="mt-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-semibold text-foreground mb-2">
-                From Idea to MVP Definition
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                Understanding your vision and creating a solid foundation for development
-              </p>
-              <div className="max-w-2xl mx-auto bg-primary/10 border border-primary/20 rounded-lg p-4">
-                <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">MVP (Minimum Viable Product)</strong> is the simplest version of your product that includes only the core features needed to solve your main problem and deliver value to users.
+            <div ref={conceptualizingContentRef}>
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-semibold text-foreground mb-2">
+                  From Idea to MVP Definition
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  Understanding your vision and creating a solid foundation for development
                 </p>
+                <div className="max-w-2xl mx-auto bg-primary/10 border border-primary/20 rounded-lg p-4">
+                  <p className="text-sm text-muted-foreground">
+                    <strong className="text-foreground">MVP (Minimum Viable Product)</strong> is the simplest version of your product that includes only the core features needed to solve your main problem and deliver value to users.
+                  </p>
+                </div>
               </div>
+              {renderTimeline(conceptSteps, "Total Timeline: 4-6 weeks from concept to development start")}
             </div>
-            {renderTimeline(conceptSteps, "Total Timeline: 4-6 weeks from concept to development start")}
           </TabsContent>
           
           <TabsContent value="development" className="mt-8">
