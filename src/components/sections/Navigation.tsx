@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
@@ -34,21 +35,21 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
       isScrolled 
-        ? 'bg-gray-900/90 backdrop-blur-md border-gray-700/50 py-2' 
-        : 'bg-black/10 backdrop-blur-md border-white/5 py-4'
+        ? 'bg-gray-900/90 backdrop-blur-md border-gray-700/50 py-2 dark:bg-gray-900/90 dark:border-gray-700/50' 
+        : 'bg-black/10 backdrop-blur-md border-white/5 py-4 dark:bg-black/20 dark:border-white/10'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo with white background same size as the logo */}
           <div className="flex items-center space-x-3">
             <div className={`bg-white rounded-md p-1 transition-all duration-300 ${
-              isScrolled ? 'w-8 h-8' : 'w-10 h-10'
+              isScrolled ? 'w-12 h-12' : 'w-14 h-14'
             } flex items-center justify-center`}>
               <img 
                 src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
                 alt="Kamansoft Logo" 
                 className={`transition-all duration-300 object-contain ${
-                  isScrolled ? 'h-6 w-6' : 'h-8 w-8'
+                  isScrolled ? 'h-10 w-10' : 'h-12 w-12'
                 }`}
               />
             </div>
@@ -116,6 +117,7 @@ const Navigation = () => {
             >
               Blog
             </button>
+            <ThemeToggle />
             <Button 
               onClick={() => scrollToSection('contact')}
               style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
@@ -126,12 +128,15 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-white"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-white"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
