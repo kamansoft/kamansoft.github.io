@@ -1,3 +1,4 @@
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -16,24 +17,32 @@ const Process = () => {
 
   useEffect(() => {
     // Listen for navigation clicks to prevent automatic transition
-    const handleNavigationClick = () => {
-      setIsNavigationTriggered(true);
-      // Reset the flag after a short delay
-      setTimeout(() => {
-        setIsNavigationTriggered(false);
-      }, 1000);
+    const handleNavigationClick = (event: Event) => {
+      const target = event.target as HTMLElement;
+      
+      // Check if the click is on a navigation element or its children
+      const isNavClick = target.closest('nav') || 
+                        target.closest('[data-nav]') || 
+                        target.closest('button[onclick*="scrollTo"]') ||
+                        target.closest('a[href*="#"]') ||
+                        target.hasAttribute('data-scroll-to') ||
+                        target.closest('[data-scroll-to]');
+      
+      if (isNavClick) {
+        console.log('Navigation click detected, preventing auto-transition');
+        setIsNavigationTriggered(true);
+        // Reset the flag after a longer delay to ensure scroll is complete
+        setTimeout(() => {
+          setIsNavigationTriggered(false);
+        }, 2000);
+      }
     };
 
-    // Add event listeners to all navigation buttons
-    const navButtons = document.querySelectorAll('nav button, nav a');
-    navButtons.forEach(button => {
-      button.addEventListener('click', handleNavigationClick);
-    });
+    // Add event listener to the entire document to catch all clicks
+    document.addEventListener('click', handleNavigationClick, true);
 
     return () => {
-      navButtons.forEach(button => {
-        button.removeEventListener('click', handleNavigationClick);
-      });
+      document.removeEventListener('click', handleNavigationClick, true);
     };
   }, []);
 
@@ -50,6 +59,7 @@ const Process = () => {
       if (activeTab === "conceptualizing" && sectionRect.top <= 100) {
         // Check if we've scrolled to the end of conceptualizing content
         if (contentRect.bottom <= window.innerHeight * 0.8) {
+          console.log('Auto-transitioning from conceptualizing to development');
           // Start transition effect
           setIsTransitioning(true);
           
@@ -68,12 +78,12 @@ const Process = () => {
             // Remove flash effect after animation
             setTimeout(() => {
               setIsFlashing(false);
-            }, 100);
+            }, 50);
             
             setTimeout(() => {
               setIsTransitioning(false);
-            }, 600);
-          }, 1000);
+            }, 300);
+          }, 500);
         }
       }
     };
@@ -90,7 +100,7 @@ const Process = () => {
     // Remove flash effect after animation
     setTimeout(() => {
       setIsFlashing(false);
-    }, 100);
+    }, 50);
   };
 
   return (
