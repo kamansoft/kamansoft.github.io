@@ -1,3 +1,4 @@
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -47,13 +48,22 @@ const Process = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current || isNavigationTriggered) return;
+      if (isNavigationTriggered || isTransitioning) return;
       
       // Check if user has scrolled to the bottom of the page
       const scrollHeight = document.documentElement.scrollHeight;
-      const scrollTop = document.documentElement.scrollTop;
-      const clientHeight = document.documentElement.clientHeight;
-      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10; // 10px threshold
+      const scrollTop = document.documentElement.scrollTop || window.pageYOffset;
+      const clientHeight = window.innerHeight;
+      const isAtBottom = Math.abs(scrollHeight - (scrollTop + clientHeight)) <= 5; // 5px threshold
+      
+      console.log('Scroll check:', { 
+        scrollHeight, 
+        scrollTop, 
+        clientHeight, 
+        isAtBottom, 
+        activeTab,
+        isNavigationTriggered 
+      });
       
       // Only trigger transition when at bottom of page and on conceptualizing tab
       if (activeTab === "conceptualizing" && isAtBottom) {
@@ -87,9 +97,9 @@ const Process = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeTab, isNavigationTriggered]);
+  }, [activeTab, isNavigationTriggered, isTransitioning]);
 
   const handleTabChange = (value: string) => {
     // Trigger flash effect
