@@ -17,7 +17,18 @@ import { useMemo, useEffect, useState } from "react";
 const Contact = () => {
   const dataService = useMemo(() => new ContactDataService(), []);
   const [headerData, setHeaderData] = useState({ title: '', description: '' });
-  const [formData, setFormData] = useState({ title: '', fields: {}, submitButton: { text: '', icon: '' } });
+  const [formData, setFormData] = useState({ 
+    title: '', 
+    fields: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      company: '',
+      subject: '',
+      message: ''
+    }, 
+    submitButton: { text: '', icon: '' } 
+  });
   const [callToAction, setCallToAction] = useState({ title: '', description: '', buttonText: '' });
   const [contactInfo, setContactInfo] = useState([]);
 
