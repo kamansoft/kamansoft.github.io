@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -48,43 +47,43 @@ const Process = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (!sectionRef.current || !conceptualizingContentRef.current || isNavigationTriggered) return;
+      if (!sectionRef.current || isNavigationTriggered) return;
       
-      const section = sectionRef.current;
-      const conceptContent = conceptualizingContentRef.current;
-      const sectionRect = section.getBoundingClientRect();
-      const contentRect = conceptContent.getBoundingClientRect();
+      // Check if user has scrolled to the bottom of the page
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10; // 10px threshold
       
-      // Check if we're in the process section and on conceptualizing tab
-      if (activeTab === "conceptualizing" && sectionRect.top <= 100) {
-        // Check if we've scrolled to the end of conceptualizing content
-        if (contentRect.bottom <= window.innerHeight * 0.8) {
-          console.log('Auto-transitioning from conceptualizing to development');
-          // Start transition effect
-          setIsTransitioning(true);
-          
-          // Scroll back to the top of the section more slowly
-          section.scrollIntoView({ 
+      // Only trigger transition when at bottom of page and on conceptualizing tab
+      if (activeTab === "conceptualizing" && isAtBottom) {
+        console.log('Auto-transitioning from conceptualizing to development at page bottom');
+        // Start transition effect
+        setIsTransitioning(true);
+        
+        // Scroll back to the process section
+        if (sectionRef.current) {
+          sectionRef.current.scrollIntoView({ 
             behavior: 'smooth', 
             block: 'start'
           });
-          
-          // Switch to development tab after shorter transition effect
-          setTimeout(() => {
-            // Trigger flash effect for automatic transition
-            setIsFlashing(true);
-            setActiveTab("development");
-            
-            // Remove flash effect after animation
-            setTimeout(() => {
-              setIsFlashing(false);
-            }, 50);
-            
-            setTimeout(() => {
-              setIsTransitioning(false);
-            }, 300);
-          }, 500);
         }
+        
+        // Switch to development tab after transition effect
+        setTimeout(() => {
+          // Trigger flash effect for automatic transition
+          setIsFlashing(true);
+          setActiveTab("development");
+          
+          // Remove flash effect after animation
+          setTimeout(() => {
+            setIsFlashing(false);
+          }, 50);
+          
+          setTimeout(() => {
+            setIsTransitioning(false);
+          }, 300);
+        }, 500);
       }
     };
 
