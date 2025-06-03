@@ -1,3 +1,4 @@
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -54,11 +55,8 @@ const Process = () => {
       const sectionRect = section.getBoundingClientRect();
       const contentRect = conceptContent.getBoundingClientRect();
       
-      // Check if we're actively within the process section (not below it)
-      const isInProcessSection = sectionRect.top <= 100 && sectionRect.bottom > 0;
-      
-      // Only trigger transition if we're in the process section and on conceptualizing tab
-      if (activeTab === "conceptualizing" && isInProcessSection) {
+      // Check if we're in the process section and on conceptualizing tab
+      if (activeTab === "conceptualizing" && sectionRect.top <= 100) {
         // Check if we've scrolled to the end of conceptualizing content
         if (contentRect.bottom <= window.innerHeight * 0.8) {
           console.log('Auto-transitioning from conceptualizing to development');
