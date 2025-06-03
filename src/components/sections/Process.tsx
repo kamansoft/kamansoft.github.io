@@ -1,21 +1,42 @@
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import ProcessBackground from "./process/ProcessBackground";
 import ProcessTransition from "./process/ProcessTransition";
 import ProcessHeader from "./process/ProcessHeader";
 import ProcessTabs from "./process/ProcessTabs";
-import { useScrollDirection } from "../../hooks/useScrollDirection";
-import { useNavigationDetection } from "../../hooks/useNavigationDetection";
-import { useAutoTransition } from "../../hooks/useAutoTransition";
 
+// Services and hooks following DIP
+import { ProcessDataService } from "../../services/ProcessDataService";
+import { ScrollDetectionService, useScrollDetection } from "../../services/ScrollDetectionService";
+import { NavigationDetectionService, useNavigationDetection } from "../../services/NavigationDetectionService";
+import { TransitionControllerService } from "../../services/TransitionControllerService";
+import { useProcessTransition } from "../../hooks/useProcessTransition";
+
+// Following SRP - Process component only orchestrates other components
+// Following DIP - Uses dependency injection through services
 const Process = () => {
   const [activeTab, setActiveTab] = useState("conceptualizing");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isFlashing, setIsFlashing] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const { isScrollingDown } = useScrollDirection();
-  const isNavigationTriggered = useNavigationDetection();
+  // Service instances (could be injected via context for better DIP)
+  const dataProvider = useMemo(() => new ProcessDataService(), []);
+  const scrollDetector = useMemo(() => new ScrollDetectionService(), []);
+  const navigationDetector = useMemo(() => new NavigationDetectionService(), []);
+  const transitionController = useMemo(() => new TransitionControllerService(), []);
+
+  // Using services through hooks
+  const scrollBehavior = useScrollDetection(scrollDetector);
+  const navigationState = useNavigationDetection(navigationDetector);
+
+  const transitionContext = {
+    activeTab,
+    scrollBehavior,
+    navigationState,
+    transitionState: { isTransitioning, isFlashing },
+    sectionRef
+  };
 
   const handleTransitionStart = () => {
     setIsTransitioning(true);
@@ -34,12 +55,9 @@ const Process = () => {
     }, 300);
   };
 
-  useAutoTransition({
-    activeTab,
-    isNavigationTriggered,
-    isTransitioning,
-    isScrollingDown,
-    sectionRef,
+  useProcessTransition({
+    transitionController,
+    context: transitionContext,
     onTransitionStart: handleTransitionStart,
     onTransitionComplete: handleTransitionComplete
   });
@@ -62,6 +80,8 @@ const Process = () => {
     return `${baseClass} ${backgroundClass}`;
   };
 
+  const tabs = dataProvider.getTabs();
+
   return (
     <section ref={sectionRef} id="process" className={getSectionBackgroundClass()}>
       <ProcessBackground activeTab={activeTab} />
@@ -74,9 +94,11 @@ const Process = () => {
         />
 
         <ProcessTabs 
+          tabs={tabs}
           activeTab={activeTab}
           isFlashing={isFlashing}
           isTransitioning={isTransitioning}
+          dataProvider={dataProvider}
           onTabChange={handleTabChange}
         />
       </div>
