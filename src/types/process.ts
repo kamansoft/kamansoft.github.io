@@ -5,7 +5,7 @@ export interface ProcessStep {
   title: string;
   description: string;
   details: string;
-  icon: React.ReactNode;
+  icon: string; // Changed from React.ReactNode to string
   duration: string;
   color: string;
 }
