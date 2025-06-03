@@ -111,9 +111,6 @@ const Process = () => {
     return `${baseClass} ${backgroundClass}`;
   };
 
-  const tabs = dataProvider.getTabs();
-  console.log("Tabs data:", tabs);
-
   return (
     <section ref={sectionRef} id="process" className={getSectionBackgroundClass()}>
       <ProcessBackground activeTab={activeTab} />
