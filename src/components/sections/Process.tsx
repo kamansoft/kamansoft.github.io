@@ -1,4 +1,3 @@
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -12,6 +11,7 @@ const Process = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isNavigationTriggered, setIsNavigationTriggered] = useState(false);
   const [isFlashing, setIsFlashing] = useState(false);
+  const [lastScrollTop, setLastScrollTop] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const conceptualizingContentRef = useRef<HTMLDivElement>(null);
 
@@ -48,26 +48,42 @@ const Process = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isNavigationTriggered || isTransitioning) return;
+      if (isNavigationTriggered || isTransitioning || !sectionRef.current) return;
       
-      // Check if user has scrolled to the bottom of the page
-      const scrollHeight = document.documentElement.scrollHeight;
-      const scrollTop = document.documentElement.scrollTop || window.pageYOffset;
-      const clientHeight = window.innerHeight;
-      const isAtBottom = Math.abs(scrollHeight - (scrollTop + clientHeight)) <= 5; // 5px threshold
+      const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const isScrollingDown = currentScrollTop > lastScrollTop;
+      
+      // Only proceed if scrolling down naturally
+      if (!isScrollingDown) {
+        setLastScrollTop(currentScrollTop);
+        return;
+      }
+      
+      // Get process section boundaries
+      const sectionRect = sectionRef.current.getBoundingClientRect();
+      const sectionTop = sectionRect.top + currentScrollTop;
+      const sectionBottom = sectionTop + sectionRect.height;
+      const viewportBottom = currentScrollTop + window.innerHeight;
+      
+      // Check if we've scrolled to the bottom of the process section
+      const isAtSectionBottom = viewportBottom >= sectionBottom - 50; // 50px threshold
+      const isInSection = currentScrollTop >= sectionTop - 100; // Started scrolling through section
       
       console.log('Scroll check:', { 
-        scrollHeight, 
-        scrollTop, 
-        clientHeight, 
-        isAtBottom, 
+        currentScrollTop,
+        sectionTop,
+        sectionBottom,
+        viewportBottom,
+        isAtSectionBottom,
+        isInSection,
+        isScrollingDown,
         activeTab,
         isNavigationTriggered 
       });
       
-      // Only trigger transition when at bottom of page and on conceptualizing tab
-      if (activeTab === "conceptualizing" && isAtBottom) {
-        console.log('Auto-transitioning from conceptualizing to development at page bottom');
+      // Only trigger transition when naturally scrolling down to bottom of process section
+      if (activeTab === "conceptualizing" && isAtSectionBottom && isInSection && isScrollingDown) {
+        console.log('Auto-transitioning from conceptualizing to development at process section bottom');
         // Start transition effect
         setIsTransitioning(true);
         
@@ -95,11 +111,13 @@ const Process = () => {
           }, 300);
         }, 500);
       }
+      
+      setLastScrollTop(currentScrollTop);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeTab, isNavigationTriggered, isTransitioning]);
+  }, [activeTab, isNavigationTriggered, isTransitioning, lastScrollTop]);
 
   const handleTabChange = (value: string) => {
     // Trigger flash effect
