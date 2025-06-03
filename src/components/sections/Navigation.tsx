@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +29,10 @@ const Navigation = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
+  };
+
+  const handleGitHubClick = () => {
+    window.open('https://github.com', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -118,6 +121,15 @@ const Navigation = () => {
               Blog
             </button>
             <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleGitHubClick}
+              className="text-white hover:bg-white/10"
+              title="View on GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </Button>
             <Button 
               onClick={() => scrollToSection('contact')}
               style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
@@ -130,6 +142,15 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleGitHubClick}
+              className="text-white hover:bg-white/10"
+              title="View on GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </Button>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-white"
