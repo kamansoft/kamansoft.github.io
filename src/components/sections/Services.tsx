@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   Code, 
@@ -13,12 +12,29 @@ import {
   Cog
 } from "lucide-react";
 import { ServicesDataService } from "../../services/ServicesDataService";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 
 const Services = () => {
   const dataService = useMemo(() => new ServicesDataService(), []);
-  const services = dataService.getServices();
-  const headerData = dataService.getHeaderData();
+  const [services, setServices] = useState([]);
+  const [headerData, setHeaderData] = useState({ title: '', description: '' });
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [servicesData, headerInfo] = await Promise.all([
+          dataService.getServices(),
+          dataService.getHeaderData()
+        ]);
+        setServices(servicesData);
+        setHeaderData(headerInfo);
+      } catch (error) {
+        console.error('Failed to load services data:', error);
+      }
+    };
+    
+    loadData();
+  }, [dataService]);
 
   const iconMap = {
     Code,

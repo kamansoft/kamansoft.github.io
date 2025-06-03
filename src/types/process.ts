@@ -61,6 +61,6 @@ export interface TransitionContext {
 }
 
 export interface IProcessDataProvider {
-  getTabs(): ProcessTab[];
-  getTabData(tabId: string): ProcessTabData | undefined;
+  getTabs(): Promise<ProcessTab[]>;
+  getTabData(tabId: string): Promise<ProcessTabData | undefined>;
 }

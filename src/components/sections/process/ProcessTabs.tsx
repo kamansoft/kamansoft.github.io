@@ -2,9 +2,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ProcessTabContent from "./ProcessTabContent";
 import { ProcessTab, IProcessDataProvider } from "../../../types/process";
+import { useEffect, useState } from "react";
 
-// Following DIP - Depends on abstraction
-// Following SRP - Only handles tab rendering
 interface ProcessTabsProps {
   tabs: ProcessTab[];
   activeTab: string;
@@ -22,6 +21,23 @@ const ProcessTabs = ({
   dataProvider,
   onTabChange 
 }: ProcessTabsProps) => {
+  const [tabData, setTabData] = useState(null);
+
+  useEffect(() => {
+    const loadTabData = async () => {
+      if (activeTab) {
+        try {
+          const data = await dataProvider.getTabData(activeTab);
+          setTabData(data);
+        } catch (error) {
+          console.error('Failed to load tab data:', error);
+        }
+      }
+    };
+    
+    loadTabData();
+  }, [activeTab, dataProvider]);
+
   return (
     <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
       <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30">
@@ -37,10 +53,12 @@ const ProcessTabs = ({
       
       {tabs.map(tab => (
         <TabsContent key={tab.id} value={tab.id} className="mt-8">
-          <ProcessTabContent 
-            tabData={tab.content}
-            isTransitioning={isTransitioning} 
-          />
+          {tabData && (
+            <ProcessTabContent 
+              tabData={tabData}
+              isTransitioning={isTransitioning} 
+            />
+          )}
         </TabsContent>
       ))}
     </Tabs>

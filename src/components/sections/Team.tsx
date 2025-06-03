@@ -3,12 +3,29 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Linkedin, Twitter, Github } from "lucide-react";
 import { TeamDataService } from "../../services/TeamDataService";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 
 const Team = () => {
   const dataService = useMemo(() => new TeamDataService(), []);
-  const teamMembers = dataService.getTeamMembers();
-  const headerData = dataService.getHeaderData();
+  const [teamMembers, setTeamMembers] = useState([]);
+  const [headerData, setHeaderData] = useState({ title: '', description: '' });
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [membersData, headerInfo] = await Promise.all([
+          dataService.getTeamMembers(),
+          dataService.getHeaderData()
+        ]);
+        setTeamMembers(membersData);
+        setHeaderData(headerInfo);
+      } catch (error) {
+        console.error('Failed to load team data:', error);
+      }
+    };
+    
+    loadData();
+  }, [dataService]);
 
   return (
     <section id="team" className="py-20 bg-background">

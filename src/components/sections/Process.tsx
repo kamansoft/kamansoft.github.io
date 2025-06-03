@@ -1,5 +1,4 @@
-
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import ProcessBackground from "./process/ProcessBackground";
 import ProcessTransition from "./process/ProcessTransition";
 import ProcessHeader from "./process/ProcessHeader";
@@ -12,21 +11,33 @@ import { NavigationDetectionService, useNavigationDetection } from "../../servic
 import { TransitionControllerService } from "../../services/TransitionControllerService";
 import { useProcessTransition } from "../../hooks/useProcessTransition";
 
-// Following SRP - Process component only orchestrates other components
-// Following DIP - Uses dependency injection through services
 const Process = () => {
   console.log("Process component rendering");
   
   const [activeTab, setActiveTab] = useState("conceptualizing");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isFlashing, setIsFlashing] = useState(false);
+  const [tabs, setTabs] = useState([]);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Service instances (could be injected via context for better DIP)
   const dataProvider = useMemo(() => {
     console.log("Creating ProcessDataService");
     return new ProcessDataService();
   }, []);
+
+  useEffect(() => {
+    const loadTabs = async () => {
+      try {
+        const tabsData = await dataProvider.getTabs();
+        setTabs(tabsData);
+        console.log("Tabs data loaded:", tabsData);
+      } catch (error) {
+        console.error('Failed to load process data:', error);
+      }
+    };
+    
+    loadTabs();
+  }, [dataProvider]);
   
   const scrollDetector = useMemo(() => {
     console.log("Creating ScrollDetectionService");

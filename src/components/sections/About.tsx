@@ -1,15 +1,35 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Users, Award, Target } from "lucide-react";
 import { AboutDataService } from "../../services/AboutDataService";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 
 const About = () => {
   const dataService = useMemo(() => new AboutDataService(), []);
-  const features = dataService.getFeatures();
-  const values = dataService.getValues();
-  const headerData = dataService.getHeaderData();
-  const imageData = dataService.getImageData();
+  const [features, setFeatures] = useState([]);
+  const [values, setValues] = useState([]);
+  const [headerData, setHeaderData] = useState({ title: '', mainDescription: '', secondaryDescription: '' });
+  const [imageData, setImageData] = useState({ src: '', alt: '' });
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [featuresData, valuesData, headerInfo, imageInfo] = await Promise.all([
+          dataService.getFeatures(),
+          dataService.getValues(),
+          dataService.getHeaderData(),
+          dataService.getImageData()
+        ]);
+        setFeatures(featuresData);
+        setValues(valuesData);
+        setHeaderData(headerInfo);
+        setImageData(imageInfo);
+      } catch (error) {
+        console.error('Failed to load about data:', error);
+      }
+    };
+    
+    loadData();
+  }, [dataService]);
 
   const iconMap = {
     Users,
