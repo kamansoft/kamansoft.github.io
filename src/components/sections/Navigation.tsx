@@ -32,7 +32,7 @@ const Navigation = () => {
   };
 
   const handleGitHubClick = () => {
-    window.open('https://github.com', '_blank', 'noopener,noreferrer');
+    window.open('https://github.com/kamansoft', '_blank', 'noopener,noreferrer');
   };
 
   return (
