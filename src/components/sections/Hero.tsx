@@ -1,8 +1,48 @@
 
 import { Button } from "@/components/ui/button";
 import { Code, Smartphone, Globe, Zap, ArrowRight, Play } from "lucide-react";
+import { HeroDataService } from "../../services/HeroDataService";
+import { useMemo, useEffect, useState } from "react";
 
 const Hero = () => {
+  const dataService = useMemo(() => new HeroDataService(), []);
+  const [headerData, setHeaderData] = useState({ title: '', highlightText: '', description: '' });
+  const [buttons, setButtons] = useState({ primary: { text: '', icon: '' }, secondary: { text: '', icon: '' } });
+  const [techStack, setTechStack] = useState([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [headerInfo, buttonsInfo, techStackInfo] = await Promise.all([
+          dataService.getHeaderData(),
+          dataService.getButtons(),
+          dataService.getTechStack()
+        ]);
+        setHeaderData(headerInfo);
+        setButtons(buttonsInfo);
+        setTechStack(techStackInfo);
+      } catch (error) {
+        console.error('Failed to load hero data:', error);
+      }
+    };
+    
+    loadData();
+  }, [dataService]);
+
+  const iconMap = {
+    Code,
+    Smartphone,
+    Globe,
+    Zap,
+    ArrowRight,
+    Play
+  };
+
+  const getIcon = (iconName: string) => {
+    const IconComponent = iconMap[iconName as keyof typeof iconMap];
+    return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
+  };
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
@@ -35,13 +75,13 @@ const Hero = () => {
           <div className="space-y-6 md:space-y-8 animate-in fade-in slide-in-from-bottom duration-1000">
             <div className="space-y-4 md:space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-                Transform Ideas Into
+                {headerData.title}
                 <span className="block bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Digital Reality
+                  {headerData.highlightText}
                 </span>
               </h1>
               <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto px-4">
-                At Kamansoft, we craft cutting-edge software solutions that drive innovation and accelerate your business growth. From web applications to mobile apps, we bring your vision to life.
+                {headerData.description}
               </p>
             </div>
 
@@ -52,8 +92,8 @@ const Hero = () => {
                 className="text-lg px-6 md:px-8 py-3 md:py-4 rounded-full text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
                 style={{ backgroundColor: 'hsl(210, 84%, 45%)' }}
               >
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5" />
+                {buttons.primary.text}
+                {getIcon(buttons.primary.icon)}
               </Button>
               <Button 
                 variant="outline" 
@@ -61,37 +101,21 @@ const Hero = () => {
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
                 className="text-lg px-6 md:px-8 py-3 md:py-4 rounded-full border-2 border-white text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm bg-white/10 shadow-xl transform hover:scale-105 transition-all duration-300 w-full sm:w-auto"
               >
-                <Play className="mr-2 h-5 w-5" />
-                View Our Work
+                {getIcon(buttons.secondary.icon)}
+                {buttons.secondary.text}
               </Button>
             </div>
 
             {/* Tech Stack Icons */}
             <div className="grid grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-16 max-w-md mx-auto px-4">
-              <div className="flex flex-col items-center group">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Code className="h-6 w-6 md:h-8 md:w-8 text-white" />
+              {techStack.map((tech) => (
+                <div key={tech.id} className="flex flex-col items-center group">
+                  <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
+                    {getIcon(tech.icon)}
+                  </div>
+                  <span className="text-white/80 text-xs md:text-sm mt-2">{tech.label}</span>
                 </div>
-                <span className="text-white/80 text-xs md:text-sm mt-2">Web Dev</span>
-              </div>
-              <div className="flex flex-col items-center group">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Smartphone className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <span className="text-white/80 text-xs md:text-sm mt-2">Mobile</span>
-              </div>
-              <div className="flex flex-col items-center group">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Globe className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <span className="text-white/80 text-xs md:text-sm mt-2">Cloud</span>
-              </div>
-              <div className="flex flex-col items-center group">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 transform group-hover:scale-110">
-                  <Zap className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                </div>
-                <span className="text-white/80 text-xs md:text-sm mt-2">AI/ML</span>
-              </div>
+              ))}
             </div>
           </div>
         </div>

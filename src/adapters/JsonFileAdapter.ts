@@ -1,5 +1,15 @@
 
-import { IServicesDataAdapter, IAboutDataAdapter, ITeamDataAdapter, IProcessDataAdapter } from './IDataAdapter';
+import { 
+  IServicesDataAdapter, 
+  IAboutDataAdapter, 
+  ITeamDataAdapter, 
+  IProcessDataAdapter,
+  IHeroDataAdapter,
+  IPortfolioDataAdapter,
+  IContactDataAdapter,
+  IFooterDataAdapter,
+  IBlogDataAdapter
+} from './IDataAdapter';
 
 // JSON file adapter implementations
 export class ServicesJsonAdapter implements IServicesDataAdapter {
@@ -26,6 +36,41 @@ export class TeamJsonAdapter implements ITeamDataAdapter {
 export class ProcessJsonAdapter implements IProcessDataAdapter {
   async getData() {
     const response = await import('../data/process.json');
+    return response.default;
+  }
+}
+
+export class HeroJsonAdapter implements IHeroDataAdapter {
+  async getData() {
+    const response = await import('../data/hero.json');
+    return response.default;
+  }
+}
+
+export class PortfolioJsonAdapter implements IPortfolioDataAdapter {
+  async getData() {
+    const response = await import('../data/portfolio.json');
+    return response.default;
+  }
+}
+
+export class ContactJsonAdapter implements IContactDataAdapter {
+  async getData() {
+    const response = await import('../data/contact.json');
+    return response.default;
+  }
+}
+
+export class FooterJsonAdapter implements IFooterDataAdapter {
+  async getData() {
+    const response = await import('../data/footer.json');
+    return response.default;
+  }
+}
+
+export class BlogJsonAdapter implements IBlogDataAdapter {
+  async getData() {
+    const response = await import('../data/blog.json');
     return response.default;
   }
 }

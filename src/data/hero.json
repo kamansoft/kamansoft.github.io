@@ -1,0 +1,40 @@
+
+{
+  "header": {
+    "title": "Transform Ideas Into",
+    "highlightText": "Digital Reality",
+    "description": "At Kamansoft, we craft cutting-edge software solutions that drive innovation and accelerate your business growth. From web applications to mobile apps, we bring your vision to life."
+  },
+  "buttons": {
+    "primary": {
+      "text": "Start Your Project",
+      "icon": "ArrowRight"
+    },
+    "secondary": {
+      "text": "View Our Work",
+      "icon": "Play"
+    }
+  },
+  "techStack": [
+    {
+      "id": 1,
+      "icon": "Code",
+      "label": "Web Dev"
+    },
+    {
+      "id": 2,
+      "icon": "Smartphone",
+      "label": "Mobile"
+    },
+    {
+      "id": 3,
+      "icon": "Globe",
+      "label": "Cloud"
+    },
+    {
+      "id": 4,
+      "icon": "Zap",
+      "label": "AI/ML"
+    }
+  ]
+}

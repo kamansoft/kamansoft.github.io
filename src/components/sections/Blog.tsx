@@ -2,37 +2,25 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight, User } from "lucide-react";
+import { BlogDataService } from "../../services/BlogDataService";
+import { useMemo, useEffect, useState } from "react";
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      id: 1,
-      title: "The Future of ETL: Real-Time Data Processing",
-      description: "Discover how real-time ETL processes are revolutionizing data analytics and business intelligence.",
-      date: "2024-05-25",
-      author: "Sarah Johnson",
-      readTime: "5 min read",
-      category: "Data Engineering"
-    },
-    {
-      id: 2,
-      title: "Automation in Enterprise: ROI and Best Practices",
-      description: "Learn how enterprise automation delivers measurable ROI and the best practices for implementation.",
-      date: "2024-05-22",
-      author: "Michael Chen",
-      readTime: "7 min read",
-      category: "Automation"
-    },
-    {
-      id: 3,
-      title: "Cloud-Native Development: A Complete Guide",
-      description: "Everything you need to know about building scalable, cloud-native applications in 2024.",
-      date: "2024-05-18",
-      author: "Alex Rivera",
-      readTime: "8 min read",
-      category: "Development"
-    }
-  ];
+  const dataService = useMemo(() => new BlogDataService(), []);
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const postsData = await dataService.getPosts();
+        setBlogPosts(postsData);
+      } catch (error) {
+        console.error('Failed to load blog data:', error);
+      }
+    };
+    
+    loadData();
+  }, [dataService]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {

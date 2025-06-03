@@ -1,0 +1,108 @@
+
+{
+  "company": {
+    "name": "Kamansoft",
+    "description": "Leading software development company specializing in custom applications, ETL data processing, and business automation. Transform your enterprise with scalable, secure solutions.",
+    "social": [
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/company/kamansoft",
+        "icon": "Linkedin"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/kamansoft",
+        "icon": "Twitter"
+      },
+      {
+        "name": "Facebook",
+        "url": "#",
+        "icon": "Facebook"
+      },
+      {
+        "name": "Instagram",
+        "url": "#",
+        "icon": "Instagram"
+      }
+    ]
+  },
+  "solutions": {
+    "title": "Solutions",
+    "links": [
+      {
+        "text": "Custom Software Development",
+        "href": "#services"
+      },
+      {
+        "text": "ETL & Data Processing",
+        "href": "#services"
+      },
+      {
+        "text": "Business Automation",
+        "href": "#services"
+      },
+      {
+        "text": "Cloud Migration",
+        "href": "#services"
+      },
+      {
+        "text": "System Integration",
+        "href": "#services"
+      },
+      {
+        "text": "Case Studies",
+        "href": "#portfolio"
+      }
+    ]
+  },
+  "industries": {
+    "title": "Industries",
+    "items": [
+      "Healthcare & Life Sciences",
+      "Financial Services",
+      "Manufacturing",
+      "Retail & E-commerce",
+      "Supply Chain & Logistics",
+      "Government & Public Sector"
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "info": [
+      {
+        "icon": "Mail",
+        "text": "hello@kamansoft.com",
+        "href": "mailto:hello@kamansoft.com",
+        "color": "text-blue-400"
+      },
+      {
+        "icon": "Phone",
+        "text": "+1 (555) 123-4567",
+        "href": "tel:+15551234567",
+        "color": "text-blue-400"
+      },
+      {
+        "icon": "MapPin",
+        "text": "Silicon Valley, CA",
+        "color": "text-blue-400"
+      }
+    ]
+  },
+  "legal": {
+    "copyright": "Kamansoft. All rights reserved. | Enterprise Software Development & Automation Solutions",
+    "links": [
+      {
+        "text": "Privacy Policy",
+        "href": "#"
+      },
+      {
+        "text": "Terms of Service",
+        "href": "#"
+      },
+      {
+        "text": "Cookie Policy",
+        "href": "#"
+      }
+    ]
+  }
+}

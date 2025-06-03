@@ -1,0 +1,57 @@
+
+{
+  "header": {
+    "title": "Get In Touch",
+    "description": "Ready to start your next project? Contact us today and let's discuss how we can help bring your ideas to life."
+  },
+  "form": {
+    "title": "Send us a message",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "company": "Company",
+      "subject": "Subject",
+      "message": "Message"
+    },
+    "submitButton": {
+      "text": "Send Message",
+      "icon": "Send"
+    }
+  },
+  "callToAction": {
+    "title": "Let's start a conversation",
+    "description": "We're here to help you transform your ideas into reality. Reach out to us and let's discuss your next project.",
+    "buttonText": "Schedule a Call"
+  },
+  "contactInfo": [
+    {
+      "id": 1,
+      "icon": "Mail",
+      "title": "Email",
+      "details": ["hello@kamansoft.com", "support@kamansoft.com"],
+      "color": "text-blue-600"
+    },
+    {
+      "id": 2,
+      "icon": "Phone",
+      "title": "Phone",
+      "details": ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      "color": "text-green-600"
+    },
+    {
+      "id": 3,
+      "icon": "MapPin",
+      "title": "Office",
+      "details": ["123 Tech Street", "Silicon Valley, CA 94000"],
+      "color": "text-red-600"
+    },
+    {
+      "id": 4,
+      "icon": "Clock",
+      "title": "Business Hours",
+      "details": ["Mon - Fri: 9:00 AM - 6:00 PM", "Sat: 10:00 AM - 4:00 PM"],
+      "color": "text-purple-600"
+    }
+  ]
+}
