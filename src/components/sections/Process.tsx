@@ -1,3 +1,4 @@
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState, useEffect, useRef } from "react";
 import ProcessBackground from "./process/ProcessBackground";
@@ -53,9 +54,11 @@ const Process = () => {
       const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const isScrollingDown = currentScrollTop > lastScrollTop;
       
-      // Only proceed if scrolling down naturally
+      // Always update lastScrollTop, but only proceed with transition logic if scrolling down
+      setLastScrollTop(currentScrollTop);
+      
+      // Exit early if not scrolling down - this prevents transition on upward scroll
       if (!isScrollingDown) {
-        setLastScrollTop(currentScrollTop);
         return;
       }
       
@@ -111,8 +114,6 @@ const Process = () => {
           }, 300);
         }, 500);
       }
-      
-      setLastScrollTop(currentScrollTop);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
