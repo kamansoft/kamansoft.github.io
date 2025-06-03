@@ -1,4 +1,5 @@
 
+import { useEffect } from "react";
 import Hero from "@/components/sections/Hero";
 import Navigation from "@/components/sections/Navigation";
 import Services from "@/components/sections/Services";
@@ -11,6 +12,12 @@ import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
+  useEffect(() => {
+    console.log("Index page mounted");
+  }, []);
+
+  console.log("Index component rendering");
+
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors">
       <Navigation />

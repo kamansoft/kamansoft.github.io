@@ -15,16 +15,33 @@ import { useProcessTransition } from "../../hooks/useProcessTransition";
 // Following SRP - Process component only orchestrates other components
 // Following DIP - Uses dependency injection through services
 const Process = () => {
+  console.log("Process component rendering");
+  
   const [activeTab, setActiveTab] = useState("conceptualizing");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isFlashing, setIsFlashing] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   // Service instances (could be injected via context for better DIP)
-  const dataProvider = useMemo(() => new ProcessDataService(), []);
-  const scrollDetector = useMemo(() => new ScrollDetectionService(), []);
-  const navigationDetector = useMemo(() => new NavigationDetectionService(), []);
-  const transitionController = useMemo(() => new TransitionControllerService(), []);
+  const dataProvider = useMemo(() => {
+    console.log("Creating ProcessDataService");
+    return new ProcessDataService();
+  }, []);
+  
+  const scrollDetector = useMemo(() => {
+    console.log("Creating ScrollDetectionService");
+    return new ScrollDetectionService();
+  }, []);
+  
+  const navigationDetector = useMemo(() => {
+    console.log("Creating NavigationDetectionService");
+    return new NavigationDetectionService();
+  }, []);
+  
+  const transitionController = useMemo(() => {
+    console.log("Creating TransitionControllerService");
+    return new TransitionControllerService();
+  }, []);
 
   // Using services through hooks
   const scrollBehavior = useScrollDetection(scrollDetector);
@@ -39,10 +56,12 @@ const Process = () => {
   };
 
   const handleTransitionStart = () => {
+    console.log("Transition starting");
     setIsTransitioning(true);
   };
 
   const handleTransitionComplete = () => {
+    console.log("Transition completing");
     setIsFlashing(true);
     setActiveTab("development");
     
@@ -63,6 +82,7 @@ const Process = () => {
   });
 
   const handleTabChange = (value: string) => {
+    console.log("Tab changing to:", value);
     setIsFlashing(true);
     setActiveTab(value);
     
@@ -81,6 +101,7 @@ const Process = () => {
   };
 
   const tabs = dataProvider.getTabs();
+  console.log("Tabs data:", tabs);
 
   return (
     <section ref={sectionRef} id="process" className={getSectionBackgroundClass()}>
