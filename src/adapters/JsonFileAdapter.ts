@@ -8,7 +8,8 @@ import {
   IPortfolioDataAdapter,
   IContactDataAdapter,
   IFooterDataAdapter,
-  IBlogDataAdapter
+  IBlogDataAdapter,
+  IApproachDataAdapter
 } from './IDataAdapter';
 
 // JSON file adapter implementations
@@ -71,6 +72,13 @@ export class FooterJsonAdapter implements IFooterDataAdapter {
 export class BlogJsonAdapter implements IBlogDataAdapter {
   async getData() {
     const response = await import('../data/blog.json');
+    return response.default;
+  }
+}
+
+export class ApproachJsonAdapter implements IApproachDataAdapter {
+  async getData() {
+    const response = await import('../data/approach.json');
     return response.default;
   }
 }
