@@ -13,6 +13,7 @@ export interface ServiceItem {
 export interface IServicesDataProvider {
   getServices(): Promise<ServiceItem[]>;
   getHeaderData(): Promise<{
+    eyebrow?: string;
     title: string;
     description: string;
   }>;

@@ -1,4 +1,3 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { 
   Code, 
   Smartphone, 
@@ -9,7 +8,8 @@ import {
   Palette,
   BarChart3,
   Workflow,
-  Cog
+  Cog,
+  Zap
 } from "lucide-react";
 import { ServicesDataService } from "../../services/ServicesDataService";
 import { useMemo, useEffect, useState } from "react";
@@ -17,7 +17,7 @@ import { useMemo, useEffect, useState } from "react";
 const Services = () => {
   const dataService = useMemo(() => new ServicesDataService(), []);
   const [services, setServices] = useState([]);
-  const [headerData, setHeaderData] = useState({ title: '', description: '' });
+  const [headerData, setHeaderData] = useState<{ eyebrow?: string; title: string; description: string }>({ title: '', description: '' });
 
   useEffect(() => {
     const loadData = async () => {
@@ -44,48 +44,36 @@ const Services = () => {
     Cloud,
     BarChart3,
     Shield,
-    Cog
+    Cog,
+    Zap
   };
 
   const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName as keyof typeof iconMap];
-    return IconComponent ? <IconComponent className="h-12 w-12" /> : null;
+    return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
   };
 
   return (
-    <section id="services" className="py-20 bg-secondary">
+    <section id="services" className="py-24 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            {headerData.title}
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            {headerData.description}
-          </p>
+        <div className="max-w-3xl mb-14">
+          <p className="eyebrow mb-4">{headerData.eyebrow}</p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">{headerData.title}</h2>
+          <p className="text-lg">{headerData.description}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service) => (
-            <Card 
-              key={service.id} 
-              className="h-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 bg-card border-border shadow-md"
+            <div
+              key={service.id}
+              className="group rounded-lg border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary"
             >
-              <CardHeader className="text-center pb-4">
-                <div className="flex justify-center mb-4">
-                  <div className={service.color}>
-                    {getIcon(service.icon)}
-                  </div>
-                </div>
-                <CardTitle className="text-xl font-semibold text-foreground">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground text-center">
-                  {service.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+              <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-md bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                {getIcon(service.icon)}
+              </div>
+              <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
+              <p className="text-sm">{service.description}</p>
+            </div>
           ))}
         </div>
       </div>
