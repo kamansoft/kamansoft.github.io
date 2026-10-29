@@ -1,135 +1,60 @@
-import { useState, useRef, useMemo, useEffect } from "react";
-import ProcessBackground from "./process/ProcessBackground";
-import ProcessTransition from "./process/ProcessTransition";
-import ProcessHeader from "./process/ProcessHeader";
-import ProcessTabs from "./process/ProcessTabs";
+import { useEffect, useMemo, useState } from "react";
+import { MessageSquare, Map, FlaskConical, LayoutList, Package, RefreshCw } from "lucide-react";
+import { ProcessDataService, ProcessHeader, ProcessPhase } from "../../services/ProcessDataService";
 
-// Services and hooks following DIP
-import { ProcessDataService } from "../../services/ProcessDataService";
-import { ScrollDetectionService, useScrollDetection } from "../../services/ScrollDetectionService";
-import { NavigationDetectionService, useNavigationDetection } from "../../services/NavigationDetectionService";
-import { TransitionControllerService } from "../../services/TransitionControllerService";
-import { useProcessTransition } from "../../hooks/useProcessTransition";
+const iconMap = { MessageSquare, Map, FlaskConical, LayoutList, Package, RefreshCw };
 
 const Process = () => {
-  console.log("Process component rendering");
-  
-  const [activeTab, setActiveTab] = useState("conceptualizing");
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isFlashing, setIsFlashing] = useState(false);
-  const [tabs, setTabs] = useState([]);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  const dataProvider = useMemo(() => {
-    console.log("Creating ProcessDataService");
-    return new ProcessDataService();
-  }, []);
+  const dataService = useMemo(() => new ProcessDataService(), []);
+  const [header, setHeader] = useState<ProcessHeader | null>(null);
+  const [phases, setPhases] = useState<ProcessPhase[]>([]);
+  const [note, setNote] = useState("");
 
   useEffect(() => {
-    const loadTabs = async () => {
-      try {
-        const tabsData = await dataProvider.getTabs();
-        setTabs(tabsData);
-        console.log("Tabs data loaded:", tabsData);
-      } catch (error) {
-        console.error('Failed to load process data:', error);
-      }
-    };
-    
-    loadTabs();
-  }, [dataProvider]);
-  
-  const scrollDetector = useMemo(() => {
-    console.log("Creating ScrollDetectionService");
-    return new ScrollDetectionService();
-  }, []);
-  
-  const navigationDetector = useMemo(() => {
-    console.log("Creating NavigationDetectionService");
-    return new NavigationDetectionService();
-  }, []);
-  
-  const transitionController = useMemo(() => {
-    console.log("Creating TransitionControllerService");
-    return new TransitionControllerService();
-  }, []);
+    Promise.all([dataService.getHeaderData(), dataService.getPhases(), dataService.getNote()])
+      .then(([h, p, n]) => { setHeader(h); setPhases(p); setNote(n); })
+      .catch((e) => console.error("Failed to load process data:", e));
+  }, [dataService]);
 
-  // Using services through hooks
-  const scrollBehavior = useScrollDetection(scrollDetector);
-  const navigationState = useNavigationDetection(navigationDetector);
-
-  const transitionContext = {
-    activeTab,
-    scrollBehavior,
-    navigationState,
-    transitionState: { isTransitioning, isFlashing },
-    sectionRef
-  };
-
-  const handleTransitionStart = () => {
-    console.log("Transition starting");
-    setIsTransitioning(true);
-  };
-
-  const handleTransitionComplete = () => {
-    console.log("Transition completing");
-    setIsFlashing(true);
-    setActiveTab("development");
-    
-    setTimeout(() => {
-      setIsFlashing(false);
-    }, 50);
-    
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 300);
-  };
-
-  useProcessTransition({
-    transitionController,
-    context: transitionContext,
-    onTransitionStart: handleTransitionStart,
-    onTransitionComplete: handleTransitionComplete
-  });
-
-  const handleTabChange = (value: string) => {
-    console.log("Tab changing to:", value);
-    setIsFlashing(true);
-    setActiveTab(value);
-    
-    setTimeout(() => {
-      setIsFlashing(false);
-    }, 50);
-  };
-
-  const getSectionBackgroundClass = () => {
-    const baseClass = "py-20 relative overflow-hidden transition-all duration-1000";
-    const backgroundClass = activeTab === "conceptualizing" 
-      ? "bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-muted/50" 
-      : "bg-gradient-to-br from-green-50/50 via-blue-50/30 to-muted/50";
-    
-    return `${baseClass} ${backgroundClass}`;
-  };
+  if (!header) return null;
 
   return (
-    <section ref={sectionRef} id="process" className={getSectionBackgroundClass()}>
-      <ProcessBackground activeTab={activeTab} />
-      <ProcessTransition isTransitioning={isTransitioning} />
+    <section id="process" className="py-24 bg-ink bg-grid-ink">
+      <div className="container mx-auto px-4">
+        <div className="max-w-3xl mb-16">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal mb-4">{header.eyebrow}</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-ink-foreground mb-5">{header.title}</h2>
+          <p className="text-lg text-ink-muted">{header.description}</p>
+        </div>
 
-      <div className="container mx-auto px-4 relative z-20">
-        <ProcessHeader 
-          title="Our Solution Building Process"
-          description="A proven methodology that ensures we understand your needs and deliver the right solution"
-        />
+        <ol className="relative grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {phases.map((phase, i) => {
+            const Icon = iconMap[phase.icon as keyof typeof iconMap];
+            const isLoop = i === phases.length - 1;
+            return (
+              <li
+                key={phase.id}
+                className={`relative rounded-lg border p-7 transition-all duration-300 hover:-translate-y-1 ${
+                  isLoop ? "border-signal bg-signal/5 shadow-glow" : "border-ink-border bg-ink-foreground/[0.03] hover:border-signal/50"
+                }`}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono text-4xl font-semibold text-signal/80">{String(i + 1).padStart(2, "0")}</span>
+                  {Icon && <Icon className={`h-6 w-6 text-signal ${isLoop ? "animate-spin [animation-duration:6s]" : ""}`} />}
+                </div>
+                <h3 className="text-xl font-semibold text-ink-foreground mb-2">{phase.title}</h3>
+                <p className="text-sm text-ink-muted mb-5">{phase.description}</p>
+                <span className="inline-block rounded border border-ink-border px-2 py-1 font-mono text-[11px] uppercase tracking-wider text-ink-muted">
+                  {phase.duration}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
 
-        <ProcessTabs 
-          tabs={tabs}
-          activeTab={activeTab}
-          isFlashing={isFlashing}
-          isTransitioning={isTransitioning}
-          dataProvider={dataProvider}
-          onTabChange={handleTabChange}
-        />
+        <p className="mt-12 text-center font-mono text-sm text-ink-muted">
+          <span className="text-signal">↻</span> {note}
+        </p>
       </div>
     </section>
   );

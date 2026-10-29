@@ -1,39 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Kamansoft design system — "engineering console": ink surfaces, signal-lime accent, mono annotations */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --background: 60 14% 97%;
+    --foreground: 222 24% 9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 222 24% 9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 24% 9%;
 
-    --primary: 210 84% 45%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 84 72% 34%;
+    --primary-foreground: 60 14% 97%;
+    --secondary: 60 8% 92%;
+    --secondary-foreground: 222 24% 9%;
+    --muted: 60 8% 92%;
+    --muted-foreground: 222 10% 38%;
+    --accent: 24 95% 52%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 75% 52%;
+    --destructive-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --border: 60 6% 85%;
+    --input: 60 6% 85%;
+    --ring: 84 72% 34%;
+    --radius: 0.375rem;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Always-dark "console" surface used by hero & code panels */
+    --ink: 222 24% 6%;
+    --ink-foreground: 60 10% 94%;
+    --ink-muted: 222 10% 62%;
+    --ink-border: 222 16% 16%;
+    --signal: 78 88% 56%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --grid-line: 222 24% 9% / 0.06;
+    --shadow-glow: 0 0 40px -8px hsl(var(--signal) / 0.45);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -43,46 +48,33 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Brand colors matching the logo */
-    --brand-blue: 210 84% 45%;
-    --brand-blue-light: 210 84% 55%;
-    --brand-blue-dark: 210 84% 35%;
-    
-    /* Consistent text colors */
-    --text-primary: 222.2 84% 4.9%;
-    --text-secondary: 215.4 16.3% 46.9%;
-    --text-accent: 210 84% 45%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 222 24% 6%;
+    --foreground: 60 10% 94%;
+    --card: 222 20% 9%;
+    --card-foreground: 60 10% 94%;
+    --popover: 222 20% 9%;
+    --popover-foreground: 60 10% 94%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --primary: 78 88% 56%;
+    --primary-foreground: 222 24% 6%;
+    --secondary: 222 18% 12%;
+    --secondary-foreground: 60 10% 94%;
+    --muted: 222 18% 12%;
+    --muted-foreground: 222 10% 62%;
+    --accent: 24 95% 58%;
+    --accent-foreground: 222 24% 6%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --border: 222 16% 16%;
+    --input: 222 16% 16%;
+    --ring: 78 88% 56%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --grid-line: 60 10% 94% / 0.05;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -91,11 +83,6 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    
-    /* Consistent dark mode text colors */
-    --text-primary: 210 40% 98%;
-    --text-secondary: 215 20.2% 65.1%;
-    --text-accent: 224.3 76.3% 48%;
   }
 }
 
@@ -105,24 +92,22 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
   }
-  
-  /* Consistent heading styles */
+
   h1, h2, h3, h4, h5, h6 {
     @apply text-foreground;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
-  
-  /* Consistent paragraph styles */
+
   p {
     @apply text-muted-foreground;
-    line-height: 1.6;
+    line-height: 1.65;
   }
-  
-  /* Consistent link styles */
+
   a {
     @apply text-primary hover:text-primary/80;
     transition: color 0.2s ease-in-out;
@@ -130,28 +115,22 @@
 }
 
 @layer utilities {
-  .brand-blue {
-    color: hsl(var(--brand-blue));
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
-  
-  .bg-brand-blue {
-    background-color: hsl(var(--brand-blue));
+  .bg-grid-ink {
+    background-image:
+      linear-gradient(hsl(var(--ink-foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--ink-foreground) / 0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
-  
-  .border-brand-blue {
-    border-color: hsl(var(--brand-blue));
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
   }
-  
-  /* Consistent text utilities */
-  .text-primary-color {
-    color: hsl(var(--text-primary));
-  }
-  
-  .text-secondary-color {
-    color: hsl(var(--text-secondary));
-  }
-  
-  .text-accent-color {
-    color: hsl(var(--text-accent));
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-primary;
   }
 }

@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import Hero from "@/components/sections/Hero";
 import Navigation from "@/components/sections/Navigation";
+import Approach from "@/components/sections/Approach";
 import Services from "@/components/sections/Services";
 import Process from "@/components/sections/Process";
 import About from "@/components/sections/About";
@@ -22,11 +23,12 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors">
       <Navigation />
       <Hero />
+      <Approach />
       <Services />
       <Process />
-      <Blog />
-      <About />
       <Portfolio />
+      <About />
+      <Blog />
       <Team />
       <Contact />
       <Footer />

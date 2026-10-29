@@ -14,3 +14,4 @@ export interface IPortfolioDataAdapter extends IDataAdapter<any> {}
 export interface IContactDataAdapter extends IDataAdapter<any> {}
 export interface IFooterDataAdapter extends IDataAdapter<any> {}
 export interface IBlogDataAdapter extends IDataAdapter<any> {}
+export interface IApproachDataAdapter extends IDataAdapter<any> {}

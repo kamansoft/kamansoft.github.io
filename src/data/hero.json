@@ -1,40 +1,25 @@
-
 {
   "header": {
-    "title": "Transform Ideas Into",
-    "highlightText": "Digital Reality",
-    "description": "At Kamansoft, we craft cutting-edge software solutions that drive innovation and accelerate your business growth. From web applications to mobile apps, we bring your vision to life."
+    "eyebrow": "AI-accelerated · Engineer-led",
+    "title": "Engineers command.",
+    "highlightText": "Agents build. Nothing ships unreviewed.",
+    "description": "We are not vibe coders. Our engineers architect, direct and review every change while a troop of humans and AI agents does the heavy lifting. You get AI speed with code that is built to scale."
   },
   "buttons": {
-    "primary": {
-      "text": "Start Your Project",
-      "icon": "ArrowRight"
-    },
-    "secondary": {
-      "text": "View Our Work",
-      "icon": "Play"
-    }
+    "primary": { "text": "Start your project", "icon": "ArrowRight" },
+    "secondary": { "text": "See how we work", "icon": "Play" }
   },
+  "loop": [
+    { "id": 1, "role": "engineer", "text": "Define architecture & acceptance criteria" },
+    { "id": 2, "role": "agent", "text": "Generate implementation across 14 files" },
+    { "id": 3, "role": "engineer", "text": "Review: patterns, security, performance" },
+    { "id": 4, "role": "agent", "text": "Apply feedback · tests passing 128/128" },
+    { "id": 5, "role": "engineer", "text": "Approve & merge → sprint deliverable" }
+  ],
   "techStack": [
-    {
-      "id": 1,
-      "icon": "Code",
-      "label": "Web Dev"
-    },
-    {
-      "id": 2,
-      "icon": "Smartphone",
-      "label": "Mobile"
-    },
-    {
-      "id": 3,
-      "icon": "Globe",
-      "label": "Cloud"
-    },
-    {
-      "id": 4,
-      "icon": "Zap",
-      "label": "AI/ML"
-    }
+    { "id": 1, "icon": "Code", "label": "Web & APIs" },
+    { "id": 2, "icon": "Smartphone", "label": "Mobile" },
+    { "id": 3, "icon": "Globe", "label": "Cloud" },
+    { "id": 4, "icon": "Zap", "label": "AI / Agents" }
   ]
 }

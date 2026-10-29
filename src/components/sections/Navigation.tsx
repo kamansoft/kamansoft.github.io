@@ -132,8 +132,7 @@ const Navigation = () => {
             </Button>
             <Button 
               onClick={() => scrollToSection('contact')}
-              style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
-              className="hover:opacity-90"
+              className="bg-signal text-ink hover:bg-signal/90 font-semibold"
             >
               Contact Us
             </Button>
@@ -218,8 +217,7 @@ const Navigation = () => {
               </button>
               <Button 
                 onClick={() => scrollToSection('contact')}
-                style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
-                className="hover:opacity-90 w-full"
+                className="bg-signal text-ink hover:bg-signal/90 font-semibold w-full"
               >
                 Contact Us
               </Button>

@@ -1,0 +1,35 @@
+{
+  "header": {
+    "eyebrow": "Why Kamansoft",
+    "title": "Fast is easy. Fast and scalable takes engineers.",
+    "description": "Many agencies now ship AI-generated code at full speed and zero scrutiny. It demos well — then breaks the moment you grow. We use the same AI acceleration, with engineers in command of every decision."
+  },
+  "comparison": {
+    "them": {
+      "label": "AI-blind delivery",
+      "points": [
+        "Code generated and shipped without review",
+        "No architecture — patterns improvised prompt by prompt",
+        "Works in the demo, collapses under real load",
+        "Every new feature makes the codebase messier",
+        "Hidden security and maintenance debt"
+      ]
+    },
+    "us": {
+      "label": "Engineer-led, AI-accelerated",
+      "points": [
+        "Every change reviewed by a senior engineer",
+        "Architecture designed first, proven patterns applied",
+        "Built and tested to scale from day one",
+        "Clean, documented code your team can own",
+        "Security and quality gates on every merge"
+      ]
+    }
+  },
+  "pillars": [
+    { "id": 1, "icon": "Compass", "title": "We architect", "description": "Engineers design the system, choose the patterns and set the boundaries before a single line is generated." },
+    { "id": 2, "icon": "Terminal", "title": "We command", "description": "We guide the loop. AI agents and developers execute well-scoped tasks under clear direction." },
+    { "id": 3, "icon": "ShieldCheck", "title": "We review", "description": "Nothing reaches your product without human review, automated tests and quality gates." },
+    { "id": 4, "icon": "Users", "title": "The troop", "description": "A blended team of humans and agents — the speed of automation with the judgment of experience." }
+  ]
+}
