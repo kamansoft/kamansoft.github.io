@@ -217,8 +217,7 @@ const Navigation = () => {
               </button>
               <Button 
                 onClick={() => scrollToSection('contact')}
-                className="bg-signal text-ink hover:bg-signal/90 font-semibold"
-                className="hover:opacity-90 w-full"
+                className="bg-signal text-ink hover:bg-signal/90 font-semibold w-full"
               >
                 Contact Us
               </Button>
