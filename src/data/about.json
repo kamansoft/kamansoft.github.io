@@ -1,12 +1,29 @@
-
 {
   "features": [
-    { "id": 1, "text": "Agile Development" },
-    { "id": 2, "text": "Enterprise Security" },
-    { "id": 3, "text": "Scalable Architecture" },
-    { "id": 4, "text": "24/7 Support" },
-    { "id": 5, "text": "Data Migration" },
-    { "id": 6, "text": "Process Automation" }
+    {
+      "id": 1,
+      "text": "Human-reviewed code"
+    },
+    {
+      "id": 2,
+      "text": "Architecture first"
+    },
+    {
+      "id": 3,
+      "text": "AI-accelerated sprints"
+    },
+    {
+      "id": 4,
+      "text": "Scalable patterns"
+    },
+    {
+      "id": 5,
+      "text": "Automated testing"
+    },
+    {
+      "id": 6,
+      "text": "Continuous iteration"
+    }
   ],
   "values": [
     {
@@ -29,9 +46,9 @@
     }
   ],
   "header": {
-    "title": "Your Partner in Digital Transformation",
-    "mainDescription": "Kamansoft specializes in enterprise applications, ETL data processing, and business automation. With 5+ years of experience, we help organizations modernize operations and unlock data potential.",
-    "secondaryDescription": "From legacy modernization to cloud migration and intelligent automation, we provide end-to-end solutions that transform how you do business."
+    "title": "Engineers at the helm of an AI-powered troop",
+    "mainDescription": "Kamansoft is a software engineering team that embraced AI early \u2014 as a tool, never as a substitute for judgment. Our senior engineers architect systems, command a blended team of developers and AI agents, and review everything that ships.",
+    "secondaryDescription": "The result: delivery at modern speed, with clean architecture, proven patterns and code that keeps working when your business scales."
   },
   "image": {
     "src": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
