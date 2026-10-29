@@ -18,7 +18,18 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+				mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+			},
 			colors: {
+				ink: {
+					DEFAULT: 'hsl(var(--ink))',
+					foreground: 'hsl(var(--ink-foreground))',
+					muted: 'hsl(var(--ink-muted))',
+					border: 'hsl(var(--ink-border))'
+				},
+				signal: 'hsl(var(--signal))',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
