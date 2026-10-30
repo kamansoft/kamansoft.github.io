@@ -1,25 +1,27 @@
 {
   "header": {
-    "eyebrow": "AI-accelerated · Engineer-led",
-    "title": "Engineers command.",
-    "highlightText": "Agents build. Nothing ships unreviewed.",
-    "description": "We are not vibe coders. Our engineers architect, direct and review every change while a troop of humans and AI agents does the heavy lifting. You get AI speed with code that is built to scale."
+    "eyebrow": "Engineering solutions for your operations",
+    "title": "We improve how you operate.",
+    "highlightText": "With software, data, cloud and AI — never shipped unreviewed.",
+    "description": "We are a group of engineers who work together to solve business problems. That usually means building software, and it always means understanding your process — the part most agencies skip. Our engineers command a troop of humans and AI agents, so you get AI speed with systems that scale."
   },
   "buttons": {
     "primary": { "text": "Start your project", "icon": "ArrowRight" },
     "secondary": { "text": "See how we work", "icon": "Play" }
   },
   "loop": [
-    { "id": 1, "role": "engineer", "text": "Define architecture & acceptance criteria" },
-    { "id": 2, "role": "agent", "text": "Generate implementation across 14 files" },
-    { "id": 3, "role": "engineer", "text": "Review: patterns, security, performance" },
-    { "id": 4, "role": "agent", "text": "Apply feedback · tests passing 128/128" },
-    { "id": 5, "role": "engineer", "text": "Approve & merge → sprint deliverable" }
+    { "id": 1, "role": "engineer", "text": "Map the process & set the target result" },
+    { "id": 2, "role": "engineer", "text": "Define architecture & acceptance criteria" },
+    { "id": 3, "role": "agent", "text": "Generate implementation across 14 files" },
+    { "id": 4, "role": "engineer", "text": "Review: patterns, security, performance" },
+    { "id": 5, "role": "agent", "text": "Apply feedback · tests passing 128/128" },
+    { "id": 6, "role": "engineer", "text": "Approve & merge → sprint deliverable" }
   ],
   "techStack": [
-    { "id": 1, "icon": "Code", "label": "Web & APIs" },
-    { "id": 2, "icon": "Smartphone", "label": "Mobile" },
-    { "id": 3, "icon": "Globe", "label": "Cloud" },
-    { "id": 4, "icon": "Zap", "label": "AI / Agents" }
+    { "id": 1, "icon": "Factory", "label": "Process & Operations" },
+    { "id": 2, "icon": "Code", "label": "Software" },
+    { "id": 3, "icon": "Database", "label": "Data & ETL" },
+    { "id": 4, "icon": "Cloud", "label": "Cloud" },
+    { "id": 5, "icon": "Zap", "label": "AI / Agents" }
   ]
 }
