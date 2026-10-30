@@ -9,7 +9,8 @@ import {
   BarChart3,
   Workflow,
   Cog,
-  Zap
+  Zap,
+  Factory
 } from "lucide-react";
 import { ServicesDataService } from "../../services/ServicesDataService";
 import { useMemo, useEffect, useState } from "react";
@@ -37,6 +38,7 @@ const Services = () => {
   }, [dataService]);
 
   const iconMap = {
+    Factory,
     Code,
     Database,
     Workflow,
@@ -62,7 +64,7 @@ const Services = () => {
           <p className="text-lg">{headerData.description}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((service) => (
             <div
               key={service.id}

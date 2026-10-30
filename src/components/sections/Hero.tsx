@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { Code, Smartphone, Globe, Zap, ArrowRight, Play, User, Bot } from "lucide-react";
+import { Code, Smartphone, Globe, Zap, ArrowRight, Play, User, Bot, Database, Factory } from "lucide-react";
 import { HeroDataService, HeroButtons, HeroHeader, LoopItem, TechStackItem } from "../../services/HeroDataService";
 import { useMemo, useEffect, useState } from "react";
 
-const iconMap = { Code, Smartphone, Globe, Zap, ArrowRight, Play };
+const iconMap = { Code, Smartphone, Globe, Zap, ArrowRight, Play, Database, Factory };
 
 const getIcon = (iconName: string, className = "h-4 w-4") => {
   const Icon = iconMap[iconName as keyof typeof iconMap];

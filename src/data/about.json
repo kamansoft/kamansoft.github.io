@@ -1,57 +1,39 @@
 {
   "features": [
-    {
-      "id": 1,
-      "text": "Human-reviewed code"
-    },
-    {
-      "id": 2,
-      "text": "Architecture first"
-    },
-    {
-      "id": 3,
-      "text": "AI-accelerated sprints"
-    },
-    {
-      "id": 4,
-      "text": "Scalable patterns"
-    },
-    {
-      "id": 5,
-      "text": "Automated testing"
-    },
-    {
-      "id": 6,
-      "text": "Continuous iteration"
-    }
+    { "id": 1, "text": "Process mapped before coded" },
+    { "id": 2, "text": "Operations-first thinking" },
+    { "id": 3, "text": "Human-reviewed code" },
+    { "id": 4, "text": "Architecture before code" },
+    { "id": 5, "text": "AI-accelerated sprints" },
+    { "id": 6, "text": "Tuned to business results" }
   ],
   "values": [
     {
       "id": 1,
       "icon": "Users",
-      "title": "Enterprise-Focused",
-      "description": "We understand enterprise challenges and deliver solutions that scale with your business."
+      "title": "Engineers, together",
+      "description": "Chemical, civil and software engineers who have worked real operations — not only shipped features."
     },
     {
       "id": 2,
       "icon": "Award",
-      "title": "Technical Excellence",
-      "description": "Our team maintains the highest standards in software architecture and code quality."
+      "title": "Process & quality",
+      "description": "We understand process, quality systems and compliance, and we design software around how work actually runs."
     },
     {
       "id": 3,
       "icon": "Target",
-      "title": "Results-Driven",
-      "description": "We leverage cutting-edge technologies to deliver measurable business outcomes."
+      "title": "Business results",
+      "description": "Every engagement is measured against an operating number: time saved, errors avoided, throughput gained."
     }
   ],
   "header": {
-    "title": "Engineers at the helm of an AI-powered troop",
-    "mainDescription": "Kamansoft is a software engineering team that embraced AI early \u2014 as a tool, never as a substitute for judgment. Our senior engineers architect systems, command a blended team of developers and AI agents, and review everything that ships.",
-    "secondaryDescription": "The result: delivery at modern speed, with clean architecture, proven patterns and code that keeps working when your business scales."
+    "title": "A group of engineers, not a code shop",
+    "mainDescription": "Kamansoft is engineers first. We come from process and quality, from supply chain and construction development management, and from more than 15 years of software delivery. We use IT — software, data, cloud and AI — as the tool, and your operations as the target.",
+    "secondaryDescription": "Most of the time that includes software development. But before it comes understanding your process: where the time goes, where the data breaks, where quality slips. That is the part we excel at."
   },
   "image": {
     "src": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
-    "alt": "Software development team working on enterprise solutions"
+    "alt": "Engineers reviewing a process and system blueprint before building software"
   }
 }

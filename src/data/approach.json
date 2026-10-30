@@ -2,7 +2,7 @@
   "header": {
     "eyebrow": "Why Kamansoft",
     "title": "Fast is easy. Fast and scalable takes engineers.",
-    "description": "Many agencies now ship AI-generated code at full speed and zero scrutiny. It demos well — then breaks the moment you grow. We use the same AI acceleration, with engineers in command of every decision."
+    "description": "We are not just software developers — we are engineers who use IT, the cloud and AI to improve how your organization operates. Many agencies now ship AI-generated code at full speed and zero scrutiny. It demos well — then breaks the moment you grow. We use the same acceleration, with engineers in command of every decision."
   },
   "comparison": {
     "them": {
@@ -27,9 +27,9 @@
     }
   },
   "pillars": [
-    { "id": 1, "icon": "Compass", "title": "We architect", "description": "Engineers design the system, choose the patterns and set the boundaries before a single line is generated." },
-    { "id": 2, "icon": "Terminal", "title": "We command", "description": "We guide the loop. AI agents and developers execute well-scoped tasks under clear direction." },
+    { "id": 1, "icon": "Compass", "title": "We understand", "description": "We map the process and the operation first — the flow, the data and the numbers that say whether it worked." },
+    { "id": 2, "icon": "Terminal", "title": "We command", "description": "We guide the loop. AI agents and developers execute well-scoped tasks under clear engineering direction." },
     { "id": 3, "icon": "ShieldCheck", "title": "We review", "description": "Nothing reaches your product without human review, automated tests and quality gates." },
-    { "id": 4, "icon": "Users", "title": "The troop", "description": "A blended team of humans and agents — the speed of automation with the judgment of experience." }
+    { "id": 4, "icon": "Users", "title": "The troop", "description": "A blended team of humans and agents, commanded by engineers who own the result." }
   ]
 }
