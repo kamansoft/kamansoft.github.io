@@ -16,12 +16,14 @@
   },
   "comparison": {
     "them": {
-      "label": "AI-blind delivery",
-      "points": ["Shipped unreviewed", "No architecture", "Breaks at scale"]
+      "title": "Other agencies",
+      "tagline": "Cheap and fast — until it isn't.",
+      "points": ["Unreviewed", "No architecture", "Breaks on scale"]
     },
     "us": {
-      "label": "Engineer-led",
-      "points": ["Every change reviewed", "Architecture first", "Built to scale"]
+      "title": "Kamansoft",
+      "tagline": "We build for the future and for change.",
+      "points": ["Plan first", "Prove the idea", "Architect for change"]
     }
   }
 }
