@@ -84,8 +84,8 @@ export default {
 				'draw': { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } },
 				'grow': { from: { transform: 'scaleY(0)' }, to: { transform: 'scaleY(1)' } },
 				'logo-breathe': {
-					'0%, 100%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.45), 0 0 16px 2px hsl(var(--signal) / 0.6), 0 0 46px 10px hsl(var(--signal) / 0.34)' },
-					'50%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.22), 0 0 9px 1px hsl(var(--signal) / 0.34), 0 0 26px 4px hsl(var(--signal) / 0.16)' }
+					'0%, 100%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.5), 0 3px 14px 2px hsl(var(--signal) / 0.55), 0 8px 34px 8px hsl(var(--signal) / 0.3)' },
+					'50%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.25), 0 2px 8px 1px hsl(var(--signal) / 0.32), 0 5px 20px 4px hsl(var(--signal) / 0.15)' }
 				},
 				'accordion-down': {
 					from: {
