@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Code, Smartphone, Globe, Zap, ArrowRight, Play, User, Bot, Database, Factory } from "lucide-react";
-import { HeroDataService, HeroButtons, HeroHeader, LoopItem, TechStackItem } from "../../services/HeroDataService";
+import { Code, Smartphone, Globe, Zap, ArrowRight, Play, Database, Factory, Cloud } from "lucide-react";
+import { HeroDataService, HeroButtons, HeroHeader, LoopItem, StatItem, TechStackItem } from "../../services/HeroDataService";
+import OperationMap from "./OperationMap";
 import { useMemo, useEffect, useState } from "react";
 
-const iconMap = { Code, Smartphone, Globe, Zap, ArrowRight, Play, Database, Factory };
+const iconMap = { Code, Smartphone, Globe, Zap, ArrowRight, Play, Database, Factory, Cloud };
 
 const getIcon = (iconName: string, className = "h-4 w-4") => {
   const Icon = iconMap[iconName as keyof typeof iconMap];
@@ -18,15 +19,16 @@ const Hero = () => {
   const [buttons, setButtons] = useState<HeroButtons>({ primary: { text: "", icon: "" }, secondary: { text: "", icon: "" } });
   const [techStack, setTechStack] = useState<TechStackItem[]>([]);
   const [loop, setLoop] = useState<LoopItem[]>([]);
+  const [stats, setStats] = useState<StatItem[]>([]);
 
   useEffect(() => {
-    Promise.all([dataService.getHeaderData(), dataService.getButtons(), dataService.getTechStack(), dataService.getLoop()])
-      .then(([h, b, t, l]) => { setHeader(h); setButtons(b); setTechStack(t); setLoop(l); })
+    Promise.all([dataService.getHeaderData(), dataService.getButtons(), dataService.getTechStack(), dataService.getLoop(), dataService.getStats()])
+      .then(([h, b, t, l, s]) => { setStats(s); setHeader(h); setButtons(b); setTechStack(t); setLoop(l); })
       .catch((e) => console.error("Failed to load hero data:", e));
   }, [dataService]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-ink bg-grid-ink pt-28 pb-20">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-ink bg-grid-ink pt-28 pb-20">
       <div className="absolute -top-40 right-0 h-[32rem] w-[32rem] rounded-full bg-signal/10 blur-3xl" />
       <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
         <div className="space-y-8 animate-fade-in">
@@ -59,33 +61,16 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* The loop console */}
-        <div className="rounded-lg border border-ink-border bg-ink-foreground/[0.03] backdrop-blur-sm shadow-2xl overflow-hidden">
-          <div className="flex items-center gap-2 border-b border-ink-border px-4 py-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-ink-foreground/20" />
-            <span className="h-2.5 w-2.5 rounded-full bg-ink-foreground/20" />
-            <span className="h-2.5 w-2.5 rounded-full bg-signal" />
-            <span className="ml-3 font-mono text-xs text-ink-muted">kamansoft://the-loop</span>
-          </div>
-          <ol className="p-5 space-y-3 font-mono text-sm">
-            {loop.map((item, i) => {
-              const isEngineer = item.role === "engineer";
-              return (
-                <li key={item.id} className="flex items-start gap-3 animate-fade-in" style={{ animationDelay: `${i * 150}ms`, animationFillMode: "both" }}>
-                  <span className={`mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded ${isEngineer ? "bg-signal text-ink" : "bg-ink-foreground/10 text-ink-foreground"}`}>
-                    {isEngineer ? <User className="h-3.5 w-3.5" /> : <Bot className="h-3.5 w-3.5" />}
-                  </span>
-                  <div>
-                    <span className={`text-[10px] uppercase tracking-widest ${isEngineer ? "text-signal" : "text-ink-muted"}`}>{isEngineer ? "engineer" : "agent"}</span>
-                    <p className="text-ink-foreground leading-snug">{item.text}</p>
-                  </div>
-                </li>
-              );
-            })}
-            <li className="flex items-center gap-2 pt-2 text-ink-muted">
-              <span className="text-signal">$</span> loop --until results <span className="inline-block h-4 w-2 bg-signal animate-pulse" />
-            </li>
-          </ol>
+        <OperationMap steps={loop} />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-xl border border-ink-border bg-ink-border">
+          {stats.map((st) => (
+            <div key={st.id} className="bg-ink p-6 text-center">
+              <div className="text-4xl lg:text-5xl font-bold text-signal">{st.value}</div>
+              <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-ink-muted">{st.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
