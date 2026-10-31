@@ -43,10 +43,15 @@ const Navigation = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo: mark untouched on a narrow white canvas, breathing signal glow */}
+          {/* Logo: mark untouched on a narrow white canvas; the breathing glow fades to a whisper once the bar is compact */}
           <div className="flex items-center space-x-3">
-            <div className="animate-logo-breathe rounded-md">
-              <div className={`bg-white rounded-md transition-all duration-300 ${
+            <div className="relative">
+              <div className={`pointer-events-none absolute inset-0 rounded-md transition-opacity duration-500 ${
+                isScrolled ? 'opacity-40' : 'opacity-100'
+              }`}>
+                <div className="h-full w-full rounded-md animate-logo-breathe" />
+              </div>
+              <div className={`relative bg-white rounded-md transition-all duration-300 ${
                 isScrolled ? 'w-12 h-12 p-[2px]' : 'w-14 h-14 p-[3px]'
               } flex items-center justify-center`}>
                 <img 
