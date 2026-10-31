@@ -83,6 +83,10 @@ export default {
 				'track': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(400%)' } },
 				'draw': { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } },
 				'grow': { from: { transform: 'scaleY(0)' }, to: { transform: 'scaleY(1)' } },
+				'logo-breathe': {
+					'0%, 100%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.45), 0 0 16px 2px hsl(var(--signal) / 0.6), 0 0 46px 10px hsl(var(--signal) / 0.34)' },
+					'50%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.22), 0 0 9px 1px hsl(var(--signal) / 0.34), 0 0 26px 4px hsl(var(--signal) / 0.16)' }
+				},
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -114,6 +118,7 @@ export default {
 				'track': 'track 3s linear infinite',
 				'draw': 'draw 2s ease-out both',
 				'grow': 'grow 0.8s ease-out both',
+				'logo-breathe': 'logo-breathe 2.6s ease-in-out infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out'
