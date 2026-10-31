@@ -15,7 +15,10 @@ const GrowthChart = ({ crash }: { crash: boolean }) => {
       <path d={path} fill="none" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"
         className={`${crash ? "stroke-destructive" : "stroke-primary"} animate-draw`} pathLength={1} strokeDasharray="1" />
       {crash
-        ? <text x="168" y="40" className="fill-destructive font-mono text-[11px]">breaks at scale</text>
+        ? <>
+            <text x="10" y="18" className="fill-muted-foreground font-mono text-[9px]">cheap &amp; fast</text>
+            <text x="168" y="40" className="fill-destructive font-mono text-[11px]">breaks at scale</text>
+          </>
         : <circle cx="230" cy="10" r="6" className="fill-primary animate-pulse" />}
       <text x="8" y="118" className="fill-muted-foreground font-mono text-[9px]">growth →</text>
     </svg>
@@ -122,9 +125,10 @@ const Approach = () => {
         )}
 
         <div className="grid md:grid-cols-2 gap-6">
-          {sides.map(({ side, crash, title }) => (
-            <div key={title} className={`rounded-xl bg-card p-7 ${crash ? "border border-border" : "border-2 border-primary shadow-glow"}`}>
-              <p className={`font-mono text-xs uppercase tracking-[0.2em] mb-2 ${crash ? "text-muted-foreground" : "text-primary"}`}>{title}</p>
+          {sides.map(({ side, crash }) => (
+            <div key={side.title} className={`rounded-xl bg-card p-7 ${crash ? "border border-border" : "border-2 border-primary shadow-glow"}`}>
+              <p className={`font-mono text-xs uppercase tracking-[0.2em] mb-1 ${crash ? "text-muted-foreground" : "text-primary"}`}>{side.title}</p>
+              <p className="mb-4 text-lg font-semibold">{side.tagline}</p>
               <GrowthChart crash={crash} />
               <ul className="mt-5 flex flex-wrap gap-2">
                 {side.points.map((p) => (
