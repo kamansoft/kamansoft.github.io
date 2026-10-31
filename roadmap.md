@@ -1,0 +1,2 @@
+- [x] Remove the hero statistics band and its data.
+- [x] Show business-first understanding, AI-assisted delivery, complete human review, and an iteration loop.

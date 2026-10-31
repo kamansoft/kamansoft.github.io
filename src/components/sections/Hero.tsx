@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Code, Smartphone, Globe, Zap, ArrowRight, Play, Database, Factory, Cloud } from "lucide-react";
-import { HeroDataService, HeroButtons, HeroHeader, LoopItem, StatItem, TechStackItem } from "../../services/HeroDataService";
+import { HeroDataService, HeroButtons, HeroHeader, LoopItem, TechStackItem } from "../../services/HeroDataService";
 import OperationMap from "./OperationMap";
 import { useMemo, useEffect, useState } from "react";
 
@@ -19,17 +19,16 @@ const Hero = () => {
   const [buttons, setButtons] = useState<HeroButtons>({ primary: { text: "", icon: "" }, secondary: { text: "", icon: "" } });
   const [techStack, setTechStack] = useState<TechStackItem[]>([]);
   const [loop, setLoop] = useState<LoopItem[]>([]);
-  const [stats, setStats] = useState<StatItem[]>([]);
+  const [iterationLabel, setIterationLabel] = useState("");
 
   useEffect(() => {
-    Promise.all([dataService.getHeaderData(), dataService.getButtons(), dataService.getTechStack(), dataService.getLoop(), dataService.getStats()])
-      .then(([h, b, t, l, s]) => { setStats(s); setHeader(h); setButtons(b); setTechStack(t); setLoop(l); })
+    Promise.all([dataService.getHeaderData(), dataService.getButtons(), dataService.getTechStack(), dataService.getLoop(), dataService.getIterationLabel()])
+      .then(([h, b, t, l, label]) => { setIterationLabel(label); setHeader(h); setButtons(b); setTechStack(t); setLoop(l); })
       .catch((e) => console.error("Failed to load hero data:", e));
   }, [dataService]);
 
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-ink bg-grid-ink pt-28 pb-20">
-      <div className="absolute -top-40 right-0 h-[32rem] w-[32rem] rounded-full bg-signal/10 blur-3xl" />
+    <section id="home" className="relative flex flex-col justify-center overflow-hidden bg-ink bg-grid-ink pt-32 pb-16 lg:pt-40 lg:pb-24">
       <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-[1.15fr_1fr] gap-12 lg:gap-16 items-center">
         <div className="space-y-8 animate-fade-in">
           <span className="inline-flex items-center gap-2 rounded-full border border-ink-border bg-ink-foreground/5 px-3 py-1 font-mono text-xs uppercase tracking-[0.2em] text-signal">
@@ -61,17 +60,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <OperationMap steps={loop} />
-      </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px overflow-hidden rounded-xl border border-ink-border bg-ink-border">
-          {stats.map((st) => (
-            <div key={st.id} className="bg-ink p-6 text-center">
-              <div className="text-4xl lg:text-5xl font-bold text-signal">{st.value}</div>
-              <div className="mt-1 font-mono text-[11px] uppercase tracking-wider text-ink-muted">{st.label}</div>
-            </div>
-          ))}
-        </div>
+        <OperationMap steps={loop} iterationLabel={iterationLabel} />
       </div>
     </section>
   );
