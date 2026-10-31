@@ -43,18 +43,20 @@ const Navigation = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo with white background same size as the logo */}
+          {/* Logo: mark untouched on a narrow white canvas, breathing signal glow */}
           <div className="flex items-center space-x-3">
-            <div className={`bg-white rounded-md p-1 transition-all duration-300 ${
-              isScrolled ? 'w-12 h-12' : 'w-14 h-14'
-            } flex items-center justify-center`}>
-              <img 
-                src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
-                alt="Kamansoft Logo" 
-                className={`transition-all duration-300 object-contain ${
-                  isScrolled ? 'h-10 w-10' : 'h-12 w-12'
-                }`}
-              />
+            <div className="animate-logo-breathe rounded-md">
+              <div className={`bg-white rounded-md transition-all duration-300 ${
+                isScrolled ? 'w-12 h-12 p-[2px]' : 'w-14 h-14 p-[3px]'
+              } flex items-center justify-center`}>
+                <img 
+                  src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
+                  alt="Kamansoft Logo" 
+                  className={`transition-all duration-300 object-contain ${
+                    isScrolled ? 'h-10 w-10' : 'h-12 w-12'
+                  }`}
+                />
+              </div>
             </div>
             <div className="flex flex-col">
               <span className={`font-bold transition-all duration-300 ${
