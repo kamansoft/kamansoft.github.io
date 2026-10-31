@@ -80,6 +80,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			keyframes: {
+				'track': { '0%': { transform: 'translateX(-100%)' }, '100%': { transform: 'translateX(400%)' } },
+				'draw': { from: { strokeDashoffset: '1' }, to: { strokeDashoffset: '0' } },
+				'grow': { from: { transform: 'scaleY(0)' }, to: { transform: 'scaleY(1)' } },
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -108,6 +111,9 @@ export default {
 				}
 			},
 			animation: {
+				'track': 'track 3s linear infinite',
+				'draw': 'draw 2s ease-out both',
+				'grow': 'grow 0.8s ease-out both',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out'
