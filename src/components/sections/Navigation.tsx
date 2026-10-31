@@ -89,7 +89,7 @@ const Navigation = () => {
               Services
             </button>
             <button 
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection('approach')}
               className={`transition-colors ${
                 isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
               }`}
@@ -184,7 +184,7 @@ const Navigation = () => {
                 Services
               </button>
               <button 
-                onClick={() => scrollToSection('about')}
+                onClick={() => scrollToSection('approach')}
                 className={`transition-colors text-left ${
                   isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
                 }`}

@@ -5,7 +5,6 @@ import Navigation from "@/components/sections/Navigation";
 import Approach from "@/components/sections/Approach";
 import Services from "@/components/sections/Services";
 import Process from "@/components/sections/Process";
-import About from "@/components/sections/About";
 import Portfolio from "@/components/sections/Portfolio";
 import Team from "@/components/sections/Team";
 import Blog from "@/components/sections/Blog";
@@ -23,13 +22,12 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground transition-colors">
       <Navigation />
       <Hero />
-      <Approach />
       <Services />
+      <Approach />
       <Process />
       <Portfolio />
-      <About />
-      <Blog />
       <Team />
+      <Blog />
       <Contact />
       <Footer />
     </div>

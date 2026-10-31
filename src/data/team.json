@@ -5,7 +5,12 @@
       "name": "Caterym Lopez",
       "role": "Chemical Engineer · Process & Quality",
       "image": "",
-      "skills": ["Process Engineering", "Quality Systems", "Operations Analysis", "Standards & Compliance"],
+      "skills": [
+        "Process Engineering",
+        "Quality Systems",
+        "Operations Analysis",
+        "Standards & Compliance"
+      ],
       "bio": "Chemical engineer specialized in process and quality. She maps how work actually flows, finds where it degrades, and turns that into measurable operating improvements.",
       "social": {
         "linkedin": "",
@@ -18,7 +23,12 @@
       "name": "Jhosep Guecha",
       "role": "Civil Engineer · Supply Chain & Construction",
       "image": "",
-      "skills": ["Supply Chain", "Construction Development Management", "Logistics Planning", "Cost & Schedule Control"],
+      "skills": [
+        "Supply Chain",
+        "Construction Development Management",
+        "Logistics Planning",
+        "Cost & Schedule Control"
+      ],
       "bio": "Civil engineer and supply chain professional with hands-on construction development management expertise. He brings the discipline of physical operations into digital systems.",
       "social": {
         "linkedin": "",
@@ -31,7 +41,12 @@
       "name": "Lemys Lopez",
       "role": "Software Developer · 15+ years",
       "image": "",
-      "skills": ["Architecture", "ETL & Data Pipelines", "Cloud", "AI Integration"],
+      "skills": [
+        "Architecture",
+        "ETL & Data Pipelines",
+        "Cloud",
+        "AI Integration"
+      ],
       "bio": "Software developer with more than 15 years in the field. He designs the systems, sets the patterns, and reviews what the troop produces before anything ships.",
       "social": {
         "linkedin": "",
@@ -42,6 +57,6 @@
   ],
   "header": {
     "title": "Meet the troop commanders",
-    "description": "Three engineers, three disciplines — process and quality, supply chain and operations, software and data. They command the troop, and they stay accountable for what ships."
+    "description": "Process & quality · Supply chain & operations · Software & data."
   }
 }

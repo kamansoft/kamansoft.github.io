@@ -1,27 +1,31 @@
 {
   "header": {
-    "eyebrow": "Engineering solutions for your operations",
-    "title": "We improve how you operate.",
-    "highlightText": "With software, data, cloud and AI — never shipped unreviewed.",
-    "description": "We are a group of engineers who work together to solve business problems. That usually means building software, and it always means understanding your process — the part most agencies skip. Our engineers command a troop of humans and AI agents, so you get AI speed with systems that scale."
+    "eyebrow": "Engineers for your operations",
+    "title": "We improve how your operation runs.",
+    "highlightText": "Software · Data · Cloud · AI",
+    "description": "Engineers lead a team of humans and AI agents. Every line reviewed."
   },
   "buttons": {
     "primary": { "text": "Start your project", "icon": "ArrowRight" },
     "secondary": { "text": "See how we work", "icon": "Play" }
   },
   "loop": [
-    { "id": 1, "role": "engineer", "text": "Map the process & set the target result" },
-    { "id": 2, "role": "engineer", "text": "Define architecture & acceptance criteria" },
-    { "id": 3, "role": "agent", "text": "Generate implementation across 14 files" },
-    { "id": 4, "role": "engineer", "text": "Review: patterns, security, performance" },
-    { "id": 5, "role": "agent", "text": "Apply feedback · tests passing 128/128" },
-    { "id": 6, "role": "engineer", "text": "Approve & merge → sprint deliverable" }
+    { "id": 1, "role": "engineer", "text": "Map the process" },
+    { "id": 2, "role": "engineer", "text": "Architect" },
+    { "id": 3, "role": "agent", "text": "Agents build" },
+    { "id": 4, "role": "engineer", "text": "Review & ship" }
+  ],
+  "stats": [
+    { "id": 1, "value": "2 wks", "label": "per sprint deliverable" },
+    { "id": 2, "value": "100%", "label": "human-reviewed code" },
+    { "id": 3, "value": "15+", "label": "years building systems" },
+    { "id": 4, "value": "3", "label": "engineering disciplines" }
   ],
   "techStack": [
-    { "id": 1, "icon": "Factory", "label": "Process & Operations" },
+    { "id": 1, "icon": "Factory", "label": "Process" },
     { "id": 2, "icon": "Code", "label": "Software" },
-    { "id": 3, "icon": "Database", "label": "Data & ETL" },
+    { "id": 3, "icon": "Database", "label": "Data" },
     { "id": 4, "icon": "Cloud", "label": "Cloud" },
-    { "id": 5, "icon": "Zap", "label": "AI / Agents" }
+    { "id": 5, "icon": "Zap", "label": "AI Agents" }
   ]
 }

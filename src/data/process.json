@@ -1,16 +1,16 @@
 {
   "header": {
     "eyebrow": "How we work",
-    "title": "The process you trust — now at AI speed",
-    "description": "The fundamentals haven't changed: understand, plan, prove, build, iterate. What changed is how fast each step moves when engineers lead a human + agent team."
+    "title": "Proven process. AI speed.",
+    "description": "Iterative by design — a working deliverable every sprint."
   },
   "phases": [
-    { "id": 1, "icon": "MessageSquare", "title": "Talk ideas", "description": "We listen to your goals, users and constraints, and challenge assumptions early.", "duration": "Days" },
-    { "id": 2, "icon": "Map", "title": "Overall plan", "description": "An initial high-level plan: scope, architecture direction, risks and priorities.", "duration": "Days" },
-    { "id": 3, "icon": "FlaskConical", "title": "Proof of concept", "description": "A working POC validates the riskiest ideas before you commit to the build.", "duration": "1–2 weeks" },
-    { "id": 4, "icon": "LayoutList", "title": "MVP plan in sprints", "description": "We define the MVP and split it into short sprints with clear acceptance criteria.", "duration": "Days" },
-    { "id": 5, "icon": "Package", "title": "Sprint deliverables", "description": "Every sprint ends with a reviewed, working deliverable you can see and use.", "duration": "Each sprint" },
-    { "id": 6, "icon": "RefreshCw", "title": "Iterate to results", "description": "After the MVP we keep iterating, tuning the solution to the business results you need.", "duration": "Ongoing" }
+    { "id": 1, "icon": "MessageSquare", "title": "Talk ideas", "description": "Goals, users, constraints.", "duration": "Days" },
+    { "id": 2, "icon": "Map", "title": "Plan", "description": "Scope, architecture, risks.", "duration": "Days" },
+    { "id": 3, "icon": "FlaskConical", "title": "Proof of concept", "description": "Test the riskiest idea.", "duration": "1–2 wks" },
+    { "id": 4, "icon": "LayoutList", "title": "MVP in sprints", "description": "Clear acceptance criteria.", "duration": "Days" },
+    { "id": 5, "icon": "Package", "title": "Deliver", "description": "Working result each sprint.", "duration": "Each sprint" },
+    { "id": 6, "icon": "RefreshCw", "title": "Iterate", "description": "Tune to business results.", "duration": "Ongoing" }
   ],
-  "note": "Still iterative by design — we adapt to your needs as they evolve, sprint after sprint."
+  "note": ""
 }

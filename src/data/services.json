@@ -1,18 +1,13 @@
 {
-  "services": [
-    { "id": 1, "icon": "Factory", "title": "Operations & Process Engineering", "description": "We map how work really flows, find the bottlenecks and redesign the process before any software is written.", "color": "text-primary" },
-    { "id": 2, "icon": "Code", "title": "Custom Software", "description": "Web and enterprise applications architected for scale and delivered at AI-accelerated pace.", "color": "text-primary" },
-    { "id": 3, "icon": "Zap", "title": "AI & Agent Integration", "description": "Bring LLMs and autonomous agents into your product and operations — safely and measurably.", "color": "text-primary" },
-    { "id": 4, "icon": "Database", "title": "Data & ETL Pipelines", "description": "Reliable pipelines, integrations and warehouses that turn raw data into decisions.", "color": "text-primary" },
-    { "id": 5, "icon": "Workflow", "title": "Process Automation", "description": "Automate repetitive work with workflows and agents your team can actually trust.", "color": "text-primary" },
-    { "id": 6, "icon": "Smartphone", "title": "Mobile Apps", "description": "Cross-platform mobile apps with robust backends and offline-first behavior.", "color": "text-primary" },
-    { "id": 7, "icon": "Cloud", "title": "Cloud & DevOps", "description": "CI/CD, containers and infrastructure as code — with quality gates on every merge.", "color": "text-primary" },
-    { "id": 8, "icon": "Cog", "title": "Rescue & Modernization", "description": "Inherited messy, AI-generated or legacy code? We review, refactor and make it scale.", "color": "text-primary" },
-    { "id": 9, "icon": "Shield", "title": "Code Review & Security", "description": "Independent architecture and security reviews of your existing codebase.", "color": "text-primary" }
+  "groups": [
+    { "id": 1, "icon": "Factory", "title": "Operate better", "tagline": "Fix the process, then automate it.", "items": ["Process engineering", "Automation", "Data & ETL"] },
+    { "id": 2, "icon": "Code", "title": "Build software", "tagline": "Systems shaped around how you work.", "items": ["Custom apps", "Mobile", "AI & agents"] },
+    { "id": 3, "icon": "Shield", "title": "Secure & scale", "tagline": "Keep it solid as you grow.", "items": ["Cloud & DevOps", "Modernization", "Code & security review"] }
   ],
+  "services": [],
   "header": {
     "eyebrow": "What we solve",
-    "title": "Solutions, not just software",
-    "description": "IT is the tool; your operations are the target. Most engagements end up including software development — always after we understand the process."
+    "title": "Solutions, not just software.",
+    "description": "IT is the tool. Your operation is the target."
   }
 }

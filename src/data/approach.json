@@ -1,35 +1,23 @@
 {
   "header": {
     "eyebrow": "Why Kamansoft",
-    "title": "Fast is easy. Fast and scalable takes engineers.",
-    "description": "We are not just software developers — we are engineers who use IT, the cloud and AI to improve how your organization operates. Many agencies now ship AI-generated code at full speed and zero scrutiny. It demos well — then breaks the moment you grow. We use the same acceleration, with engineers in command of every decision."
+    "title": "AI speed, without the AI mess.",
+    "description": "Unreviewed AI code demos well, then breaks as you grow. Ours keeps scaling."
   },
   "comparison": {
     "them": {
       "label": "AI-blind delivery",
-      "points": [
-        "Code generated and shipped without review",
-        "No architecture — patterns improvised prompt by prompt",
-        "Works in the demo, collapses under real load",
-        "Every new feature makes the codebase messier",
-        "Hidden security and maintenance debt"
-      ]
+      "points": ["Shipped unreviewed", "No architecture", "Breaks at scale"]
     },
     "us": {
-      "label": "Engineer-led, AI-accelerated",
-      "points": [
-        "Every change reviewed by a senior engineer",
-        "Architecture designed first, proven patterns applied",
-        "Built and tested to scale from day one",
-        "Clean, documented code your team can own",
-        "Security and quality gates on every merge"
-      ]
+      "label": "Engineer-led",
+      "points": ["Every change reviewed", "Architecture first", "Built to scale"]
     }
   },
   "pillars": [
-    { "id": 1, "icon": "Compass", "title": "We understand", "description": "We map the process and the operation first — the flow, the data and the numbers that say whether it worked." },
-    { "id": 2, "icon": "Terminal", "title": "We command", "description": "We guide the loop. AI agents and developers execute well-scoped tasks under clear engineering direction." },
-    { "id": 3, "icon": "ShieldCheck", "title": "We review", "description": "Nothing reaches your product without human review, automated tests and quality gates." },
-    { "id": 4, "icon": "Users", "title": "The troop", "description": "A blended team of humans and agents, commanded by engineers who own the result." }
+    { "id": 1, "icon": "Compass", "title": "Understand", "description": "Map the process first." },
+    { "id": 2, "icon": "Terminal", "title": "Command", "description": "Engineers direct the work." },
+    { "id": 3, "icon": "ShieldCheck", "title": "Review", "description": "Tests and human review, always." },
+    { "id": 4, "icon": "Users", "title": "The troop", "description": "Humans + agents, one team." }
   ]
 }
