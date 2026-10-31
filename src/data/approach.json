@@ -4,6 +4,16 @@
     "title": "AI speed, without the AI mess.",
     "description": "Unreviewed AI code demos well, then breaks as you grow. Ours keeps scaling."
   },
+  "pillars": [
+    { "id": 1, "step": "01", "icon": "Compass", "title": "We understand", "description": "We map your process before writing code." },
+    { "id": 2, "step": "02", "icon": "Terminal", "title": "We command", "description": "Engineers direct the work; agents build it." },
+    { "id": 3, "step": "03", "icon": "ShieldCheck", "title": "We review", "description": "Every line tested and human-reviewed." }
+  ],
+  "troop": {
+    "icon": "Users",
+    "label": "The troop",
+    "text": "Humans and AI agents, one team."
+  },
   "comparison": {
     "them": {
       "label": "AI-blind delivery",
@@ -13,11 +23,5 @@
       "label": "Engineer-led",
       "points": ["Every change reviewed", "Architecture first", "Built to scale"]
     }
-  },
-  "pillars": [
-    { "id": 1, "icon": "Compass", "title": "Understand", "description": "Map the process first." },
-    { "id": 2, "icon": "Terminal", "title": "Command", "description": "Engineers direct the work." },
-    { "id": 3, "icon": "ShieldCheck", "title": "Review", "description": "Tests and human review, always." },
-    { "id": 4, "icon": "Users", "title": "The troop", "description": "Humans + agents, one team." }
-  ]
+  }
 }
