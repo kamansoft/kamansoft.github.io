@@ -2,6 +2,15 @@
 
 Goal: within about 5 seconds a visitor should know three things: **what we do** (we improve operations with software, data, cloud and AI), **how** (engineers lead a team of humans and AI agents and review everything), and **what they get** (a working result every sprint).
 
+## Show, don't tell (visual-first)
+- **Top of page graphic**: an animated "operation map" diagram: messy process boxes → engineer + AI agent nodes → clean, fast flow with an upward results chart. It tells the story without words.
+- **Big outcome numbers** strip under the top section (e.g. "2-week sprints", "100% human-reviewed", "15+ yrs experience"). Placeholder numbers will be marked so you can confirm them.
+- **Comparison as a picture**: two mini charts side by side. "Others" is a line that rises and then crashes as the system grows. "Kamansoft" is a line that keeps rising steadily. Only 3 short labels per side.
+- **Services as 3 large illustrated tiles** (Operate / Build / Secure & scale), each with a bold custom icon and tags. No paragraphs.
+- **Process as a horizontal animated track**: 6 icon nodes linked by a moving line, ending in a looping arrow. Each node shows its title and duration only.
+- **The troop**: a visual of 3 commander avatars connected to small human and agent icons.
+- Icons are larger and use the accent color. Elements animate in gently as you scroll. Custom illustrations are made in the site's dark/lime style.
+
 ## Rules for all sections
 - Heading: 8 words or fewer. One-line subtitle: 20 words or fewer.
 - Cards: a 2–4 word title plus one short line (about 12 words or fewer).
