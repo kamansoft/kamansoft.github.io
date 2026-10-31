@@ -70,8 +70,8 @@ const Approach = () => {
   const TroopIcon = troop ? iconMap[troop.icon as keyof typeof iconMap] : null;
 
   const sides = [
-    { side: comparison.them, crash: true, title: "Other agencies" },
-    { side: comparison.us, crash: false, title: "Kamansoft" },
+    { side: comparison.them, crash: true },
+    { side: comparison.us, crash: false },
   ];
 
   return (
