@@ -3,24 +3,23 @@
     "eyebrow": "Engineers for your operations",
     "title": "We improve how your operation runs.",
     "highlightText": "Software · Data · Cloud · AI",
-    "description": "Engineers lead a team of humans and AI agents. Every line reviewed."
+    "description": "Business first. Engineers lead, AI assists, humans review the results."
   },
   "buttons": {
     "primary": { "text": "Start your project", "icon": "ArrowRight" },
     "secondary": { "text": "See how we work", "icon": "Play" }
   },
   "loop": [
-    { "id": 1, "role": "engineer", "text": "Map the process" },
-    { "id": 2, "role": "engineer", "text": "Architect" },
-    { "id": 3, "role": "agent", "text": "Agents build" },
-    { "id": 4, "role": "engineer", "text": "Review & ship" }
+    { "id": 1, "role": "engineer", "icon": "ScanSearch", "text": "Business first", "detail": "Understand your business & processes" },
+    { "id": 2, "role": "agent", "icon": "Bot", "text": "Engineers lead. AI assists.", "detail": "From understanding to delivery", "actions": [
+      { "icon": "PencilRuler", "label": "Design" },
+      { "icon": "ListChecks", "label": "Plan" },
+      { "icon": "Wrench", "label": "Build" },
+      { "icon": "PackageCheck", "label": "Deliver" }
+    ] },
+    { "id": 3, "role": "engineer", "icon": "UserCheck", "text": "Humans review", "detail": "The output. The impact. Not just code." }
   ],
-  "stats": [
-    { "id": 1, "value": "2 wks", "label": "per sprint deliverable" },
-    { "id": 2, "value": "100%", "label": "human-reviewed code" },
-    { "id": 3, "value": "15+", "label": "years building systems" },
-    { "id": 4, "value": "3", "label": "engineering disciplines" }
-  ],
+  "iterationLabel": "Iterate toward better business results",
   "techStack": [
     { "id": 1, "icon": "Factory", "label": "Process" },
     { "id": 2, "icon": "Code", "label": "Software" },
