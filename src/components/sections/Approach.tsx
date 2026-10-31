@@ -22,11 +22,13 @@ const GrowthChart = ({ crash }: { crash: boolean }) => {
   );
 };
 
-/** Reveals the trio with a staggered fade once it scrolls into view. */
-const useRevealOnScroll = () => {
+/** Reveals the trio with a staggered fade once it scrolls into view.
+ *  `active` gates observation until the section's data has rendered the grid. */
+const useRevealOnScroll = (active: boolean) => {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
   useEffect(() => {
+    if (!active) return;
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -40,7 +42,7 @@ const useRevealOnScroll = () => {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [active]);
   return { ref, shown };
 };
 
@@ -50,7 +52,7 @@ const Approach = () => {
   const [comparison, setComparison] = useState<ApproachComparison | null>(null);
   const [pillars, setPillars] = useState<Pillar[]>([]);
   const [troop, setTroop] = useState<Troop | null>(null);
-  const trio = useRevealOnScroll();
+  const trio = useRevealOnScroll(!!header && !!comparison);
 
   useEffect(() => {
     Promise.all([
