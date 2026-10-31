@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { Compass, Terminal, ShieldCheck, Users, X, Check } from "lucide-react";
-import { ApproachDataService, ApproachComparison, ApproachHeader, Pillar } from "../../services/ApproachDataService";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { Compass, Terminal, ShieldCheck, Users, X, Check, ChevronRight } from "lucide-react";
+import { ApproachDataService, ApproachComparison, ApproachHeader, Pillar, Troop } from "../../services/ApproachDataService";
 
 const iconMap = { Compass, Terminal, ShieldCheck, Users };
 
@@ -22,19 +22,50 @@ const GrowthChart = ({ crash }: { crash: boolean }) => {
   );
 };
 
+/** Reveals the trio with a staggered fade once it scrolls into view. */
+const useRevealOnScroll = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShown(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return { ref, shown };
+};
+
 const Approach = () => {
   const dataService = useMemo(() => new ApproachDataService(), []);
   const [header, setHeader] = useState<ApproachHeader | null>(null);
   const [comparison, setComparison] = useState<ApproachComparison | null>(null);
   const [pillars, setPillars] = useState<Pillar[]>([]);
+  const [troop, setTroop] = useState<Troop | null>(null);
+  const trio = useRevealOnScroll();
 
   useEffect(() => {
-    Promise.all([dataService.getHeaderData(), dataService.getComparison(), dataService.getPillars()])
-      .then(([h, c, p]) => { setHeader(h); setComparison(c); setPillars(p); })
+    Promise.all([
+      dataService.getHeaderData(),
+      dataService.getComparison(),
+      dataService.getPillars(),
+      dataService.getTroop(),
+    ])
+      .then(([h, c, p, t]) => { setHeader(h); setComparison(c); setPillars(p); setTroop(t); })
       .catch((e) => console.error("Failed to load approach data:", e));
   }, [dataService]);
 
   if (!header || !comparison) return null;
+
+  const TroopIcon = troop ? iconMap[troop.icon as keyof typeof iconMap] : null;
 
   const sides = [
     { side: comparison.them, crash: true, title: "Other agencies" },
@@ -50,7 +81,45 @@ const Approach = () => {
           <p className="text-lg">{header.description}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        {/* The trio: understand → command → review */}
+        <div ref={trio.ref} className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
+          {pillars.map((p, i) => {
+            const Icon = iconMap[p.icon as keyof typeof iconMap];
+            return (
+              <div
+                key={p.id}
+                className={`group relative rounded-2xl border border-border bg-card p-8 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-glow ${trio.shown ? "animate-fade-in" : "opacity-0"}`}
+                style={trio.shown ? { animationDelay: `${i * 160}ms`, animationFillMode: "both" } : undefined}
+              >
+                <span className="absolute left-5 top-4 font-mono text-xs tracking-widest text-muted-foreground">{p.step}</span>
+                <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                  {Icon && <Icon className="h-10 w-10" />}
+                </div>
+                <h3 className="text-2xl font-bold mb-2">{p.title}</h3>
+                <p className="text-sm text-muted-foreground">{p.description}</p>
+                {i < pillars.length - 1 && (
+                  <ChevronRight
+                    className="hidden md:block absolute top-1/2 left-[calc(100%+12px)] -translate-x-1/2 -translate-y-1/2 h-8 w-8 text-primary z-10"
+                    aria-hidden="true"
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* The troop strip */}
+        {troop && (
+          <div className="mx-auto mb-14 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 rounded-full border border-primary/30 bg-primary/5 px-6 py-3">
+            <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-primary">
+              {TroopIcon && <TroopIcon className="h-4 w-4" />}
+              {troop.label}
+            </span>
+            <span className="text-sm text-muted-foreground">{troop.text}</span>
+          </div>
+        )}
+
+        <div className="grid md:grid-cols-2 gap-6">
           {sides.map(({ side, crash, title }) => (
             <div key={title} className={`rounded-xl bg-card p-7 ${crash ? "border border-border" : "border-2 border-primary shadow-glow"}`}>
               <p className={`font-mono text-xs uppercase tracking-[0.2em] mb-2 ${crash ? "text-muted-foreground" : "text-primary"}`}>{title}</p>
@@ -65,21 +134,6 @@ const Approach = () => {
               </ul>
             </div>
           ))}
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {pillars.map((p) => {
-            const Icon = iconMap[p.icon as keyof typeof iconMap];
-            return (
-              <div key={p.id} className="group rounded-xl border border-border bg-card p-6 text-center transition-all hover:-translate-y-1 hover:border-primary">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  {Icon && <Icon className="h-7 w-7" />}
-                </div>
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <p className="text-sm text-muted-foreground">{p.description}</p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>
