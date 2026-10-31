@@ -47,7 +47,7 @@ const Navigation = () => {
           <div className="flex items-center space-x-3">
             <div className="relative">
               <div className={`pointer-events-none absolute inset-0 rounded-md transition-opacity duration-500 ${
-                isScrolled ? 'opacity-25' : 'opacity-100'
+                isScrolled ? 'opacity-40' : 'opacity-100'
               }`}>
                 <div className="h-full w-full rounded-md animate-logo-breathe" />
               </div>
