@@ -1,0 +1,39 @@
+{
+  "features": [
+    { "id": 1, "text": "Process mapped before coded" },
+    { "id": 2, "text": "Operations-first thinking" },
+    { "id": 3, "text": "Human-reviewed code" },
+    { "id": 4, "text": "Architecture before code" },
+    { "id": 5, "text": "AI-accelerated sprints" },
+    { "id": 6, "text": "Tuned to business results" }
+  ],
+  "values": [
+    {
+      "id": 1,
+      "icon": "Users",
+      "title": "Engineers, together",
+      "description": "Chemical, civil and software engineers who have worked real operations — not only shipped features."
+    },
+    {
+      "id": 2,
+      "icon": "Award",
+      "title": "Process & quality",
+      "description": "We understand process, quality systems and compliance, and we design software around how work actually runs."
+    },
+    {
+      "id": 3,
+      "icon": "Target",
+      "title": "Business results",
+      "description": "Every engagement is measured against an operating number: time saved, errors avoided, throughput gained."
+    }
+  ],
+  "header": {
+    "title": "A group of engineers, not a code shop",
+    "mainDescription": "Kamansoft is engineers first. We come from process and quality, from supply chain and construction development management, and from more than 15 years of software delivery. We use IT — software, data, cloud and AI — as the tool, and your operations as the target.",
+    "secondaryDescription": "Most of the time that includes software development. But before it comes understanding your process: where the time goes, where the data breaks, where quality slips. That is the part we excel at."
+  },
+  "image": {
+    "src": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
+    "alt": "Engineers reviewing a process and system blueprint before building software"
+  }
+}

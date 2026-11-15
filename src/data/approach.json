@@ -1,0 +1,29 @@
+{
+  "header": {
+    "eyebrow": "Why Kamansoft",
+    "title": "AI speed, without the AI mess.",
+    "description": "Unreviewed AI code demos well, then breaks as you grow. Ours keeps scaling."
+  },
+  "pillars": [
+    { "id": 1, "step": "01", "icon": "Compass", "title": "We understand", "description": "We map your process before writing code." },
+    { "id": 2, "step": "02", "icon": "Terminal", "title": "We command", "description": "Engineers direct the work; agents build it." },
+    { "id": 3, "step": "03", "icon": "ShieldCheck", "title": "We review", "description": "Every line tested and human-reviewed." }
+  ],
+  "troop": {
+    "icon": "Users",
+    "label": "The troop",
+    "text": "Humans and AI agents, one team."
+  },
+  "comparison": {
+    "them": {
+      "title": "Other agencies",
+      "tagline": "Cheap and fast — until it isn't.",
+      "points": ["Unreviewed", "No architecture", "Breaks on scale"]
+    },
+    "us": {
+      "title": "Kamansoft",
+      "tagline": "We build for the future and for change.",
+      "points": ["Plan first", "Prove the idea", "Architect for change"]
+    }
+  }
+}

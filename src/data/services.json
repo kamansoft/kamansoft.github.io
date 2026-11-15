@@ -1,0 +1,13 @@
+{
+  "groups": [
+    { "id": 1, "icon": "Factory", "title": "Operate better", "tagline": "Fix the process, then automate it.", "items": ["Process engineering", "Automation", "Data & ETL"] },
+    { "id": 2, "icon": "Code", "title": "Build software", "tagline": "Systems shaped around how you work.", "items": ["Custom apps", "Mobile", "AI & agents"] },
+    { "id": 3, "icon": "Shield", "title": "Secure & scale", "tagline": "Keep it solid as you grow.", "items": ["Cloud & DevOps", "Modernization", "Code & security review"] }
+  ],
+  "services": [],
+  "header": {
+    "eyebrow": "What we solve",
+    "title": "Solutions, not just software.",
+    "description": "IT is the tool. Your operation is the target."
+  }
+}

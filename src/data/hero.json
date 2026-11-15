@@ -1,0 +1,30 @@
+{
+  "header": {
+    "eyebrow": "Engineers for your operations",
+    "title": "We improve how your operation runs.",
+    "highlightText": "Software · Data · Cloud · AI",
+    "description": "Business first. Engineers lead, AI assists, humans review the results."
+  },
+  "buttons": {
+    "primary": { "text": "Start your project", "icon": "ArrowRight" },
+    "secondary": { "text": "See how we work", "icon": "Play" }
+  },
+  "loop": [
+    { "id": 1, "role": "engineer", "icon": "ScanSearch", "text": "Business first", "detail": "Understand your business & processes" },
+    { "id": 2, "role": "agent", "icon": "Bot", "text": "Engineers lead. AI assists.", "detail": "From understanding to delivery", "actions": [
+      { "icon": "PencilRuler", "label": "Design" },
+      { "icon": "ListChecks", "label": "Plan" },
+      { "icon": "Wrench", "label": "Build" },
+      { "icon": "PackageCheck", "label": "Deliver" }
+    ] },
+    { "id": 3, "role": "engineer", "icon": "UserCheck", "text": "Humans review", "detail": "The output. The impact. Not just code." }
+  ],
+  "iterationLabel": "Iterate toward better business results",
+  "techStack": [
+    { "id": 1, "icon": "Factory", "label": "Process" },
+    { "id": 2, "icon": "Code", "label": "Software" },
+    { "id": 3, "icon": "Database", "label": "Data" },
+    { "id": 4, "icon": "Cloud", "label": "Cloud" },
+    { "id": 5, "icon": "Zap", "label": "AI Agents" }
+  ]
+}

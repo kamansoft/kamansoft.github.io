@@ -1,0 +1,15 @@
+{
+  "header": {
+    "title": "Get In Touch",
+    "description": "Tell us how your operation runs today. We'll answer fast."
+  },
+  "whatsapp": {
+    "number": "570000000000",
+    "message": "Hi Kamansoft! I'd like to talk about improving our operations."
+  },
+  "channels": [
+    { "id": "email", "icon": "Mail", "title": "Email", "label": "contact@kamansoft.com", "href": "mailto:contact@kamansoft.com" },
+    { "id": "whatsapp", "icon": "MessageCircle", "title": "WhatsApp", "label": "+57 000 000 0000 (placeholder)", "href": "whatsapp" },
+    { "id": "instagram", "icon": "Instagram", "title": "Instagram", "label": "@kamansoft (placeholder)", "href": "https://instagram.com/kamansoft" }
+  ]
+}

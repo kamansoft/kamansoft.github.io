@@ -1,95 +1,51 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Code, 
-  Smartphone, 
-  Globe, 
-  Database, 
-  Cloud, 
-  Shield,
-  Palette,
-  BarChart3,
-  Workflow,
-  Cog
-} from "lucide-react";
+import { Factory, Code, Shield, ArrowUpRight } from "lucide-react";
+import { ServicesDataService, ServiceGroup } from "../../services/ServicesDataService";
+import { useMemo, useEffect, useState } from "react";
+
+const iconMap = { Factory, Code, Shield };
 
 const Services = () => {
-  const services = [
-    {
-      icon: <Code className="h-12 w-12 text-blue-600" />,
-      title: "Custom Software Development",
-      description: "Enterprise-grade web and desktop applications built with modern technologies. Scalable solutions tailored to your business requirements with clean, maintainable code."
-    },
-    {
-      icon: <Database className="h-12 w-12 text-purple-600" />,
-      title: "ETL & Data Processing",
-      description: "Extract, Transform, Load solutions for seamless data integration. Automated data pipelines, real-time processing, and enterprise data warehouse solutions."
-    },
-    {
-      icon: <Workflow className="h-12 w-12 text-green-600" />,
-      title: "Business Process Automation", 
-      description: "Streamline operations with intelligent automation. Workflow optimization, RPA implementation, and custom automation tools to reduce manual tasks and increase efficiency."
-    },
-    {
-      icon: <Smartphone className="h-12 w-12 text-orange-600" />,
-      title: "Mobile App Development",
-      description: "Native and cross-platform mobile applications for iOS and Android. User-friendly interfaces with robust backend integration and offline capabilities."
-    },
-    {
-      icon: <Cloud className="h-12 w-12 text-cyan-600" />,
-      title: "Cloud Migration & DevOps",
-      description: "Seamless cloud migration strategies and CI/CD pipeline implementation. AWS, Azure, and GCP expertise with containerization and microservices architecture."
-    },
-    {
-      icon: <BarChart3 className="h-12 w-12 text-indigo-600" />,
-      title: "Business Intelligence & Analytics",
-      description: "Transform raw data into actionable insights. Custom dashboards, reporting systems, and predictive analytics to drive data-driven decision making."
-    },
-    {
-      icon: <Shield className="h-12 w-12 text-red-600" />,
-      title: "Enterprise Security Solutions",
-      description: "Comprehensive cybersecurity services including security audits, penetration testing, and compliance implementation to protect your digital assets."
-    },
-    {
-      icon: <Cog className="h-12 w-12 text-emerald-600" />,
-      title: "System Integration",
-      description: "Connect disparate systems and applications. API development, legacy system modernization, and third-party integrations for unified business operations."
-    }
-  ];
+  const dataService = useMemo(() => new ServicesDataService(), []);
+  const [groups, setGroups] = useState<ServiceGroup[]>([]);
+  const [header, setHeader] = useState<{ eyebrow?: string; title: string; description: string }>({ title: "", description: "" });
+
+  useEffect(() => {
+    Promise.all([dataService.getGroups(), dataService.getHeaderData()])
+      .then(([g, h]) => { setGroups(g); setHeader(h); })
+      .catch((e) => console.error("Failed to load services data:", e));
+  }, [dataService]);
 
   return (
-    <section id="services" className="py-20 bg-secondary">
+    <section id="services" className="py-24 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Enterprise Software Development & Automation Services
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            Transform your business with our comprehensive software development, ETL data processing, and automation solutions. 
-            We help enterprises modernize operations, streamline workflows, and unlock the power of their data.
-          </p>
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <p className="eyebrow mb-4">{header.eyebrow}</p>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">{header.title}</h2>
+          <p className="text-lg">{header.description}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="h-full hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 bg-card border-border shadow-md"
-            >
-              <CardHeader className="text-center pb-4">
-                <div className="flex justify-center mb-4">
-                  {service.icon}
+        <div className="grid md:grid-cols-3 gap-6">
+          {groups.map((g, i) => {
+            const Icon = iconMap[g.icon as keyof typeof iconMap];
+            return (
+              <div key={g.id} className="group relative overflow-hidden rounded-xl border border-border bg-card p-8 transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-glow">
+                <span className="absolute -right-4 -top-6 font-mono text-[9rem] font-bold leading-none text-primary/5 select-none">{i + 1}</span>
+                <div className="relative mb-8 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-glow transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  {Icon && <Icon className="h-10 w-10" strokeWidth={1.75} />}
                 </div>
-                <CardTitle className="text-xl font-semibold text-foreground">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground text-center">
-                  {service.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+                <h3 className="relative text-2xl font-bold mb-2 flex items-center gap-2">
+                  {g.title}
+                  <ArrowUpRight className="h-5 w-5 text-primary opacity-0 transition-opacity group-hover:opacity-100" />
+                </h3>
+                <p className="relative text-muted-foreground mb-6">{g.tagline}</p>
+                <div className="relative flex flex-wrap gap-2">
+                  {g.items.map((item) => (
+                    <span key={item} className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-xs text-foreground">{item}</span>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

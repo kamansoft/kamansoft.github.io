@@ -1,8 +1,13 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Github } from "lucide-react";
+import { siteConfig, SectionKey } from "@/services/SiteConfigService";
+
+const links: [SectionKey, string, string][] = [
+  ["hero", "home", "Home"], ["services", "services", "Services"], ["approach", "approach", "About"],
+  ["portfolio", "portfolio", "Portfolio"], ["team", "team", "Team"], ["blog", "blog", "Blog"],
+].filter(([k]) => siteConfig.isEnabled(k as SectionKey)) as [SectionKey, string, string][];
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,6 +37,10 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  const handleGitHubClick = () => {
+    window.open('https://github.com/kamansoft', '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
       isScrolled 
@@ -40,18 +49,25 @@ const Navigation = () => {
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          {/* Logo with white background same size as the logo */}
+          {/* Logo: mark untouched on a narrow white canvas; the breathing glow fades to a whisper once the bar is compact */}
           <div className="flex items-center space-x-3">
-            <div className={`bg-white rounded-md p-1 transition-all duration-300 ${
-              isScrolled ? 'w-12 h-12' : 'w-14 h-14'
-            } flex items-center justify-center`}>
-              <img 
-                src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
-                alt="Kamansoft Logo" 
-                className={`transition-all duration-300 object-contain ${
-                  isScrolled ? 'h-10 w-10' : 'h-12 w-12'
-                }`}
-              />
+            <div className="relative">
+              <div className={`pointer-events-none absolute inset-0 rounded-md transition-opacity duration-500 ${
+                isScrolled ? 'opacity-40' : 'opacity-100'
+              }`}>
+                <div className="h-full w-full rounded-md animate-logo-breathe" />
+              </div>
+              <div className={`relative bg-white rounded-md transition-all duration-300 ${
+                isScrolled ? 'w-12 h-12 p-[2px]' : 'w-14 h-14 p-[3px]'
+              } flex items-center justify-center`}>
+                <img 
+                  src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
+                  alt="Kamansoft Logo" 
+                  className={`transition-all duration-300 object-contain ${
+                    isScrolled ? 'h-10 w-10' : 'h-12 w-12'
+                  }`}
+                />
+              </div>
             </div>
             <div className="flex flex-col">
               <span className={`font-bold transition-all duration-300 ${
@@ -69,59 +85,29 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('about')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('portfolio')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Portfolio
-            </button>
-            <button 
-              onClick={() => scrollToSection('team')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Team
-            </button>
-            <button 
-              onClick={() => scrollToSection('blog')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Blog
-            </button>
+            {links.map(([, id, label]) => (
+              <button key={id}
+                onClick={() => scrollToSection(id)}
+                className={`transition-colors ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
             <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleGitHubClick}
+              className="text-white hover:bg-white/10"
+              title="View on GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </Button>
             <Button 
               onClick={() => scrollToSection('contact')}
-              style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
-              className="hover:opacity-90"
+              className="bg-signal text-ink hover:bg-signal/90 font-semibold"
             >
               Contact Us
             </Button>
@@ -130,6 +116,15 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleGitHubClick}
+              className="text-white hover:bg-white/10"
+              title="View on GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </Button>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-white"
@@ -147,58 +142,19 @@ const Navigation = () => {
               : 'bg-black/30 backdrop-blur-sm border-white/10'
           }`}>
             <div className="flex flex-col space-y-4 px-4">
-              <button 
-                onClick={() => scrollToSection('home')}
+              {links.map(([, id, label]) => (
+              <button key={id}
+                onClick={() => scrollToSection(id)}
                 className={`transition-colors text-left ${
                   isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
                 }`}
               >
-                Home
+                {label}
               </button>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('about')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                About
-              </button>
-              <button 
-                onClick={() => scrollToSection('portfolio')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Portfolio
-              </button>
-              <button 
-                onClick={() => scrollToSection('team')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Team
-              </button>
-              <button 
-                onClick={() => scrollToSection('blog')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Blog
-              </button>
-              <Button 
+            ))}
+            <Button 
                 onClick={() => scrollToSection('contact')}
-                style={{ backgroundColor: 'hsl(210, 84%, 45%)', color: 'white' }}
-                className="hover:opacity-90 w-full"
+                className="bg-signal text-ink hover:bg-signal/90 font-semibold w-full"
               >
                 Contact Us
               </Button>

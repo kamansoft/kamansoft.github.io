@@ -9,9 +9,55 @@ import {
   Phone,
   MapPin
 } from "lucide-react";
+import { FooterDataService } from "../../services/FooterDataService";
+import { useMemo, useEffect, useState } from "react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const dataService = useMemo(() => new FooterDataService(), []);
+  const [companyData, setCompanyData] = useState({ name: '', description: '', social: [] });
+  const [solutions, setSolutions] = useState({ title: '', links: [] });
+  const [industries, setIndustries] = useState({ title: '', items: [] });
+  const [contact, setContact] = useState({ title: '', info: [] });
+  const [legal, setLegal] = useState({ copyright: '', links: [] });
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const [companyInfo, solutionsData, industriesData, contactData, legalData] = await Promise.all([
+          dataService.getCompanyData(),
+          dataService.getSolutions(),
+          dataService.getIndustries(),
+          dataService.getContact(),
+          dataService.getLegal()
+        ]);
+        setCompanyData(companyInfo);
+        setSolutions(solutionsData);
+        setIndustries(industriesData);
+        setContact(contactData);
+        setLegal(legalData);
+      } catch (error) {
+        console.error('Failed to load footer data:', error);
+      }
+    };
+    
+    loadData();
+  }, [dataService]);
+
+  const iconMap = {
+    Facebook,
+    Twitter,
+    Linkedin,
+    Instagram,
+    Mail,
+    Phone,
+    MapPin
+  };
+
+  const getIcon = (iconName: string) => {
+    const IconComponent = iconMap[iconName as keyof typeof iconMap];
+    return IconComponent ? <IconComponent className="h-5 w-5" /> : null;
+  };
 
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white">
@@ -19,108 +65,68 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-blue-400">Kamansoft</h3>
+            <h3 className="text-2xl font-bold text-blue-400">{companyData.name}</h3>
             <p className="text-gray-300 dark:text-gray-400 leading-relaxed">
-              Leading software development company specializing in custom applications, ETL data processing, and business automation. Transform your enterprise with scalable, secure solutions.
+              {companyData.description}
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/company/kamansoft" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="LinkedIn">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="https://twitter.com/kamansoft" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Twitter">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Instagram">
-                <Instagram className="h-5 w-5" />
-              </a>
+              {companyData.social.map((social, index) => (
+                <a 
+                  key={index}
+                  href={social.url} 
+                  className="text-gray-400 hover:text-blue-400 transition-colors" 
+                  aria-label={social.name}
+                >
+                  {getIcon(social.icon)}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Solutions</h4>
+            <h4 className="text-lg font-semibold">{solutions.title}</h4>
             <ul className="space-y-2">
-              <li>
-                <a href="#services" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  Custom Software Development
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  ETL & Data Processing
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  Business Automation
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  Cloud Migration
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  System Integration
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  Case Studies
-                </a>
-              </li>
+              {solutions.links.map((link, index) => (
+                <li key={index}>
+                  <a href={link.href} className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
+                    {link.text}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Industries */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Industries</h4>
+            <h4 className="text-lg font-semibold">{industries.title}</h4>
             <ul className="space-y-2">
-              <li>
-                <span className="text-gray-300 dark:text-gray-400">Healthcare & Life Sciences</span>
-              </li>
-              <li>
-                <span className="text-gray-300 dark:text-gray-400">Financial Services</span>
-              </li>
-              <li>
-                <span className="text-gray-300 dark:text-gray-400">Manufacturing</span>
-              </li>
-              <li>
-                <span className="text-gray-300 dark:text-gray-400">Retail & E-commerce</span>
-              </li>
-              <li>
-                <span className="text-gray-300 dark:text-gray-400">Supply Chain & Logistics</span>
-              </li>
-              <li>
-                <span className="text-gray-300 dark:text-gray-400">Government & Public Sector</span>
-              </li>
+              {industries.items.map((industry, index) => (
+                <li key={index}>
+                  <span className="text-gray-300 dark:text-gray-400">{industry}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Get In Touch</h4>
+            <h4 className="text-lg font-semibold">{contact.title}</h4>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-blue-400" />
-                <a href="mailto:hello@kamansoft.com" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  hello@kamansoft.com
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-blue-400" />
-                <a href="tel:+15551234567" className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
-                  +1 (555) 123-4567
-                </a>
-              </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-300 dark:text-gray-400">Silicon Valley, CA</span>
-              </div>
+              {contact.info.map((info, index) => (
+                <div key={index} className="flex items-center space-x-3">
+                  <div className={info.color}>
+                    {getIcon(info.icon)}
+                  </div>
+                  {info.href ? (
+                    <a href={info.href} className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
+                      {info.text}
+                    </a>
+                  ) : (
+                    <span className="text-gray-300 dark:text-gray-400">{info.text}</span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -129,18 +135,14 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-gray-400 dark:text-gray-500 text-sm leading-relaxed">
-            © {currentYear} Kamansoft. All rights reserved. | Enterprise Software Development & Automation Solutions
+            © {currentYear} {legal.copyright}
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-400 dark:text-gray-500 hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-gray-400 dark:text-gray-500 hover:text-white transition-colors">
-              Terms of Service
-            </a>
-            <a href="#" className="text-gray-400 dark:text-gray-500 hover:text-white transition-colors">
-              Cookie Policy
-            </a>
+            {legal.links.map((link, index) => (
+              <a key={index} href={link.href} className="text-gray-400 dark:text-gray-500 hover:text-white transition-colors">
+                {link.text}
+              </a>
+            ))}
           </div>
         </div>
       </div>

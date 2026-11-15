@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero": true,
+    "services": true,
+    "approach": true,
+    "process": true,
+    "portfolio": false,
+    "team": true,
+    "blog": true,
+    "contact": true,
+    "footer": true
+  }
+}

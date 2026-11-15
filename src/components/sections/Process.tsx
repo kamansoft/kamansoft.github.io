@@ -1,204 +1,54 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useState, useEffect, useRef } from "react";
-import ProcessBackground from "./process/ProcessBackground";
-import ProcessTransition from "./process/ProcessTransition";
-import ProcessTimeline from "./process/ProcessTimeline";
-import ContinuousImprovement from "./process/ContinuousImprovement";
-import { conceptSteps, agileSteps } from "./process/ProcessSteps";
+import { useEffect, useMemo, useState } from "react";
+import { MessageSquare, Map, FlaskConical, LayoutList, Package, RefreshCw } from "lucide-react";
+import { ProcessDataService, ProcessHeader, ProcessPhase } from "../../services/ProcessDataService";
+
+const iconMap = { MessageSquare, Map, FlaskConical, LayoutList, Package, RefreshCw };
 
 const Process = () => {
-  const [activeTab, setActiveTab] = useState("conceptualizing");
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isNavigationTriggered, setIsNavigationTriggered] = useState(false);
-  const [isFlashing, setIsFlashing] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-  const conceptualizingContentRef = useRef<HTMLDivElement>(null);
+  const dataService = useMemo(() => new ProcessDataService(), []);
+  const [header, setHeader] = useState<ProcessHeader | null>(null);
+  const [phases, setPhases] = useState<ProcessPhase[]>([]);
 
   useEffect(() => {
-    // Listen for navigation clicks to prevent automatic transition
-    const handleNavigationClick = () => {
-      setIsNavigationTriggered(true);
-      // Reset the flag after a short delay
-      setTimeout(() => {
-        setIsNavigationTriggered(false);
-      }, 1000);
-    };
+    Promise.all([dataService.getHeaderData(), dataService.getPhases()])
+      .then(([h, p]) => { setHeader(h); setPhases(p); })
+      .catch((e) => console.error("Failed to load process data:", e));
+  }, [dataService]);
 
-    // Add event listeners to all navigation buttons
-    const navButtons = document.querySelectorAll('nav button, nav a');
-    navButtons.forEach(button => {
-      button.addEventListener('click', handleNavigationClick);
-    });
-
-    return () => {
-      navButtons.forEach(button => {
-        button.removeEventListener('click', handleNavigationClick);
-      });
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current || !conceptualizingContentRef.current || isNavigationTriggered) return;
-      
-      const section = sectionRef.current;
-      const conceptContent = conceptualizingContentRef.current;
-      const sectionRect = section.getBoundingClientRect();
-      const contentRect = conceptContent.getBoundingClientRect();
-      
-      // Check if we're in the process section and on conceptualizing tab
-      if (activeTab === "conceptualizing" && sectionRect.top <= 100) {
-        // Check if we've scrolled to the end of conceptualizing content
-        if (contentRect.bottom <= window.innerHeight * 0.8) {
-          // Start transition effect
-          setIsTransitioning(true);
-          
-          // Scroll back to the top of the section more slowly
-          section.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start'
-          });
-          
-          // Switch to development tab after shorter transition effect
-          setTimeout(() => {
-            // Trigger flash effect for automatic transition
-            setIsFlashing(true);
-            setActiveTab("development");
-            
-            // Remove flash effect after animation
-            setTimeout(() => {
-              setIsFlashing(false);
-            }, 100);
-            
-            setTimeout(() => {
-              setIsTransitioning(false);
-            }, 600);
-          }, 1000);
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeTab, isNavigationTriggered]);
-
-  const handleTabChange = (value: string) => {
-    // Trigger flash effect
-    setIsFlashing(true);
-    setActiveTab(value);
-    
-    // Remove flash effect after animation
-    setTimeout(() => {
-      setIsFlashing(false);
-    }, 100);
-  };
+  if (!header) return null;
 
   return (
-    <section 
-      ref={sectionRef} 
-      id="process" 
-      className={`py-20 relative overflow-hidden transition-all duration-1000 ${
-        activeTab === "conceptualizing" 
-          ? "bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-muted/50" 
-          : "bg-gradient-to-br from-green-50/50 via-blue-50/30 to-muted/50"
-      }`}
-    >
-      <ProcessBackground activeTab={activeTab} />
-      <ProcessTransition isTransitioning={isTransitioning} />
-
-      <div className="container mx-auto px-4 relative z-20">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
-            Our Solution Building Process
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A proven methodology that ensures we understand your needs and deliver the right solution
-          </p>
+    <section id="process" className="py-24 bg-ink bg-grid-ink overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-2xl mx-auto mb-20">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-signal mb-4">{header.eyebrow}</p>
+          <h2 className="text-3xl md:text-5xl font-bold text-ink-foreground mb-4">{header.title}</h2>
+          <p className="text-lg text-ink-muted">{header.description}</p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-8 relative z-30">
-            <TabsTrigger 
-              value="conceptualizing" 
-              className={`relative overflow-hidden transition-all duration-300 ${
-                activeTab === "conceptualizing" 
-                  ? `bg-blue-100 text-blue-900 shadow-md ${
-                      isFlashing ? 'bg-white text-blue-600 shadow-xl shadow-white/80 brightness-150' : ''
-                    }` 
-                  : 'opacity-70'
-              }`}
-            >
-              <span className="relative z-10">Conceptualizing</span>
-              {activeTab === "conceptualizing" && (
-                <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 ${
-                  isFlashing ? 'bg-white/90' : ''
-                }`}></div>
-              )}
-            </TabsTrigger>
-            
-            <TabsTrigger 
-              value="development" 
-              className={`relative overflow-hidden transition-all duration-300 ${
-                activeTab === "development" 
-                  ? `bg-green-100 text-green-900 shadow-md ${
-                      isFlashing ? 'bg-white text-green-600 shadow-xl shadow-white/80 brightness-150' : ''
-                    }` 
-                  : 'opacity-70'
-              }`}
-            >
-              <span className="relative z-10">Development</span>
-              {activeTab === "development" && (
-                <div className={`absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 ${
-                  isFlashing ? 'bg-white/90' : ''
-                }`}></div>
-              )}
-            </TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="conceptualizing" className="mt-8">
-            <div ref={conceptualizingContentRef} className={`transition-all duration-500 ${
-              isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            }`}>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-semibold text-foreground mb-2">
-                  From Idea to MVP Definition
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Understanding your vision and creating a solid foundation for development
-                </p>
-                <div className="max-w-2xl mx-auto bg-primary/10 border border-primary/20 rounded-lg p-4">
-                  <p className="text-sm text-muted-foreground">
-                    <strong className="text-foreground">MVP (Minimum Viable Product)</strong> is the simplest version of your product that includes only the core features needed to solve your main problem and deliver value to users.
-                  </p>
-                </div>
-              </div>
-              <ProcessTimeline 
-                steps={conceptSteps} 
-                totalDuration="Total Timeline: 4-6 weeks from concept to development start" 
-              />
-            </div>
-          </TabsContent>
-          
-          <TabsContent value="development" className="mt-8">
-            <div className={`transition-all duration-500 ${
-              isTransitioning ? "opacity-50 blur-sm" : "opacity-100 blur-0"
-            }`}>
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-semibold text-foreground mb-2">
-                  Agile Development Process
-                </h3>
-                <p className="text-muted-foreground">
-                  Continuous delivery and improvement through iterative development cycles
-                </p>
-              </div>
-              <ProcessTimeline 
-                steps={agileSteps} 
-                totalDuration="Repeating 2-week cycles until project completion" 
-              />
-              <ContinuousImprovement />
-            </div>
-          </TabsContent>
-        </Tabs>
+        <div className="relative">
+          {/* track line with moving pulse */}
+          <div className="absolute left-[8%] right-[8%] top-10 hidden lg:block h-0.5 bg-ink-border overflow-hidden">
+            <div className="h-full w-1/4 bg-gradient-to-r from-transparent via-signal to-transparent animate-track" />
+          </div>
+          <ol className="relative grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-4">
+            {phases.map((phase, i) => {
+              const Icon = iconMap[phase.icon as keyof typeof iconMap];
+              const isLoop = i === phases.length - 1;
+              return (
+                <li key={phase.id} className="group flex flex-col items-center text-center animate-fade-in" style={{ animationDelay: `${i * 120}ms`, animationFillMode: "both" }}>
+                  <div className={`relative mb-5 flex h-20 w-20 items-center justify-center rounded-full border-2 transition-all duration-300 group-hover:scale-110 ${isLoop ? "border-signal bg-signal text-ink shadow-glow" : "border-signal/40 bg-ink text-signal group-hover:border-signal"}`}>
+                    {Icon && <Icon className={`h-8 w-8 ${isLoop ? "animate-spin [animation-duration:6s]" : ""}`} />}
+                    <span className="absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-ink-foreground font-mono text-xs font-bold text-ink">{i + 1}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-ink-foreground mb-1">{phase.title}</h3>
+                  <p className="text-xs text-ink-muted mb-3 max-w-[11rem]">{phase.description}</p>
+                  <span className="rounded-full border border-ink-border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-signal">{phase.duration}</span>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
       </div>
     </section>
   );
