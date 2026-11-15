@@ -1,57 +1,23 @@
-
 import { IContactDataAdapter } from '../adapters/IDataAdapter';
 import { ContactJsonAdapter } from '../adapters/JsonFileAdapter';
 
-export interface ContactInfo {
-  id: number;
-  icon: string;
-  title: string;
-  details: string[];
-  color: string;
-}
+export interface ContactChannel { id: string; icon: string; title: string; label: string; href: string; }
+export interface WhatsAppInfo { number: string; message: string; }
 
-export interface IContactDataProvider {
-  getHeaderData(): Promise<{
-    title: string;
-    description: string;
-  }>;
-  getFormData(): Promise<{
-    title: string;
-    fields: Record<string, string>;
-    submitButton: { text: string; icon: string };
-  }>;
-  getCallToAction(): Promise<{
-    title: string;
-    description: string;
-    buttonText: string;
-  }>;
-  getContactInfo(): Promise<ContactInfo[]>;
-}
+export const whatsappUrl = (w: WhatsAppInfo) =>
+  `https://wa.me/${w.number}?text=${encodeURIComponent(w.message)}`;
 
-export class ContactDataService implements IContactDataProvider {
-  private adapter: IContactDataAdapter;
-
-  constructor(adapter?: IContactDataAdapter) {
-    this.adapter = adapter || new ContactJsonAdapter();
+export class ContactDataService {
+  constructor(private adapter: IContactDataAdapter = new ContactJsonAdapter()) {}
+  async getHeaderData(): Promise<{ title: string; description: string }> {
+    return (await this.adapter.getData()).header;
   }
-
-  async getHeaderData() {
-    const data = await this.adapter.getData();
-    return data.header;
+  async getWhatsApp(): Promise<WhatsAppInfo> {
+    return (await this.adapter.getData()).whatsapp;
   }
-
-  async getFormData() {
+  async getChannels(): Promise<ContactChannel[]> {
     const data = await this.adapter.getData();
-    return data.form;
-  }
-
-  async getCallToAction() {
-    const data = await this.adapter.getData();
-    return data.callToAction;
-  }
-
-  async getContactInfo(): Promise<ContactInfo[]> {
-    const data = await this.adapter.getData();
-    return data.contactInfo;
+    return data.channels.map((c: ContactChannel) =>
+      c.href === 'whatsapp' ? { ...c, href: whatsappUrl(data.whatsapp) } : c);
   }
 }
