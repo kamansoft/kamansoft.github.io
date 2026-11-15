@@ -25,7 +25,7 @@ const GrowthChart = ({ crash, active, markers }: { crash: boolean; active: boole
           <path d="M150 22 l5 8 l-6 4 l6 7" className="stroke-destructive fill-none animate-pop" strokeWidth="2" style={{ transformBox: "fill-box", animationDelay: "1100ms" }} />
           <path d="M170 28 l-4 7 l6 3" className="stroke-destructive fill-none animate-pop" strokeWidth="2" style={{ transformBox: "fill-box", animationDelay: "1250ms" }} />
           <text x="10" y="18" className="fill-muted-foreground font-mono text-[9px]">cheap &amp; fast</text>
-          <text x="168" y="70" className="fill-destructive font-mono text-[11px] animate-fade-in" style={{ animationDelay: "1600ms", animationFillMode: "both" }}>breaks at scale</text>
+          <text x="186" y="88" className="fill-destructive font-mono text-[11px] animate-fade-in" style={{ animationDelay: "1600ms", animationFillMode: "both" }}>breaks at scale</text>
         </> : <>
           {markers.slice(0, 3).map((m, i) => (
             <g key={m} className="animate-pop" style={{ transformBox: "fill-box", transformOrigin: "center", animationDelay: `${500 + i * 450}ms` }}>
