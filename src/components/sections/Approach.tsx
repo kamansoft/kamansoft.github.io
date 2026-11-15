@@ -125,7 +125,7 @@ const Approach = () => {
             <div key={side.title} className={`rounded-xl bg-card p-7 ${crash ? "border border-border" : "border-2 border-primary shadow-glow"}`}>
               <p className={`font-mono text-xs uppercase tracking-[0.2em] mb-1 ${crash ? "text-muted-foreground" : "text-primary"}`}>{side.title}</p>
               <p className="mb-4 text-lg font-semibold">{side.tagline}</p>
-              <GrowthChart crash={crash} active={charts.inView} markers={crash ? [] : side.points.map((pt) => pt.split(" ").slice(-1)[0])} />
+              <GrowthChart crash={crash} active={charts.inView} markers={crash ? [] : side.points.map((pt) => pt.split(" ")[0])} />
               <ul className="mt-5 flex flex-wrap gap-2">
                 {side.points.map((pt) => (
                   <li key={pt} className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-sm ${crash ? "bg-destructive/10 text-muted-foreground" : "bg-primary/10 text-foreground font-medium"}`}>
