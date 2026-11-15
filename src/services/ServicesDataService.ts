@@ -2,7 +2,7 @@ import { IServicesDataAdapter } from '../adapters/IDataAdapter';
 import { ServicesJsonAdapter } from '../adapters/JsonFileAdapter';
 
 export interface ServiceItem { id: number; icon: string; title: string; description: string; color: string; }
-export interface ServiceGroup { id: number; icon: string; title: string; tagline: string; items: string[]; }
+export interface ServiceGroup { id: number; icon: string; title: string; tagline: string; items: string[]; scene?: string; }
 
 export interface IServicesDataProvider {
   getServices(): Promise<ServiceItem[]>;
