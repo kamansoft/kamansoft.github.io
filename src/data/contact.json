@@ -4,12 +4,12 @@
     "description": "Tell us how your operation runs today. We'll answer fast."
   },
   "whatsapp": {
-    "number": "570000000000",
+    "number": "573138089642",
     "message": "Hi Kamansoft! I'd like to talk about improving our operations."
   },
   "channels": [
     { "id": "email", "icon": "Mail", "title": "Email", "label": "contact@kamansoft.com", "href": "mailto:contact@kamansoft.com" },
-    { "id": "whatsapp", "icon": "MessageCircle", "title": "WhatsApp", "label": "+57 000 000 0000 (placeholder)", "href": "whatsapp" },
-    { "id": "instagram", "icon": "Instagram", "title": "Instagram", "label": "@kamansoft (placeholder)", "href": "https://instagram.com/kamansoft" }
+    { "id": "whatsapp", "icon": "MessageCircle", "title": "WhatsApp", "label": "+57 313 808 9642", "href": "whatsapp" },
+    { "id": "instagram", "icon": "Instagram", "title": "Instagram", "label": "@kamansoft", "href": "https://instagram.com/kamansoft" }
   ]
 }
