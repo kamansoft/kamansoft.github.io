@@ -90,6 +90,7 @@ export default {
 				'scan': { '0%,100%': { transform: 'translate(0,0)' }, '50%': { transform: 'translate(4px,-3px)' } },
 				'blink': { '0%,49%': { opacity: '1' }, '50%,100%': { opacity: '0' } },
 				'snap': { from: { transform: 'var(--from)', opacity: '0.3' }, to: { transform: 'none', opacity: '1' } },
+				'loop-dot': { '0%': { top: '100%' }, '100%': { top: '0%' } },
 				'pop': { from: { transform: 'scale(0)', opacity: '0' }, to: { transform: 'scale(1)', opacity: '1' } },
 				'drop': { from: { transform: 'translateY(-12px)', opacity: '0' }, to: { transform: 'translateY(0)', opacity: '1' } },
 				'node-glow': { '0%,70%,100%': { opacity: '0.35' }, '20%': { opacity: '1' } },
