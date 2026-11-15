@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X, Github } from "lucide-react";
+import { siteConfig, SectionKey } from "@/services/SiteConfigService";
+
+const links: [SectionKey, string, string][] = [
+  ["hero", "home", "Home"], ["services", "services", "Services"], ["approach", "approach", "About"],
+  ["portfolio", "portfolio", "Portfolio"], ["team", "team", "Team"], ["blog", "blog", "Blog"],
+].filter(([k]) => siteConfig.isEnabled(k as SectionKey)) as [SectionKey, string, string][];
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -79,54 +85,16 @@ const Navigation = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('approach')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              About
-            </button>
-            <button 
-              onClick={() => scrollToSection('portfolio')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Portfolio
-            </button>
-            <button 
-              onClick={() => scrollToSection('team')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Team
-            </button>
-            <button 
-              onClick={() => scrollToSection('blog')}
-              className={`transition-colors ${
-                isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              Blog
-            </button>
+            {links.map(([, id, label]) => (
+              <button key={id}
+                onClick={() => scrollToSection(id)}
+                className={`transition-colors ${
+                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
             <ThemeToggle />
             <Button
               variant="ghost"
@@ -174,55 +142,17 @@ const Navigation = () => {
               : 'bg-black/30 backdrop-blur-sm border-white/10'
           }`}>
             <div className="flex flex-col space-y-4 px-4">
-              <button 
-                onClick={() => scrollToSection('home')}
+              {links.map(([, id, label]) => (
+              <button key={id}
+                onClick={() => scrollToSection(id)}
                 className={`transition-colors text-left ${
                   isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
                 }`}
               >
-                Home
+                {label}
               </button>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('approach')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                About
-              </button>
-              <button 
-                onClick={() => scrollToSection('portfolio')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Portfolio
-              </button>
-              <button 
-                onClick={() => scrollToSection('team')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Team
-              </button>
-              <button 
-                onClick={() => scrollToSection('blog')}
-                className={`transition-colors text-left ${
-                  isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                Blog
-              </button>
-              <Button 
+            ))}
+            <Button 
                 onClick={() => scrollToSection('contact')}
                 className="bg-signal text-ink hover:bg-signal/90 font-semibold w-full"
               >

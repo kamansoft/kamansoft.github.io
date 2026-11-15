@@ -71,8 +71,8 @@
     "info": [
       {
         "icon": "Mail",
-        "text": "hello@kamansoft.com",
-        "href": "mailto:hello@kamansoft.com",
+        "text": "contact@kamansoft.com",
+        "href": "mailto:contact@kamansoft.com",
         "color": "text-blue-400"
       },
       {
