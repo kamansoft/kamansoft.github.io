@@ -87,6 +87,12 @@ export default {
 					'0%, 100%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.5), 0 3px 14px 2px hsl(var(--signal) / 0.55), 0 8px 34px 8px hsl(var(--signal) / 0.3)' },
 					'50%': { boxShadow: '0 0 0 1px hsl(var(--signal) / 0.25), 0 2px 8px 1px hsl(var(--signal) / 0.32), 0 5px 20px 4px hsl(var(--signal) / 0.15)' }
 				},
+				'scan': { '0%,100%': { transform: 'translate(0,0)' }, '50%': { transform: 'translate(4px,-3px)' } },
+				'blink': { '0%,49%': { opacity: '1' }, '50%,100%': { opacity: '0' } },
+				'snap': { from: { transform: 'var(--from)', opacity: '0.3' }, to: { transform: 'none', opacity: '1' } },
+				'pop': { from: { transform: 'scale(0)', opacity: '0' }, to: { transform: 'scale(1)', opacity: '1' } },
+				'drop': { from: { transform: 'translateY(-12px)', opacity: '0' }, to: { transform: 'translateY(0)', opacity: '1' } },
+				'node-glow': { '0%,70%,100%': { opacity: '0.35' }, '20%': { opacity: '1' } },
 				'accordion-down': {
 					from: {
 						height: '0'
@@ -119,6 +125,11 @@ export default {
 				'draw': 'draw 2s ease-out both',
 				'grow': 'grow 0.8s ease-out both',
 				'logo-breathe': 'logo-breathe 2.6s ease-in-out infinite',
+				'scan': 'scan 2.4s ease-in-out infinite',
+				'blink': 'blink 1s steps(1) infinite',
+				'pop': 'pop 0.5s cubic-bezier(.3,1.6,.5,1) both',
+				'drop': 'drop 0.5s ease-out both',
+				'node-glow': 'node-glow 3s ease-in-out infinite',
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out'

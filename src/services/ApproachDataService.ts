@@ -3,7 +3,7 @@ import { ApproachJsonAdapter } from '../adapters/JsonFileAdapter';
 
 export interface ApproachHeader { eyebrow: string; title: string; description: string; }
 export interface ComparisonSide { title: string; tagline: string; points: string[]; }
-export interface ApproachComparison { them: ComparisonSide; us: ComparisonSide; }
+export interface ApproachComparison { them: ComparisonSide; us: ComparisonSide; caption?: string; }
 export interface Pillar { id: number; step: string; icon: string; title: string; description: string; }
 export interface Troop { icon: string; label: string; text: string; }
 

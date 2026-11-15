@@ -2,7 +2,7 @@ import { IProcessDataAdapter } from '../adapters/IDataAdapter';
 import { ProcessJsonAdapter } from '../adapters/JsonFileAdapter';
 
 export interface ProcessHeader { eyebrow: string; title: string; description: string; }
-export interface ProcessPhase { id: number; icon: string; title: string; description: string; duration: string; }
+export interface ProcessPhase { id: number; icon: string; title: string; description: string; duration: string; deliverable?: boolean; }
 
 export interface IProcessDataProvider {
   getHeaderData(): Promise<ProcessHeader>;

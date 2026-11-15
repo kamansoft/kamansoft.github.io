@@ -5,12 +5,50 @@
     "description": "Iterative by design — a working deliverable every sprint."
   },
   "phases": [
-    { "id": 1, "icon": "MessageSquare", "title": "Talk ideas", "description": "Goals, users, constraints.", "duration": "Days" },
-    { "id": 2, "icon": "Map", "title": "Plan", "description": "Scope, architecture, risks.", "duration": "Days" },
-    { "id": 3, "icon": "FlaskConical", "title": "Proof of concept", "description": "Test the riskiest idea.", "duration": "1–2 wks" },
-    { "id": 4, "icon": "LayoutList", "title": "MVP in sprints", "description": "Clear acceptance criteria.", "duration": "Days" },
-    { "id": 5, "icon": "Package", "title": "Deliver", "description": "Working result each sprint.", "duration": "Each sprint" },
-    { "id": 6, "icon": "RefreshCw", "title": "Iterate", "description": "Tune to business results.", "duration": "Ongoing" }
+    {
+      "id": 1,
+      "icon": "MessageSquare",
+      "title": "Talk ideas",
+      "description": "Goals, users, constraints.",
+      "duration": "Days"
+    },
+    {
+      "id": 2,
+      "icon": "Map",
+      "title": "Plan",
+      "description": "Scope, architecture, risks.",
+      "duration": "Days"
+    },
+    {
+      "id": 3,
+      "icon": "FlaskConical",
+      "title": "Proof of concept",
+      "description": "Test the riskiest idea.",
+      "duration": "1–2 wks"
+    },
+    {
+      "id": 4,
+      "icon": "LayoutList",
+      "title": "MVP in sprints",
+      "description": "Clear acceptance criteria.",
+      "duration": "Days",
+      "deliverable": true
+    },
+    {
+      "id": 5,
+      "icon": "Package",
+      "title": "Deliver",
+      "description": "Working result each sprint.",
+      "duration": "Each sprint",
+      "deliverable": true
+    },
+    {
+      "id": 6,
+      "icon": "RefreshCw",
+      "title": "Iterate",
+      "description": "Tune to business results.",
+      "duration": "Ongoing"
+    }
   ],
   "note": ""
 }
