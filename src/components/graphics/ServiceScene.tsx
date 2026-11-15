@@ -27,7 +27,7 @@ const BlocksToScreen = () => {
     <>
       <rect x="72" y="10" width="96" height="60" rx="6" fill="none" pathLength={1} strokeDasharray="1" className="stroke-foreground/60 animate-draw" strokeWidth="2" style={d(600)} />
       {blocks.map((b, i) => (
-        <rect key={i} x={b.x} y={b.y} width={b.w} height={b.h} rx="2" className="fill-primary/80 animate-[snap_0.8s_ease-out_both]"
+        <rect key={i} x={b.x} y={b.y} width={b.w} height={b.h} rx="2" className="fill-primary/80 animate-snap"
           style={{ ...box, ...d(i * 120), ["--from" as string]: b.from }} />
       ))}
       <path d="M110 70 L 130 70 M 104 76 L 136 76" className="stroke-foreground/60" strokeWidth="2" />

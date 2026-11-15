@@ -127,6 +127,7 @@ export default {
 				'logo-breathe': 'logo-breathe 2.6s ease-in-out infinite',
 				'scan': 'scan 2.4s ease-in-out infinite',
 				'blink': 'blink 1s steps(1) infinite',
+				'snap': 'snap 0.8s ease-out both',
 				'pop': 'pop 0.5s cubic-bezier(.3,1.6,.5,1) both',
 				'drop': 'drop 0.5s ease-out both',
 				'node-glow': 'node-glow 3s ease-in-out infinite',
