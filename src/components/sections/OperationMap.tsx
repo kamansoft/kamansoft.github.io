@@ -36,10 +36,10 @@ const OperationMap = ({ steps, iterationLabel }: { steps: LoopItem[]; iterationL
               <ArrowDown aria-hidden="true" className={`h-6 w-6 text-signal transition-all duration-500 ${inView ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`} style={delay(index * STEP - 300)} />
             </div>}
             <div className={`flex gap-4 items-start transition-all duration-700 ${inView ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`} style={delay(index * STEP)}>
-              <div className={`relative flex shrink-0 items-center justify-center w-14 h-14 rounded-lg ${index === 0 ? "bg-signal text-ink" : "bg-ink-foreground/5 text-signal border border-ink-border"}`}>
+              <div className={`relative flex shrink-0 items-center justify-center w-14 h-14 rounded-lg ${index === 0 ? "bg-signal text-signal-foreground" : "bg-ink-foreground/5 text-signal border border-ink-border"}`}>
                 <StepIcon name={step.icon} className="w-7 h-7" />
                 {index === steps.length - 1 && inView && (
-                  <span className="absolute -right-2 -bottom-2 flex h-6 w-6 items-center justify-center rounded-full bg-signal text-ink animate-pop" style={{ animationDelay: `${index * STEP + 500}ms` }}>
+                  <span className="absolute -right-2 -bottom-2 flex h-6 w-6 items-center justify-center rounded-full bg-signal text-signal-foreground animate-pop" style={{ animationDelay: `${index * STEP + 500}ms` }}>
                     <Check className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
                   </span>
                 )}

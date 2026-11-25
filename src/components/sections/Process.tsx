@@ -43,9 +43,9 @@ const Process = () => {
               const lit = track.progress >= i / Math.max(1, phases.length - 1) - 0.02;
               return (
                 <li key={phase.id} className="group flex lg:flex-col items-start lg:items-center gap-5 lg:gap-0 text-left lg:text-center">
-                  <div className={`relative shrink-0 lg:mb-5 flex h-20 w-20 items-center justify-center rounded-full border-2 bg-ink transition-all duration-500 group-hover:scale-110 ${lit ? (isLoop ? "border-signal bg-signal text-ink shadow-glow" : "border-signal text-signal shadow-glow") : "border-ink-border text-ink-muted"}`}>
+                  <div className={`relative shrink-0 lg:mb-5 flex h-20 w-20 items-center justify-center rounded-full border-2 bg-ink transition-all duration-500 group-hover:scale-110 ${lit ? (isLoop ? "border-signal bg-signal text-signal-foreground shadow-glow" : "border-signal text-signal shadow-glow") : "border-ink-border text-ink-muted"}`}>
                     <span className={isLoop && lit ? "animate-spin [animation-duration:6s]" : ""}>{Icon && <Icon className="h-8 w-8" />}</span>
-                    <span className={`absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full font-mono text-xs font-bold transition-colors duration-500 ${lit ? "bg-signal text-ink" : "bg-ink-foreground text-ink"}`}>{i + 1}</span>
+                    <span className={`absolute -top-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full font-mono text-xs font-bold transition-colors duration-500 ${lit ? "bg-signal text-signal-foreground" : "bg-ink-foreground text-ink"}`}>{i + 1}</span>
                   </div>
                   <div className={`flex flex-col lg:items-center transition-opacity duration-500 ${lit ? "opacity-100" : "opacity-50"}`}>
                     <h3 className="text-lg font-semibold text-ink-foreground mb-1">{phase.title}</h3>

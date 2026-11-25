@@ -60,13 +60,13 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 dark:bg-gray-950 text-white">
+    <footer className="bg-ink text-ink-foreground border-t border-ink-border">
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold text-blue-400">{companyData.name}</h3>
-            <p className="text-gray-300 dark:text-gray-400 leading-relaxed">
+            <p className="text-ink-muted dark:text-ink-muted leading-relaxed">
               {companyData.description}
             </p>
             <div className="flex space-x-4">
@@ -74,7 +74,7 @@ const Footer = () => {
                 <a 
                   key={index}
                   href={social.url} 
-                  className="text-gray-400 hover:text-blue-400 transition-colors" 
+                  className="text-ink-muted hover:text-signal transition-colors" 
                   aria-label={social.name}
                 >
                   {getIcon(social.icon)}
@@ -89,7 +89,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {solutions.links.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
+                  <a href={link.href} className="text-ink-muted dark:text-ink-muted hover:text-signal transition-colors">
                     {link.text}
                   </a>
                 </li>
@@ -103,7 +103,7 @@ const Footer = () => {
             <ul className="space-y-2">
               {industries.items.map((industry, index) => (
                 <li key={index}>
-                  <span className="text-gray-300 dark:text-gray-400">{industry}</span>
+                  <span className="text-ink-muted dark:text-ink-muted">{industry}</span>
                 </li>
               ))}
             </ul>
@@ -119,11 +119,11 @@ const Footer = () => {
                     {getIcon(info.icon)}
                   </div>
                   {info.href ? (
-                    <a href={info.href} className="text-gray-300 dark:text-gray-400 hover:text-white transition-colors">
+                    <a href={info.href} className="text-ink-muted dark:text-ink-muted hover:text-signal transition-colors">
                       {info.text}
                     </a>
                   ) : (
-                    <span className="text-gray-300 dark:text-gray-400">{info.text}</span>
+                    <span className="text-ink-muted dark:text-ink-muted">{info.text}</span>
                   )}
                 </div>
               ))}
@@ -131,15 +131,15 @@ const Footer = () => {
           </div>
         </div>
 
-        <Separator className="my-8 bg-gray-700 dark:bg-gray-600" />
+        <Separator className="my-8 bg-ink-border" />
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 dark:text-gray-500 text-sm leading-relaxed">
+          <p className="text-ink-muted text-sm leading-relaxed">
             © {currentYear} {legal.copyright}
           </p>
           <div className="flex space-x-6 text-sm">
             {legal.links.map((link, index) => (
-              <a key={index} href={link.href} className="text-gray-400 dark:text-gray-500 hover:text-white transition-colors">
+              <a key={index} href={link.href} className="text-ink-muted hover:text-signal transition-colors">
                 {link.text}
               </a>
             ))}

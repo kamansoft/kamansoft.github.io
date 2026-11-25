@@ -29,7 +29,7 @@ export default {
 					muted: 'hsl(var(--ink-muted))',
 					border: 'hsl(var(--ink-border))'
 				},
-				signal: 'hsl(var(--signal))',
+				signal: { DEFAULT: 'hsl(var(--signal))', foreground: 'hsl(var(--signal-foreground))' },
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
