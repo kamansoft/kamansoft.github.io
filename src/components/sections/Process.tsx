@@ -1,12 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { MessageSquare, Map, FlaskConical, LayoutList, Package, RefreshCw } from "lucide-react";
 import { useScrollProgress } from "@/hooks/use-in-view";
+import { useLanguage } from "@/i18n/LanguageProvider";
 import { ProcessDataService, ProcessHeader, ProcessPhase } from "../../services/ProcessDataService";
 
 const iconMap = { MessageSquare, Map, FlaskConical, LayoutList, Package, RefreshCw };
 
 const Process = () => {
   const dataService = useMemo(() => new ProcessDataService(), []);
+  const { t } = useLanguage();
   const [header, setHeader] = useState<ProcessHeader | null>(null);
   const [phases, setPhases] = useState<ProcessPhase[]>([]);
   const track = useScrollProgress<HTMLDivElement>();
@@ -53,7 +55,7 @@ const Process = () => {
                     <span className="self-start lg:self-center rounded-full border border-ink-border px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-signal">{phase.duration}</span>
                     {phase.deliverable && lit && (
                       <span className="mt-3 self-start lg:self-center flex items-center gap-1.5 rounded-md border border-signal/50 bg-signal/10 px-2 py-1 font-mono text-[10px] text-signal animate-drop">
-                        <Package className="h-3.5 w-3.5" aria-hidden="true" /> deliverable
+                        <Package className="h-3.5 w-3.5" aria-hidden="true" /> {t.process.deliverable}
                       </span>
                     )}
                   </div>
