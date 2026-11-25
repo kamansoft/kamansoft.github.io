@@ -17,14 +17,16 @@
       "icon": "Map",
       "title": "Planeamos",
       "description": "Alcance, arquitectura, riesgos.",
-      "duration": "Días"
+      "duration": "Días",
+      "deliverable": true
     },
     {
       "id": 3,
       "icon": "FlaskConical",
       "title": "Prueba de concepto",
       "description": "Probamos la idea más riesgosa.",
-      "duration": "1–2 sem."
+      "duration": "1–2 sem.",
+      "deliverable": true
     },
     {
       "id": 4,

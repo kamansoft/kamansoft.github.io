@@ -17,14 +17,16 @@
       "icon": "Map",
       "title": "Plan",
       "description": "Scope, architecture, risks.",
-      "duration": "Days"
+      "duration": "Days",
+      "deliverable": true
     },
     {
       "id": 3,
       "icon": "FlaskConical",
       "title": "Proof of concept",
       "description": "Test the riskiest idea.",
-      "duration": "1–2 wks"
+      "duration": "1–2 wks",
+      "deliverable": true
     },
     {
       "id": 4,
