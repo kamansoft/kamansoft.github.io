@@ -3,13 +3,31 @@
     "title": "Kamansoft — Engineers improving operations with software, cloud & AI",
     "description": "A group of engineers who improve how your organization operates — using software, data, cloud and AI. Process understanding first, engineer-reviewed code always."
   },
-  "nav": { "home": "Home", "services": "Services", "approach": "About", "portfolio": "Portfolio", "team": "Team", "blog": "Blog", "contact": "Contact Us", "github": "View on GitHub", "logoAlt": "Kamansoft Logo", "slogan": "Code Beyond Limits", "language": "Language", "menu": "Open menu" },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "approach": "About",
+    "portfolio": "Portfolio",
+    "team": "Team",
+    "blog": "Blog",
+    "contact": "Contact Us",
+    "github": "View on GitHub",
+    "logoAlt": "Kamansoft Logo",
+    "slogan": "Improving Beyond Limits",
+    "language": "Language",
+    "menu": "Open menu"
+  },
   "theme": { "toggle": "Toggle theme" },
   "team": { "eyebrow": "The troop" },
   "portfolio": { "caseStudy": "Case Study", "learnMore": "Learn More" },
   "approach": { "cheapFast": "cheap & fast", "breaks": "breaks at scale", "growth": "growth →" },
   "process": { "deliverable": "deliverable" },
-  "blog": { "title": "Latest Insights", "description": "Stay updated with the latest trends in software development, data engineering, and automation", "viewAll": "View All Articles", "locale": "en-US" },
+  "blog": {
+    "title": "Latest Insights",
+    "description": "Stay updated with the latest trends in software development, data engineering, and automation",
+    "viewAll": "View All Articles",
+    "locale": "en-US"
+  },
   "whatsapp": { "aria": "Chat on WhatsApp" },
   "notFound": { "message": "Oops! Page not found", "back": "Return to Home" }
 }
