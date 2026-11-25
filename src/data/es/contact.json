@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "Hablemos",
+    "description": "Cuéntanos cómo funciona tu operación hoy. Te respondemos rápido."
+  },
+  "whatsapp": {
+    "number": "573138089642",
+    "message": "¡Hola, Kamansoft! Me gustaría hablar sobre cómo mejorar nuestra operación."
+  },
+  "channels": [
+    {
+      "id": "email",
+      "icon": "Mail",
+      "title": "Correo",
+      "label": "contact@kamansoft.com",
+      "href": "mailto:contact@kamansoft.com"
+    },
+    {
+      "id": "whatsapp",
+      "icon": "MessageCircle",
+      "title": "WhatsApp",
+      "label": "+57 313 808 9642",
+      "href": "whatsapp"
+    },
+    {
+      "id": "instagram",
+      "icon": "Instagram",
+      "title": "Instagram",
+      "label": "@kamansoft",
+      "href": "https://instagram.com/kamansoft"
+    }
+  ]
+}

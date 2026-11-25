@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "title": "Kamansoft — Ingenieros que mejoran operaciones con software, nube e IA",
+    "description": "Un grupo de ingenieros que mejora cómo opera tu organización con software, datos, nube e IA. Primero entendemos el proceso; todo el código lo revisan ingenieros."
+  },
+  "nav": { "home": "Inicio", "services": "Servicios", "approach": "Nosotros", "portfolio": "Portafolio", "team": "Equipo", "blog": "Blog", "contact": "Contáctanos", "github": "Ver en GitHub", "logoAlt": "Logo de Kamansoft", "slogan": "Código sin límites", "language": "Idioma", "menu": "Abrir menú" },
+  "theme": { "toggle": "Cambiar tema" },
+  "team": { "eyebrow": "La tropa" },
+  "portfolio": { "caseStudy": "Caso de estudio", "learnMore": "Ver más" },
+  "approach": { "cheapFast": "barato y rápido", "breaks": "falla al crecer", "growth": "crecimiento →" },
+  "blog": { "title": "Últimas publicaciones", "description": "Mantente al día con las tendencias en desarrollo de software, ingeniería de datos y automatización", "viewAll": "Ver todos los artículos", "locale": "es-419" },
+  "whatsapp": { "aria": "Escríbenos por WhatsApp" },
+  "notFound": { "message": "¡Ups! No encontramos esta página", "back": "Volver al inicio" }
+}

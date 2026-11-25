@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X, Github } from "lucide-react";
+import { useLanguage } from "@/i18n/LanguageProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { siteConfig, SectionKey } from "@/services/SiteConfigService";
 
 const links: [SectionKey, string, string][] = [
@@ -10,6 +12,8 @@ const links: [SectionKey, string, string][] = [
 ].filter(([k]) => siteConfig.isEnabled(k as SectionKey)) as [SectionKey, string, string][];
 
 const Navigation = () => {
+  const { t } = useLanguage();
+  const label = (id: string) => t.nav[id as keyof typeof t.nav] ?? id;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -62,7 +66,7 @@ const Navigation = () => {
               } flex items-center justify-center`}>
                 <img 
                   src="/lovable-uploads/d84291bb-fa39-4250-b58b-d2de97da966a.png" 
-                  alt="Kamansoft Logo" 
+                  alt={t.nav.logoAlt} 
                   className={`transition-all duration-300 object-contain ${
                     isScrolled ? 'h-10 w-10' : 'h-12 w-12'
                   }`}
@@ -78,30 +82,31 @@ const Navigation = () => {
               <span className={`text-xs transition-all duration-300 ${
                 isScrolled ? 'text-gray-300' : 'text-white/80'
               }`}>
-                Code Beyond Limits
+                {t.nav.slogan}
               </span>
             </div>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {links.map(([, id, label]) => (
+            {links.map(([, id]) => (
               <button key={id}
                 onClick={() => scrollToSection(id)}
                 className={`transition-colors ${
                   isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
                 }`}
               >
-                {label}
+                {label(id)}
               </button>
             ))}
+            <LanguageSwitcher />
             <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
               onClick={handleGitHubClick}
               className="text-white hover:bg-white/10"
-              title="View on GitHub"
+              title={t.nav.github}
             >
               <Github className="h-5 w-5" />
             </Button>
@@ -109,24 +114,26 @@ const Navigation = () => {
               onClick={() => scrollToSection('contact')}
               className="bg-signal text-ink hover:bg-signal/90 font-semibold"
             >
-              Contact Us
+              {t.nav.contact}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
+            <LanguageSwitcher />
             <ThemeToggle />
             <Button
               variant="ghost"
               size="icon"
               onClick={handleGitHubClick}
               className="text-white hover:bg-white/10"
-              title="View on GitHub"
+              title={t.nav.github}
             >
               <Github className="h-5 w-5" />
             </Button>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={t.nav.menu}
               className="p-2 text-white"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -142,21 +149,21 @@ const Navigation = () => {
               : 'bg-black/30 backdrop-blur-sm border-white/10'
           }`}>
             <div className="flex flex-col space-y-4 px-4">
-              {links.map(([, id, label]) => (
+              {links.map(([, id]) => (
               <button key={id}
                 onClick={() => scrollToSection(id)}
                 className={`transition-colors text-left ${
                   isScrolled ? 'text-gray-200 hover:text-white' : 'text-white/90 hover:text-white'
                 }`}
               >
-                {label}
+                {label(id)}
               </button>
             ))}
             <Button 
                 onClick={() => scrollToSection('contact')}
                 className="bg-signal text-ink hover:bg-signal/90 font-semibold w-full"
               >
-                Contact Us
+                {t.nav.contact}
               </Button>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import { BlogDataService } from "../../services/BlogDataService";
 import { useMemo, useEffect, useState } from "react";
 
 const Blog = () => {
+  const { t } = useLanguage();
   const dataService = useMemo(() => new BlogDataService(), []);
   const [blogPosts, setBlogPosts] = useState([]);
 
@@ -23,7 +25,7 @@ const Blog = () => {
   }, [dataService]);
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString(t.blog.locale, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -35,10 +37,10 @@ const Blog = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Latest Insights
+            {t.blog.title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Stay updated with the latest trends in software development, data engineering, and automation
+            {t.blog.description}
           </p>
         </div>
 
@@ -91,7 +93,7 @@ const Blog = () => {
             size="lg"
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
           >
-            View All Articles
+            {t.blog.viewAll}
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>

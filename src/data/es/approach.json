@@ -1,0 +1,56 @@
+{
+  "header": {
+    "eyebrow": "Por qué Kamansoft",
+    "title": "La velocidad de la IA, sin el desorden.",
+    "description": "El código de IA sin revisar luce bien en la demo y falla cuando creces. El nuestro sigue escalando."
+  },
+  "pillars": [
+    {
+      "id": 1,
+      "step": "01",
+      "icon": "Compass",
+      "title": "Entendemos",
+      "description": "Mapeamos tu proceso antes de escribir código."
+    },
+    {
+      "id": 2,
+      "step": "02",
+      "icon": "Terminal",
+      "title": "Dirigimos",
+      "description": "Los ingenieros dirigen; los agentes construyen."
+    },
+    {
+      "id": 3,
+      "step": "03",
+      "icon": "ShieldCheck",
+      "title": "Revisamos",
+      "description": "Cada línea probada y revisada por personas."
+    }
+  ],
+  "troop": {
+    "icon": "Users",
+    "label": "La tropa",
+    "text": "Personas y agentes de IA, un solo equipo."
+  },
+  "comparison": {
+    "them": {
+      "title": "Otras agencias",
+      "tagline": "Barato y rápido… hasta que deja de serlo.",
+      "points": [
+        "Sin revisión",
+        "Sin arquitectura",
+        "Falla al crecer"
+      ]
+    },
+    "us": {
+      "title": "Kamansoft",
+      "tagline": "Construimos para el futuro y para el cambio.",
+      "points": [
+        "Primero el plan",
+        "Probamos la idea",
+        "Arquitectura para el cambio"
+      ]
+    },
+    "caption": "Mismo inicio, otro futuro"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "company": {
+    "name": "Kamansoft",
+    "description": "Un grupo de ingenieros que mejora cómo operan las organizaciones. Usamos software, datos, nube e IA para resolver problemas reales de negocio: primero entender el proceso, siempre entregas revisadas por ingenieros.",
+    "social": [
+      {
+        "name": "LinkedIn",
+        "url": "https://www.linkedin.com/company/kamansoft",
+        "icon": "Linkedin"
+      },
+      {
+        "name": "Twitter",
+        "url": "https://twitter.com/kamansoft",
+        "icon": "Twitter"
+      },
+      {
+        "name": "Facebook",
+        "url": "#",
+        "icon": "Facebook"
+      },
+      {
+        "name": "Instagram",
+        "url": "#",
+        "icon": "Instagram"
+      }
+    ]
+  },
+  "solutions": {
+    "title": "Soluciones",
+    "links": [
+      {
+        "text": "Desarrollo de software a la medida",
+        "href": "#services"
+      },
+      {
+        "text": "ETL y procesamiento de datos",
+        "href": "#services"
+      },
+      {
+        "text": "Automatización de negocio",
+        "href": "#services"
+      },
+      {
+        "text": "Migración a la nube",
+        "href": "#services"
+      },
+      {
+        "text": "Integración de sistemas",
+        "href": "#services"
+      },
+      {
+        "text": "Casos de estudio",
+        "href": "#portfolio"
+      }
+    ]
+  },
+  "industries": {
+    "title": "Industrias",
+    "items": [
+      "Salud y ciencias de la vida",
+      "Servicios financieros",
+      "Manufactura",
+      "Retail y comercio electrónico",
+      "Cadena de suministro y logística",
+      "Gobierno y sector público"
+    ]
+  },
+  "contact": {
+    "title": "Hablemos",
+    "info": [
+      {
+        "icon": "Mail",
+        "text": "contact@kamansoft.com",
+        "href": "mailto:contact@kamansoft.com",
+        "color": "text-blue-400"
+      },
+      {
+        "icon": "Phone",
+        "text": "+1 (555) 123-4567",
+        "href": "tel:+15551234567",
+        "color": "text-blue-400"
+      },
+      {
+        "icon": "MapPin",
+        "text": "Silicon Valley, CA",
+        "color": "text-blue-400"
+      }
+    ]
+  },
+  "legal": {
+    "copyright": "Kamansoft. Todos los derechos reservados. | Desarrollo de software empresarial y soluciones de automatización",
+    "links": [
+      {
+        "text": "Política de privacidad",
+        "href": "#"
+      },
+      {
+        "text": "Términos del servicio",
+        "href": "#"
+      },
+      {
+        "text": "Política de cookies",
+        "href": "#"
+      }
+    ]
+  }
+}

@@ -1,3 +1,4 @@
+import { useLanguage } from "@/i18n/LanguageProvider";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,6 +7,7 @@ import { PortfolioDataService } from "../../services/PortfolioDataService";
 import { useMemo, useEffect, useState } from "react";
 
 const Portfolio = () => {
+  const { t } = useLanguage();
   const dataService = useMemo(() => new PortfolioDataService(), []);
   const [projects, setProjects] = useState([]);
   const [headerData, setHeaderData] = useState({ title: '', description: '' });
@@ -75,11 +77,11 @@ const Portfolio = () => {
                 <div className="flex space-x-4 pt-4">
                   <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-800 transition-colors">
                     <ExternalLink className="h-4 w-4" />
-                    <span className="text-sm">Case Study</span>
+                    <span className="text-sm">{t.portfolio.caseStudy}</span>
                   </button>
                   <button className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors">
                     <Github className="h-4 w-4" />
-                    <span className="text-sm">Learn More</span>
+                    <span className="text-sm">{t.portfolio.learnMore}</span>
                   </button>
                 </div>
               </CardContent>
