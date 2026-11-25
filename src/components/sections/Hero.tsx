@@ -41,7 +41,7 @@ const Hero = () => {
           </h1>
           <p className="text-lg lg:text-xl text-ink-muted max-w-2xl">{header.description}</p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" onClick={() => scrollTo("contact")} className="rounded-md bg-signal text-ink hover:bg-signal/90 shadow-glow text-base font-semibold px-7">
+            <Button size="lg" onClick={() => scrollTo("contact")} className="rounded-md bg-signal text-signal-foreground hover:bg-signal/90 shadow-glow text-base font-semibold px-7">
               {buttons.primary.text}
               {getIcon(buttons.primary.icon)}
             </Button>

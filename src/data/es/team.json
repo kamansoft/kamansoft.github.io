@@ -1,0 +1,62 @@
+{
+  "teamMembers": [
+    {
+      "id": 1,
+      "name": "Caterym Lopez",
+      "role": "Ingeniera química · Procesos y calidad",
+      "image": "",
+      "skills": [
+        "Ingeniería de procesos",
+        "Sistemas de calidad",
+        "Análisis de operaciones",
+        "Normas y cumplimiento"
+      ],
+      "bio": "Ingeniera química especializada en procesos y calidad. Mapea cómo fluye realmente el trabajo, encuentra dónde se degrada y lo convierte en mejoras operativas medibles.",
+      "social": {
+        "linkedin": "",
+        "twitter": "",
+        "github": ""
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jhosep Guecha",
+      "role": "Ingeniero civil · Cadena de suministro y construcción",
+      "image": "",
+      "skills": [
+        "Cadena de suministro",
+        "Gerencia de proyectos de construcción",
+        "Planeación logística",
+        "Control de costos y cronogramas"
+      ],
+      "bio": "Ingeniero civil y profesional de cadena de suministro con experiencia práctica en gerencia de proyectos de construcción. Lleva la disciplina de las operaciones físicas a los sistemas digitales.",
+      "social": {
+        "linkedin": "",
+        "twitter": "",
+        "github": ""
+      }
+    },
+    {
+      "id": 3,
+      "name": "Lemys Lopez",
+      "role": "Desarrollador de software · +15 años",
+      "image": "",
+      "skills": [
+        "Arquitectura",
+        "ETL y pipelines de datos",
+        "Nube",
+        "Integración de IA"
+      ],
+      "bio": "Desarrollador de software con más de 15 años de experiencia. Diseña los sistemas, define los patrones y revisa lo que produce la tropa antes de cualquier entrega.",
+      "social": {
+        "linkedin": "",
+        "twitter": "",
+        "github": ""
+      }
+    }
+  ],
+  "header": {
+    "title": "Conoce a los comandantes de la tropa",
+    "description": "Procesos y calidad · Cadena de suministro y operaciones · Software y datos."
+  }
+}

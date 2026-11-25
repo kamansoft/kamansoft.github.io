@@ -1,3 +1,4 @@
+import { useLanguage } from "@/i18n/LanguageProvider";
 import { useEffect, useMemo, useState } from "react";
 import { Compass, Terminal, ShieldCheck, Users, X, Check, ChevronRight } from "lucide-react";
 import { ApproachDataService, ApproachComparison, ApproachHeader, Pillar, Troop } from "../../services/ApproachDataService";
@@ -11,6 +12,7 @@ const iconMotion: Record<string, string> = { Compass: "animate-scan", Terminal: 
 
 /** Growth chart: crash=true rises, cracks at the peak, then collapses; otherwise climbs with milestone markers. */
 const GrowthChart = ({ crash, active, markers }: { crash: boolean; active: boolean; markers: string[] }) => {
+  const { t } = useLanguage();
   const path = crash
     ? "M10 110 C 50 100, 70 40, 110 35 S 150 30, 165 45 L 180 105 L 230 112"
     : "M10 110 C 60 100, 90 80, 130 60 S 200 20, 230 10";
@@ -24,8 +26,8 @@ const GrowthChart = ({ crash, active, markers }: { crash: boolean; active: boole
         {crash ? <>
           <path d="M150 22 l5 8 l-6 4 l6 7" className="stroke-destructive fill-none animate-pop" strokeWidth="2" style={{ transformBox: "fill-box", animationDelay: "1100ms" }} />
           <path d="M170 28 l-4 7 l6 3" className="stroke-destructive fill-none animate-pop" strokeWidth="2" style={{ transformBox: "fill-box", animationDelay: "1250ms" }} />
-          <text x="10" y="18" className="fill-muted-foreground font-mono text-[9px]">cheap &amp; fast</text>
-          <text x="186" y="88" className="fill-destructive font-mono text-[11px] animate-fade-in" style={{ animationDelay: "1600ms", animationFillMode: "both" }}>breaks at scale</text>
+          <text x="10" y="18" className="fill-muted-foreground font-mono text-[9px]">{t.approach.cheapFast}</text>
+          <text x="186" y="88" className="fill-destructive font-mono text-[11px] animate-fade-in" style={{ animationDelay: "1600ms", animationFillMode: "both" }}>{t.approach.breaks}</text>
         </> : <>
           {markers.slice(0, 3).map((m, i) => (
             <g key={m} className="animate-pop" style={{ transformBox: "fill-box", transformOrigin: "center", animationDelay: `${500 + i * 450}ms` }}>
@@ -36,7 +38,7 @@ const GrowthChart = ({ crash, active, markers }: { crash: boolean; active: boole
           <circle cx="230" cy="10" r="6" className="fill-primary animate-pulse" />
         </>}
       </>}
-      <text x="8" y="118" className="fill-muted-foreground font-mono text-[9px]">growth →</text>
+      <text x="8" y="118" className="fill-muted-foreground font-mono text-[9px]">{t.approach.growth}</text>
     </svg>
   );
 };

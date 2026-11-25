@@ -1,0 +1,86 @@
+{
+  "header": {
+    "title": "Casos de éxito comprobados",
+    "description": "Descubre cómo hemos ayudado a empresas a transformar su operación con software a la medida, procesamiento de datos ETL y automatización inteligente. Cada proyecto refleja nuestro compromiso con resultados de negocio medibles."
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Data warehouse empresarial y pipeline ETL",
+      "description": "Solución completa de data warehouse con procesos ETL automatizados que procesa más de 10 TB diarios para una empresa de retail Fortune 500.",
+      "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      "technologies": [
+        "Apache Spark",
+        "AWS Redshift",
+        "Python",
+        "Airflow"
+      ],
+      "category": "ETL y procesamiento de datos"
+    },
+    {
+      "id": 2,
+      "title": "Suite de automatización de procesos de manufactura",
+      "description": "Plataforma integral de automatización que redujo los procesos manuales en un 85 % y mejoró la eficiencia de producción en manufactura industrial.",
+      "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
+      "technologies": [
+        "Python",
+        "RPA",
+        "IoT Integration",
+        "PostgreSQL"
+      ],
+      "category": "Automatización de negocio"
+    },
+    {
+      "id": 3,
+      "title": "Sistema de gestión en salud",
+      "description": "Plataforma de salud que cumple con HIPAA, con gestión de pacientes, agendamiento de citas y facturación automatizada.",
+      "image": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop",
+      "technologies": [
+        "React",
+        "Node.js",
+        "FHIR API",
+        "AWS"
+      ],
+      "category": "Software empresarial"
+    },
+    {
+      "id": 4,
+      "title": "Integración de datos para servicios financieros",
+      "description": "Plataforma de integración de datos en tiempo real que conecta varios sistemas bancarios, con reportes de cumplimiento y análisis de riesgo automatizados.",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+      "technologies": [
+        "Apache Kafka",
+        "Spring Boot",
+        "Oracle",
+        "Kubernetes"
+      ],
+      "category": "ETL e integración"
+    },
+    {
+      "id": 5,
+      "title": "Plataforma de optimización de cadena de suministro",
+      "description": "Sistema de gestión de cadena de suministro con IA, analítica predictiva, automatización de inventario e integración con proveedores.",
+      "image": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop",
+      "technologies": [
+        "Python",
+        "TensorFlow",
+        "MongoDB",
+        "Docker"
+      ],
+      "category": "Software empresarial"
+    },
+    {
+      "id": 6,
+      "title": "Automatización de procesamiento de documentos",
+      "description": "Sistema inteligente de procesamiento de documentos con OCR y aprendizaje automático para automatizar facturas y extracción de datos.",
+      "image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=400&fit=crop",
+      "technologies": [
+        "Python",
+        "Tesseract OCR",
+        "Azure AI",
+        "Redis"
+      ],
+      "category": "Automatización de negocio"
+    }
+  ]
+}

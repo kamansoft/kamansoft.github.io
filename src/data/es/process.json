@@ -1,0 +1,56 @@
+{
+  "header": {
+    "eyebrow": "Cómo trabajamos",
+    "title": "Proceso probado. Velocidad de IA.",
+    "description": "Iterativo por diseño: un entregable funcional en cada sprint."
+  },
+  "phases": [
+    {
+      "id": 1,
+      "icon": "MessageSquare",
+      "title": "Conversamos ideas",
+      "description": "Objetivos, usuarios, restricciones.",
+      "duration": "Días"
+    },
+    {
+      "id": 2,
+      "icon": "Map",
+      "title": "Planeamos",
+      "description": "Alcance, arquitectura, riesgos.",
+      "duration": "Días",
+      "deliverable": true
+    },
+    {
+      "id": 3,
+      "icon": "FlaskConical",
+      "title": "Prueba de concepto",
+      "description": "Probamos la idea más riesgosa.",
+      "duration": "1–2 sem.",
+      "deliverable": true
+    },
+    {
+      "id": 4,
+      "icon": "LayoutList",
+      "title": "MVP en sprints",
+      "description": "Criterios de aceptación claros.",
+      "duration": "Días",
+      "deliverable": true
+    },
+    {
+      "id": 5,
+      "icon": "Package",
+      "title": "Entregamos",
+      "description": "Resultado funcional en cada sprint.",
+      "duration": "Cada sprint",
+      "deliverable": true
+    },
+    {
+      "id": 6,
+      "icon": "RefreshCw",
+      "title": "Iteramos",
+      "description": "Ajustamos a resultados de negocio.",
+      "duration": "Continuo"
+    }
+  ],
+  "note": ""
+}

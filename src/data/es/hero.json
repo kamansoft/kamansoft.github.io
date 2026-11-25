@@ -1,0 +1,87 @@
+{
+  "header": {
+    "eyebrow": "Ingenieros para tu operación",
+    "title": "Mejoramos cómo funciona tu operación.",
+    "highlightText": "Software · Datos · Nube · IA",
+    "description": "Negocio primero. Los ingenieros lideran, la IA asiste y las personas revisan los resultados."
+  },
+  "buttons": {
+    "primary": {
+      "text": "Inicia tu proyecto",
+      "icon": "ArrowRight"
+    },
+    "secondary": {
+      "text": "Mira cómo trabajamos",
+      "icon": "Play"
+    }
+  },
+  "loop": [
+    {
+      "id": 1,
+      "role": "engineer",
+      "icon": "ScanSearch",
+      "text": "Negocio primero",
+      "detail": "Entendemos tu negocio y tus procesos"
+    },
+    {
+      "id": 2,
+      "role": "agent",
+      "icon": "Bot",
+      "text": "Los ingenieros lideran. La IA asiste.",
+      "detail": "Del entendimiento a la entrega",
+      "actions": [
+        {
+          "icon": "PencilRuler",
+          "label": "Diseñar"
+        },
+        {
+          "icon": "ListChecks",
+          "label": "Planear"
+        },
+        {
+          "icon": "Wrench",
+          "label": "Construir"
+        },
+        {
+          "icon": "PackageCheck",
+          "label": "Entregar"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "role": "engineer",
+      "icon": "UserCheck",
+      "text": "Las personas revisan",
+      "detail": "El resultado. El impacto. No solo el código."
+    }
+  ],
+  "iterationLabel": "Iteramos hacia mejores resultados de negocio",
+  "techStack": [
+    {
+      "id": 1,
+      "icon": "Factory",
+      "label": "Procesos"
+    },
+    {
+      "id": 2,
+      "icon": "Code",
+      "label": "Software"
+    },
+    {
+      "id": 3,
+      "icon": "Database",
+      "label": "Datos"
+    },
+    {
+      "id": 4,
+      "icon": "Cloud",
+      "label": "Nube"
+    },
+    {
+      "id": 5,
+      "icon": "Zap",
+      "label": "Agentes de IA"
+    }
+  ]
+}

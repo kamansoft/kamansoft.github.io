@@ -1,0 +1,46 @@
+{
+  "groups": [
+    {
+      "id": 1,
+      "icon": "Factory",
+      "title": "Opera mejor",
+      "tagline": "Corrige el proceso y luego automatízalo.",
+      "items": [
+        "Ingeniería de procesos",
+        "Automatización",
+        "Datos y ETL"
+      ],
+      "scene": "tangle-to-flow"
+    },
+    {
+      "id": 2,
+      "icon": "Code",
+      "title": "Construye software",
+      "tagline": "Sistemas hechos a la medida de cómo trabajas.",
+      "items": [
+        "Aplicaciones a la medida",
+        "Móvil",
+        "IA y agentes"
+      ],
+      "scene": "blocks-to-screen"
+    },
+    {
+      "id": 3,
+      "icon": "Shield",
+      "title": "Asegura y escala",
+      "tagline": "Mantenlo sólido mientras creces.",
+      "items": [
+        "Nube y DevOps",
+        "Modernización",
+        "Revisión de código y seguridad"
+      ],
+      "scene": "scale-shield"
+    }
+  ],
+  "services": [],
+  "header": {
+    "eyebrow": "Qué resolvemos",
+    "title": "Soluciones, no solo software.",
+    "description": "La TI es la herramienta. Tu operación es el objetivo."
+  }
+}

@@ -1,3 +1,4 @@
+import { useLanguage } from "@/i18n/LanguageProvider";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Linkedin, Twitter, Github } from "lucide-react";
@@ -19,6 +20,7 @@ const initialsOf = (name: string) =>
     .join("");
 
 const Team = () => {
+  const { t } = useLanguage();
   const dataService = useMemo(() => new TeamDataService(), []);
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [headerData, setHeaderData] = useState({ title: "", description: "" });
@@ -36,7 +38,7 @@ const Team = () => {
     <section id="team" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-14">
-          <p className="eyebrow mb-4">The troop</p>
+          <p className="eyebrow mb-4">{t.team.eyebrow}</p>
           <h2 className="text-3xl md:text-5xl font-bold mb-5">{headerData.title}</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             {headerData.description}

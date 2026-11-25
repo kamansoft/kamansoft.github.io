@@ -33,7 +33,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="text-white hover:bg-white/10"
+      className="text-ink-foreground hover:bg-ink-foreground/10"
       title={`Current theme: ${theme}. Click to switch.`}
     >
       {getIcon()}
